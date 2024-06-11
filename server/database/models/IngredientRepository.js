@@ -12,8 +12,8 @@ class IngredientRepository extends AbstractRepository {
   async create(Ingredient) {
     // Execute the SQL INSERT query to add a new Ingredient to the "Ingredient" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [Ingredient.title, Ingredient.user_id]
+      `insert into ${this.table} (name, nutrional_value) values (?, ?)`,
+      [Ingredient.name, Ingredient.nutrional_value]
     );
 
     // Return the ID of the newly inserted Ingredient

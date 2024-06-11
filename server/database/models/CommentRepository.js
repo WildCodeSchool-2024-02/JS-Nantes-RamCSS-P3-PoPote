@@ -4,7 +4,7 @@ class CommentRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
     // and pass the table name "Comment" as configuration
-    super({ table: "comment" });
+    super({ table: "add_comment" });
   }
 
   // The C of CRUD - Create operation
@@ -12,8 +12,8 @@ class CommentRepository extends AbstractRepository {
   async create(Comment) {
     // Execute the SQL INSERT query to add a new Comment to the "Comment" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [Comment.title, Comment.user_id]
+      `insert into ${this.table} (title, rate) values (?, ?)`,
+      [Comment.title, Comment.rate]
     );
 
     // Return the ID of the newly inserted Comment

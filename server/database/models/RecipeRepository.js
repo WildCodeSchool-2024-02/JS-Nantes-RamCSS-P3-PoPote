@@ -12,8 +12,8 @@ class RecipeRepository extends AbstractRepository {
   async create(Recipe) {
     // Execute the SQL INSERT query to add a new Recipe to the "Recipe" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [Recipe.title, Recipe.user_id]
+      `insert into ${this.table} (title, url_photo) values (?, ?)`,
+      [Recipe.title, Recipe.url_photo]
     );
 
     // Return the ID of the newly inserted Recipe

@@ -12,8 +12,8 @@ class ToolRepository extends AbstractRepository {
   async create(Tool) {
     // Execute the SQL INSERT query to add a new tool to the "tool" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, user_id) values (?, ?)`,
-      [Tool.title, Tool.user_id]
+      `insert into ${this.table} (name) values (?)`,
+      [Tool.name]
     );
 
     // Return the ID of the newly inserted tool
