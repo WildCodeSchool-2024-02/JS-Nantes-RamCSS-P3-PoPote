@@ -1,6 +1,7 @@
 create table user (
   id int primary key auto_increment not null,
-  name varchar(55) not null,
+  firstname varchar(55) not null,
+  lastname varchar(55) not null,
   email varchar(80) not null unique,
   password varchar(50) not null,
   url_photo varchar(80) null,
