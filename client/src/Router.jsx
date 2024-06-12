@@ -21,52 +21,52 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/welcome",
+        path: "welcome",
         element: <WelcomePage />,
       },
       {
-        path: "/connexion",
+        path: "connexion",
         element: <ConnexionPage />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <RegisterPage />,
       },
 
       {
-        path: "/cgu",
+        path: "cgu",
         element: <CguPage />,
       },
       {
-        path: "/home",
+        path: "home",
         element: <HomePage />,
       },
       {
-        path: "/search",
+        path: "search",
         element: <SearchPage />,
       },
       {
-        path: "/favorites",
+        path: "favorites",
         element: <FavoritesPage />,
       },
       {
-        path: "/creation-recipe",
+        path: "creation-recipe",
         element: <RecipeCreationPage />,
       },
       {
-        path: "/profile",
+        path: "profile",
         element: <ProfilePage />,
       },
       {
-        path: "/set-profile",
+        path: "set-profile",
         element: <SetProfilePage />,
       },
       {
-        path: "/recipe/:id",
+        path: "recipe/:id",
         element: <RecipePage />,
       },
       {
-        path:"/admin",
+        path:"admin",
         element: <AdminPage />
       }
     ],
