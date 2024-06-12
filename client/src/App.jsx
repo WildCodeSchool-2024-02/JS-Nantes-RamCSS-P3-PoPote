@@ -1,10 +1,12 @@
+import {Outlet} from "react-router-dom";
 import "./App.css";
+import "./styles/global.css"
 
 function App() {
   return (
     <>
-      <h1>Po'pote</h1>
-      <h4>Mon pote à la compote</h4>
+    <h1>coucou c'est nous</h1>
+    <Outlet/>
     </>
   );
 }

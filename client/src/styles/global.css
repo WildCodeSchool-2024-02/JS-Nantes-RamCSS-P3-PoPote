@@ -1,0 +1,27 @@
+@import "./components-styles/categories-list.css";
+@import "./components-styles/close-button.css";
+@import "./components-styles/duration-element.css";
+@import "./components-styles/favorite-button.css";
+@import "./components-styles/ingredients-list.css";
+@import "./components-styles/maxi-recipe-card.css";
+@import "./components-styles/mini-recipe-card.css";
+@import "./components-styles/navbar.css";
+@import "./components-styles/nut-value-element.css";
+@import "./components-styles/profile-card.css";
+@import "./components-styles/search-bar.css";
+@import "./components-styles/tools-list.css";
+@import "./components-styles/user-form.css";
+
+@import "./pages-styles/admin-page.css";
+@import "./pages-styles/cgu-page.css";
+@import "./pages-styles/connexion-page.css";
+@import "./pages-styles/error-page.css";
+@import "./pages-styles/favorites-page.css";
+@import "./pages-styles/home-page.css";
+@import "./pages-styles/profil-page.css";
+@import "./pages-styles/recipe-creation-page.css";
+@import "./pages-styles/recipe-page.css";
+@import "./pages-styles/register-page.css";
+@import "./pages-styles/search-page.css";
+@import "./pages-styles/set-profile-page.css";
+@import "./pages-styles/welcome-page.css";
