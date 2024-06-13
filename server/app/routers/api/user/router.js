@@ -12,6 +12,7 @@ const { browse, read, add } = require("../../../controllers/userActions");
 // Route to get a list of users
 router.get("/", browse);
 
+
 // Route to get a specific user by ID
 router.get("/:id", read);
 

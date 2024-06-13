@@ -9,11 +9,11 @@ class ToolRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-  async create(Tool) {
+  async create(tool) {
     // Execute the SQL INSERT query to add a new tool to the "tool" table
     const [result] = await this.database.query(
       `insert into ${this.table} (name) values (?)`,
-      [Tool.name]
+      [tool.name]
     );
 
     // Return the ID of the newly inserted tool

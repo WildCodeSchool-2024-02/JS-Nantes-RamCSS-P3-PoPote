@@ -9,11 +9,11 @@ class UserRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-  async create(User) {
+  async create(user) {
     // Execute the SQL INSERT query to add a new User to the "User" table
     const [result] = await this.database.query(
       `insert into ${this.table} (firstname, lastname) values (?, ?)`,
-      [User.firstname, User.lastname]
+      [user.firstname, user.lastname]
     );
 
     // Return the ID of the newly inserted User
