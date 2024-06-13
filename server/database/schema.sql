@@ -1,6 +1,7 @@
 create table user (
   id int primary key auto_increment not null,
-  name varchar(55) not null,
+  firstname varchar(55) not null,
+  lastname varchar(55) not null,
   email varchar(80) not null unique,
   password varchar(50) not null,
   url_photo varchar(80) null,
@@ -78,40 +79,40 @@ create table add_tool(
 );
 
 -- table user
-INSERT INTO user ( id, name, email, password, url_photo, is_admin, is_superadmin) VALUES
-(1, 'Alice Smith', 'alice.smith@example.com', 'password123', 'http://example.com/photos/alice.jpg', TRUE, FALSE),
-(2, 'Bob Johnson', 'bob.johnson@example.com', 'securepassword', 'http://example.com/photos/bob.jpg', FALSE, FALSE),
-(3, 'Charlie Brown', 'charlie.brown@example.com', 'mypassword', 'http://example.com/photos/charlie.jpg', TRUE, TRUE),
-(4, 'Diana Prince', 'diana.prince@example.com', 'dianaPW', 'http://example.com/photos/diana.jpg', FALSE, FALSE),
-(5, 'Eva Green', 'eva.green@example.com', 'evaPassword', 'http://example.com/photos/eva.jpg', FALSE, FALSE);
+INSERT INTO user (firstname, lastname, email, password, url_photo, is_admin, is_superadmin) VALUES
+( 'Alice', 'Smith', 'alice.smith@example.com', 'password123', 'http://example.com/photos/alice.jpg', TRUE, FALSE),
+( 'Bob', 'Johnson', 'bob.johnson@example.com', 'securepassword', 'http://example.com/photos/bob.jpg', FALSE, FALSE),
+( 'Charlie', 'Brown', 'charlie.brown@example.com', 'mypassword', 'http://example.com/photos/charlie.jpg', TRUE, TRUE),
+( 'Diana', 'Prince', 'diana.prince@example.com', 'dianaPW', 'http://example.com/photos/diana.jpg', FALSE, FALSE),
+( 'Eva', 'Green', 'eva.green@example.com', 'evaPassword', 'http://example.com/photos/eva.jpg', FALSE, FALSE);
 
 -- table recipe
-INSERT INTO recipe (id, title, url_photo, duration, people_number, step_description, user_id) VALUES
-(1, 'Tarte aux pommes', 'url_photo', '01:00:00', 4, 'Étaler la pâte, ajouter les pommes et cuire au four.', 1),
-(2, 'Soupe de légumes', 'url_photo2', '00:30:00', 2, 'Faire cuire les légumes et mixer.', 2),
-(3, 'Spaghetti bolognaise', 'url_photo3', '00:45:00', 4, 'Faire revenir la viande, ajouter la sauce tomate et cuire les spaghettis.', 3),
-(4, 'Poulet rôti', 'url_photo4', '01:30:00', 6, 'Assaisonner le poulet et le rôtir au four.', 4),
-(5, 'Salade César', 'url_photo5', '00:20:00', 2, 'Mélanger la laitue, le poulet grillé, les croûtons et la sauce César.', 5),
-(6, 'Gâteau au chocolat', 'url_photo6', '00:01:00', 8, 'Mélanger les ingrédients, cuire au four et laisser refroidir.', 1);
+INSERT INTO recipe ( title, url_photo, duration, people_number, step_description, user_id) VALUES
+( 'Tarte aux pommes', 'url_photo', '01:00:00', 4, 'Étaler la pâte, ajouter les pommes et cuire au four.', 1),
+( 'Soupe de légumes', 'url_photo2', '00:30:00', 2, 'Faire cuire les légumes et mixer.', 2),
+( 'Spaghetti bolognaise', 'url_photo3', '00:45:00', 4, 'Faire revenir la viande, ajouter la sauce tomate et cuire les spaghettis.', 3),
+( 'Poulet rôti', 'url_photo4', '01:30:00', 6, 'Assaisonner le poulet et le rôtir au four.', 4),
+( 'Salade César', 'url_photo5', '00:20:00', 2, 'Mélanger la laitue, le poulet grillé, les croûtons et la sauce César.', 5),
+( 'Gâteau au chocolat', 'url_photo6', '00:01:00', 8, 'Mélanger les ingrédients, cuire au four et laisser refroidir.', 1);
 
 -- table ingredient
-INSERT INTO ingredient (id, name, nutritional_value) VALUES
-(1, 'Pommes', 52),
-(2, 'Sucre', 387),
-(3, 'Farine', 364),
-(4, 'Beurre', 717),
-(5, 'Carottes', 41),
-(6, 'Pommes de terre', 80),
-(7, 'Oignons', 40),
-(8, 'Spaghetti', 157),
-(9, 'Viande hachée', 250),
-(10, 'Sauce tomate', 29),
-(11, 'Poulet', 239),
-(12, 'Laitue', 15),
-(13, 'Croûtons', 407),
-(14, 'Sauce César', 550),
-(15, 'Chocolat', 546),
-(16, 'Œufs', 155);
+INSERT INTO ingredient (name, nutritional_value) VALUES
+( 'Pommes', 52),
+( 'Sucre', 387),
+( 'Farine', 364),
+( 'Beurre', 717),
+( 'Carottes', 41),
+( 'Pommes de terre', 80),
+( 'Oignons', 40),
+( 'Spaghetti', 157),
+( 'Viande hachée', 250),
+( 'Sauce tomate', 29),
+( 'Poulet', 239),
+( 'Laitue', 15),
+( 'Croûtons', 407),
+( 'Sauce César', 550),
+( 'Chocolat', 546),
+( 'Œufs', 155);
 
 -- table add_ingredient
 INSERT INTO add_ingredient ( recipe_id, ingredient_id, quantity, unit) VALUES

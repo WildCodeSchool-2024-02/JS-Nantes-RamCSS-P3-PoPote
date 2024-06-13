@@ -1,15 +1,29 @@
 // Import the repository modules responsible for handling data operations on the tables
-const ItemRepository = require("./models/ItemRepository");
+const UserRepository = require("./models/UserRepository");
+const ToolRepository = require("./models/ToolRepository");
+const RecipeRepository = require("./models/RecipeRepository");
+const IngredientRepository = require("./models/IngredientRepository");
+const CategoryRepository = require("./models/CategoryRepository");
+const CommentRepository = require("./models/CommentRepository");
 
 // Create an empty object to hold data repositories for different tables
-const tables = {};
+const tables = {
+  user: new UserRepository(),
+  tool : new ToolRepository(),
+  recipe : new RecipeRepository(),
+  ingredient : new IngredientRepository(),
+  category : new CategoryRepository(),
+  comment : new CommentRepository(),
+  
+};
 
 /* ************************************************************************* */
 // Register data repositories for tables
 /* ************************************************************************* */
 
 // Register each repository as data access point for its table
-tables.item = new ItemRepository();
+
+// tables.user = new UserRepository(); --- THEO
 
 /* ************************************************************************* */
 
