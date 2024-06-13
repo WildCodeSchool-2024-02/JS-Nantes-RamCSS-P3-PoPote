@@ -9,11 +9,11 @@ class CategoryRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-  async create(Category) {
+  async create(category) {
     // Execute the SQL INSERT query to add a new Category to the "Category" table
     const [result] = await this.database.query(
       `insert into ${this.table} (name) values (?)`,
-      [Category.name]
+      [category.name]
     );
 
     // Return the ID of the newly inserted Category

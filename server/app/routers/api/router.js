@@ -26,6 +26,10 @@ const categoryRouter = require("./category/router");
 
 router.use("/category", categoryRouter);
 
+const userRouter = require("./user/router");
+
+router.use("/user", userRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;
