@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  gap: 1vh;
 
-img {
-  max-width: 70vw;
+  & img {
+    max-width: 70vw;
+  }
 }
