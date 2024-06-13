@@ -25,3 +25,50 @@
 @import "./pages-styles/search-page.css";
 @import "./pages-styles/set-profile-page.css";
 @import "./pages-styles/welcome-page.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  /* Font */
+  --dark-font-color: black;
+  --light-font-color: white;
+  --orange-font-color: rgb(245, 124, 0);
+  --gray-font-color: rgb(135, 135, 135);
+
+  --poppins-font: Poppins;
+  --patrick-font: Patrick Hand;
+
+  --font-size-h1: 24px;
+  --font-size-h2: 20px;
+  --font-size-h3: 16px;
+  --font-size-text: 14px;
+
+  /* Element color */
+  --primary-bg-color: white;
+  --orange-bg-color: rgb(245, 124, 0);
+  --green-bg-color: rgb(151, 191, 13);
+  --beige-bg-color: rgb(236, 232, 218);
+  --darkgray-bg-color: rgb(92, 92, 92);
+  --ligthgray-bg-color: rgb(230, 235, 242);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+  font-family: var(--poppins-font);
+}
+h2 {
+  font-size: 20px;
+}
+h3 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 14px;
+}
