@@ -114,7 +114,7 @@ INSERT INTO ingredient (name, nutritional_value) VALUES
 ( 'Chocolat', 546),
 ( 'Œufs', 155);
 
--- table insert ingredient
+-- table add_ingredient
 INSERT INTO add_ingredient ( recipe_id, ingredient_id, quantity, unit) VALUES
 -- Tarte aux pommes
 (1, 1, 600, 'grammes'),
@@ -149,3 +149,151 @@ INSERT INTO add_ingredient ( recipe_id, ingredient_id, quantity, unit) VALUES
 (6, 15, 200, 'grammes'),
 (6, 2, 100, 'grammes'),
 (6, 16, 3, 'pièces');
+
+-- table category
+INSERT INTO category ( id, name) VALUES
+(1, 'salade'),
+(2, 'soupe'),
+(3, 'sandwich'),
+(4, 'pizzas'),
+(5, 'pâtes'),
+(6, 'plats mijotés'),
+(7, 'grillade'),
+(8, 'fruits de mer'),
+(9, 'poissons'),
+(10, 'burgers'),
+(11, 'végétarien'),
+(12, 'indien'),
+(13, 'mexicain'),
+(14, 'italien'),
+(15, 'français'),
+(16, 'marocain'),
+(17, 'chinois'),
+(18, 'japonais'),
+(19, 'thaïlandais'),
+(20, 'espagnol'),
+(21, 'grec'),
+(22, 'turc'),
+(23, 'quiches'),
+(24, 'dessert'),
+(25, 'entrée'),
+(26, 'plat principal'),
+(27, 'collation'),
+(28, 'cocktail'),
+(29, 'amuse-bouche'),
+(30, 'sauce');
+
+INSERT INTO tool (id, name) VALUES
+(1, 'Couteau'),
+(2, 'Planche à découper'),
+(3, 'Fouet'),
+(4, 'Casserole'),
+(5, 'Poêle'),
+(6, 'Mixeur'),
+(7, 'Batteur électrique'),
+(8, 'Épluche-légumes'),
+(9, 'Cuillère en bois'),
+(10, 'Pinceau de cuisine'),
+(11, 'Passoire'),
+(12, 'Ustensiles de barbecue'),
+(13, 'Rouleau à pâtisserie'),
+(14, 'Presse-agrumes'),
+(15, 'Écumoire'),
+(16, 'Spatule'),
+(17, 'Ciseaux de cuisine'),
+(18, 'Thermomètre de cuisine'),
+(19, 'Égouttoir'),
+(20, 'Entonnoir'),
+(21, 'Brosse de nettoyage'),
+(22, 'Pilon'),
+(23, 'Fouet à main'),
+(24, 'Louche'),
+(25, 'Râpe'),
+(26, 'Pelle à tarte'),
+(27, 'Pince alimentaire'),
+(28, 'Piques à brochettes'),
+(29, 'Éplucheur à julienne'),
+(30, 'Presse-purée'),
+(31, 'Siphon à crème chantilly'),
+(32, 'Pichet doseur'),
+(33, 'Égouttoir à vaisselle'),
+(34, 'Tire-bouchon'),
+(35, 'Découpe-pizza'),
+(36, 'Essoreuse à salade'),
+(37, 'Zesteur'),
+(38, 'Mandoline'),
+(39, 'Ouvre-boîte'),
+(40, 'Tapis de cuisson'),
+(41, 'Plateau de service'),
+(42, 'Moule à muffins'),
+(43, 'Cuiseur à riz'),
+(44, 'Moulin à épices'),
+(45, 'Plateau à fromage'),
+(46, 'Sorbetière'),
+(47, 'Cuiseur vapeur'),
+(48, 'Cocotte-minute'),
+(49, 'Fouet électrique'),
+(50, 'Pince à glaçons');
+
+INSERT INTO add_favorite ( user_id, recipe_id) VALUES
+(1, 1),
+(2, 4),
+(3, 6),
+(4, 2),
+(5, 5);
+
+INSERT INTO add_category (recipe_id, category_id) VALUES
+(1, 24),
+(2, 2),
+(3, 14),
+(4, 26),
+(5, 1),
+(6, 24);
+
+INSERT INTO add_comment (id, title, description, rate, user_id, recipe_id) VALUES
+(1, 'Délicieuse tarte', 'La tarte aux pommes était vraiment délicieuse et bien croustillante.', 5, 1, 1),
+(2, 'Soupe réconfortante', 'Cette soupe de légumes est parfaite pour les soirées froides.', 4, 2, 2),
+(3, 'Spaghetti authentiques', 'Les spaghetti bolognaise avaient une sauce très savoureuse.', 5, 3, 3),
+(4, 'Poulet bien rôti', 'Le poulet rôti était juteux et parfaitement cuit.', 4, 4, 4),
+(5, 'Salade fraîche', 'La salade César était fraîche et bien assaisonnée.', 5, 5, 5),
+(6, 'Excellent gâteau', 'Le gâteau au chocolat était moelleux et fondant.', 5, 1, 6),
+(7, 'Un régal', 'Je me suis régalé avec la tarte aux pommes.', 4, 2, 1),
+(8, 'Parfait pour l’hiver', 'La soupe de légumes était bien épicée et réconfortante.', 5, 3, 2),
+(9, 'Délicieux spaghetti', 'Les spaghetti bolognaise étaient vraiment délicieux, comme en Italie.', 5, 4, 3);
+
+INSERT INTO add_tool (recipe_id, tool_id, quantity) VALUES
+(1, 1, 1),   -- Tarte aux pommes - Couteau
+(1, 2, 1),   -- Tarte aux pommes - Planche à découper
+(1, 13, 1),  -- Tarte aux pommes - Rouleau à pâtisserie
+(1, 9, 1),   -- Tarte aux pommes - Cuillère en bois
+(1, 42, 1),  -- Tarte aux pommes - Moule à muffins
+
+(2, 1, 1),   -- Soupe de légumes - Couteau
+(2, 2, 1),   -- Soupe de légumes - Planche à découper
+(2, 4, 1),   -- Soupe de légumes - Casserole
+(2, 16, 1),  -- Soupe de légumes - Spatule
+(2, 8, 1),   -- Soupe de légumes - Épluche-légumes
+
+(3, 1, 1),   -- Spaghetti bolognaise - Couteau
+(3, 2, 1),   -- Spaghetti bolognaise - Planche à découper
+(3, 4, 1),   -- Spaghetti bolognaise - Casserole
+(3, 5, 1),   -- Spaghetti bolognaise - Poêle
+(3, 11, 1),  -- Spaghetti bolognaise - Passoire
+
+(4, 1, 1),   -- Poulet rôti - Couteau
+(4, 2, 1),   -- Poulet rôti - Planche à découper
+(4, 12, 1),  -- Poulet rôti - Ustensiles de barbecue
+(4, 16, 1),  -- Poulet rôti - Spatule
+(4, 17, 1),  -- Poulet rôti - Ciseaux de cuisine
+
+(5, 1, 1),   -- Salade César - Couteau
+(5, 2, 1),   -- Salade César - Planche à découper
+(5, 9, 1),   -- Salade César - Cuillère en bois
+(5, 36, 1),  -- Salade César - Essoreuse à salade
+(5, 45, 1),  -- Salade César - Plateau à fromage
+
+(6, 1, 1),   -- Gâteau au chocolat - Couteau
+(6, 3, 1),   -- Gâteau au chocolat - Fouet
+(6, 42, 1),  -- Gâteau au chocolat - Moule à muffins
+(6, 49, 1),  -- Gâteau au chocolat - Fouet électrique
+(6, 9, 1);   -- Gâteau au chocolat - Cuillère en bois
