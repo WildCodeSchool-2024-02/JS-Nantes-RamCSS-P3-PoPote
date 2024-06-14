@@ -1,5 +1,35 @@
+.userform-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  max-width: 60vw;
+  margin: 30px;
+}
+
 .register-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5vh;
+  gap: 2vh;
+
+  & input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+}
+
+.register-button {
+  background-color: var(--green-bg-color);
+  border: none;
+  border-radius: 16px;
+  padding: 5px;
+  max-width: 40vw;
+}
+
+.register-conditions {
+  font-family: var(--poppins-font);
+}
+
+.register-url {
+  font-family: var(--poppins-font);
 }

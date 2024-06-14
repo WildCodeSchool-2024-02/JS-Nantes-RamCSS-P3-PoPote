@@ -3,8 +3,19 @@
   flex-direction: column;
   align-items: center;
   gap: 1vh;
+  text-align: center;
+  background-color: var(--orange-bg-color);
+  color: var(--light-font-color);
 
   & img {
-    max-width: 70vw;
+    max-width: 50vw;
+  }
+
+  & h2 {
+    font-family: var(--poppins-font);
+  }
+
+  & p {
+    font-family: var(--poppins-font);
   }
 }

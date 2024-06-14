@@ -10,7 +10,7 @@ function UserForm() {
   // }
 
   return (
-    <section>
+    <section className="userform-page">
       <form className="register-form">
         <input
           type="text"
@@ -19,7 +19,7 @@ function UserForm() {
           placeholder="👤 Nom"
           required
         />
-        <input type="text" id="firstname" placeholder="👤Prénom" required />
+        <input type="text" id="firstname" placeholder="👤 Prénom" required />
         <input type="email" id="email" placeholder="✉️ Email" required />
         <input
           type="password"
@@ -33,11 +33,18 @@ function UserForm() {
           placeholder="🔒 Confirmer mot de passe"
           required
         />
-        <input type="submit" value="Inscription" />
+        <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />
+        <label htmlFor="cgu" className="cgu-conditions">
+          J'accepte les Conditions Générales d'Utilisation et reconnais avoir
+          été informé que mes données personnelles seront utilisées.
+        </label>
+        <input type="submit" value="Inscription" className="register-button" />
       </form>
       <p>
         Tu as déjà un compte ?{" "}
-        <NavLink className="connexion-url">Connecte-toi</NavLink>
+        <NavLink className="register-url">Connecte-toi</NavLink>
+        <br />
+        <NavLink className="register-url">A propos de nous</NavLink>
       </p>
     </section>
   );
