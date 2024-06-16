@@ -2,34 +2,43 @@
   display: flex;
   flex-direction: column;
   gap: 2vh;
-  max-width: 60vw;
   margin: 30px;
 }
 
 .register-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2vh;
 
   & input {
     padding: 10px;
     border: none;
     border-radius: 5px;
+    width: 60vw;
   }
 }
 
-.register-button {
+.cgu-container {
+  display: flex;
+  gap: 1vh;
+  width: 60vw;
+}
+
+.cgu-container input[type="checkbox"] {
+  width: auto;
+  height: auto;
+}
+
+.submit-button {
   background-color: var(--green-bg-color);
   border: none;
   border-radius: 16px;
   padding: 5px;
-  max-width: 40vw;
+  max-width: 30vw;
 }
 
-.register-conditions {
+.url {
   font-family: var(--poppins-font);
-}
-
-.register-url {
-  font-family: var(--poppins-font);
+  color: var(--light-font-color);
 }

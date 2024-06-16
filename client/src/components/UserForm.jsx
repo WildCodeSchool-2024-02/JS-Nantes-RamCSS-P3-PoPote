@@ -33,18 +33,20 @@ function UserForm() {
           placeholder="🔒 Confirmer mot de passe"
           required
         />
+        <div className="cgu-container">
         <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />
         <label htmlFor="cgu" className="cgu-conditions">
           J'accepte les Conditions Générales d'Utilisation et reconnais avoir
           été informé que mes données personnelles seront utilisées.
         </label>
-        <input type="submit" value="Inscription" className="register-button" />
+        </div>
+        <input type="submit" value="Inscription" className="submit-button" />
       </form>
       <p>
         Tu as déjà un compte ?{" "}
-        <NavLink className="register-url">Connecte-toi</NavLink>
+        <NavLink className="url">Connecte-toi</NavLink>
         <br />
-        <NavLink className="register-url">A propos de nous</NavLink>
+        <NavLink className="url">A propos de nous</NavLink>
       </p>
     </section>
   );
