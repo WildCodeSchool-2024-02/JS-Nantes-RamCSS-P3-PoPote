@@ -22,20 +22,34 @@ function UserForm() {
             required
           />
         </div>
-        <input type="text" id="firstname" placeholder="👤 Prénom" required />
-        <input type="email" id="email" placeholder="✉️ Email" required />
-        <input
-          type="password"
-          id="password"
-          placeholder="🔒 Mot de passe"
-          required
-        />
-        <input
-          type="password"
-          id="password-confirmation"
-          placeholder="🔒 Confirmer mot de passe"
-          required
-        />
+        <div className="logo-input">
+          <img src="./src/assets/logo_form/icon-person.svg" alt="icon person" />
+          <input type="text" id="firstname" placeholder="Prénom" required />
+        </div>
+        <div className="logo-input">
+          <img src="./src/assets/logo_form/icon-mail.svg" alt="icon email" />
+          <input type="email" id="email" placeholder="Email" required />
+        </div>
+        <div className="logo-input">
+          <img src="./src/assets/logo_form/icon-lock.svg" alt="icon lock" />
+          <input
+            type="password"
+            id="password"
+            placeholder="Mot de passe"
+            required
+          />
+          <img src="./src/assets/logo_form/icon-eye.svg" alt="icon eye" />
+        </div>
+        <div className="logo-input">
+          <img src="./src/assets/logo_form/icon-lock.svg" alt="icon lock" />
+          <input
+            type="password"
+            id="password-confirmation"
+            placeholder="Confirmer mot de passe"
+            required
+          />
+          <img src="./src/assets/logo_form/icon-eye.svg" alt="icon eye" />
+        </div>
         <div className="cgu-container">
           <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />
           <label htmlFor="cgu" className="cgu-conditions">

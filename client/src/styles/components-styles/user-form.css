@@ -11,11 +11,25 @@
   align-items: center;
   gap: 2vh;
 
+  & img {
+    padding-left: 10px;
+  }
+
   & input {
     padding: 10px;
     border: none;
     border-radius: 5px;
     width: 60vw;
+    font-family: var(--poppins-font);
+
+    & ::placeholder {
+      color: var(--gray-font-color);
+      font-family: var(--poppins-font);
+    }
+
+    & input:focus {
+      outline: none;
+    }
   }
 }
 
@@ -23,6 +37,7 @@
   display: flex;
   background-color: var(--primary-bg-color);
   border-radius: 5px;
+  max-width: 60vw;
 }
 
 .cgu-container {
