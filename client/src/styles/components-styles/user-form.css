@@ -19,6 +19,12 @@
   }
 }
 
+.logo-input {
+  display: flex;
+  background-color: var(--primary-bg-color);
+  border-radius: 5px;
+}
+
 .cgu-container {
   display: flex;
   gap: 1vh;

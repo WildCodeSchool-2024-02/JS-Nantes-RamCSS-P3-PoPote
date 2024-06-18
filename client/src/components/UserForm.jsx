@@ -12,13 +12,16 @@ function UserForm() {
   return (
     <section className="userform-page">
       <form className="register-form">
-        <input
-          type="text"
-          id="lastname"
-          name="lastname"
-          placeholder="👤 Nom"
-          required
-        />
+        <div className="logo-input">
+          <img src="./src/assets/logo_form/icon-person.svg" alt="icon person" />
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            placeholder="Nom"
+            required
+          />
+        </div>
         <input type="text" id="firstname" placeholder="👤 Prénom" required />
         <input type="email" id="email" placeholder="✉️ Email" required />
         <input
@@ -34,17 +37,16 @@ function UserForm() {
           required
         />
         <div className="cgu-container">
-        <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />
-        <label htmlFor="cgu" className="cgu-conditions">
-          J'accepte les Conditions Générales d'Utilisation et reconnais avoir
-          été informé que mes données personnelles seront utilisées.
-        </label>
+          <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />
+          <label htmlFor="cgu" className="cgu-conditions">
+            J'accepte les Conditions Générales d'Utilisation et reconnais avoir
+            été informé que mes données personnelles seront utilisées.
+          </label>
         </div>
         <input type="submit" value="Inscription" className="submit-button" />
       </form>
       <p>
-        Tu as déjà un compte ?{" "}
-        <NavLink className="url">Connecte-toi</NavLink>
+        Tu as déjà un compte ? <NavLink className="url">Connecte-toi</NavLink>
         <br />
         <NavLink className="url">A propos de nous</NavLink>
       </p>
