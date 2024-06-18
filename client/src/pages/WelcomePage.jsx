@@ -10,7 +10,9 @@ function WelcomePage() {
           alt="logo titre"
           className="welcomePage-img-logotitre"
         />
-        <h1>Viens t'inspirer avec les meilleurs recettes du moment</h1>
+        <h1 className="welcomePageh1">
+          Viens t'inspirer avec les meilleurs recettes du moment
+        </h1>
         <NavLink className="navLinkHome" to="/Home">
           Jeter un coup d'oeil
         </NavLink>

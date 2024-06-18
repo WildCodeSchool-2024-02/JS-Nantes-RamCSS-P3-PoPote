@@ -1,3 +1,10 @@
 .backgroundWelcomePage {
   background-color: orange;
 }
+
+.welcomePageh1 {
+  color: var(--primary-bg-color);
+  font-size: var(--font-size-h1);
+  font-family: var(--patrick-font);
+  font-weight: normal;
+}
