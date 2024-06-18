@@ -52,7 +52,8 @@ function UserForm() {
         </div>
         <div className="cgu-container">
           <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />
-          <label htmlFor="cgu" className="cgu-conditions">
+          <label htmlFor="cgu">
+            {" "}
             J'accepte les Conditions Générales d'Utilisation et reconnais avoir
             été informé que mes données personnelles seront utilisées.
           </label>

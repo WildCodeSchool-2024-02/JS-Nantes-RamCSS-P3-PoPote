@@ -3,6 +3,11 @@
   flex-direction: column;
   gap: 2vh;
   margin: 30px;
+
+  & p {
+    font-size: var(--font-size-small-text);
+    margin-top: 20px;
+  }
 }
 
 .register-form {
@@ -10,10 +15,12 @@
   flex-direction: column;
   align-items: center;
   gap: 2vh;
+}
 
-  & img {
-    padding-left: 10px;
-  }
+.logo-input {
+  display: flex;
+  background-color: var(--primary-bg-color);
+  border-radius: 5px;
 
   & input {
     padding: 10px;
@@ -21,42 +28,41 @@
     border-radius: 5px;
     width: 60vw;
     font-family: var(--poppins-font);
+  }
 
-    & ::placeholder {
-      color: var(--gray-font-color);
-      font-family: var(--poppins-font);
-    }
+  & input::placeholder {
+    color: var(--gray-font-color);
+    font-family: var(--poppins-font);
+  }
 
-    & input:focus {
-      outline: none;
-    }
+  & input:focus {
+    outline: none;
   }
 }
 
-.logo-input {
-  display: flex;
-  background-color: var(--primary-bg-color);
-  border-radius: 5px;
-  max-width: 60vw;
-}
-
 .cgu-container {
-  display: flex;
-  gap: 1vh;
   width: 60vw;
+  font-family: var(--poppins-font);
+
+  & label {
+    font-size: var(--font-size-small-text);
+  }
 }
 
 .cgu-container input[type="checkbox"] {
-  width: auto;
-  height: auto;
+  width: 10px;
+  height: 10px;
 }
 
 .submit-button {
   background-color: var(--green-bg-color);
   border: none;
   border-radius: 16px;
-  padding: 5px;
-  max-width: 30vw;
+  width: 40vw;
+  padding: 16px;
+  font-family: var(--poppins-font);
+  color: var(--light-font-color);
+  margin-top: 20px;
 }
 
 .url {
