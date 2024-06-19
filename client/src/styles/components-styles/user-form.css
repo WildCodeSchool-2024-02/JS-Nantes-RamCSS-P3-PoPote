@@ -61,3 +61,9 @@
 .url {
   color: var(--light-font-color);
 }
+
+@media screen and (min-width: 992px) {
+  .logo-input {
+    width: 30vw;
+  }
+}
