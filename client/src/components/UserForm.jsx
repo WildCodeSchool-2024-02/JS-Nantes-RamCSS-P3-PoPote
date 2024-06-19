@@ -20,7 +20,7 @@ function UserForm() {
           />
           <input
             type="text"
-            id="lastname"
+            id="reigster-lastname"
             name="lastname"
             placeholder="Nom"
             required
@@ -32,7 +32,7 @@ function UserForm() {
             alt="icon person"
             className="icon-form"
           />
-          <input type="text" id="firstname" placeholder="Prénom" required />
+          <input type="text" id="register-firstname" placeholder="Prénom" required />
         </div>
         <div className="logo-input">
           <img
@@ -40,7 +40,7 @@ function UserForm() {
             alt="icon email"
             className="icon-form"
           />
-          <input type="email" id="email" placeholder="Email" required />
+          <input type="email" id="register-email" placeholder="Email" required />
         </div>
         <div className="logo-input">
           <img
@@ -50,7 +50,7 @@ function UserForm() {
           />
           <input
             type="password"
-            id="password"
+            id="register-password"
             placeholder="Mot de passe"
             required
           />
@@ -68,7 +68,7 @@ function UserForm() {
           />
           <input
             type="password"
-            id="password-confirmation"
+            id="register-password-confirmation"
             placeholder="Confirmer mot de passe"
             required
           />
