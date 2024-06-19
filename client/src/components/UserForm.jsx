@@ -32,7 +32,12 @@ function UserForm() {
             alt="icon person"
             className="icon-form"
           />
-          <input type="text" id="register-firstname" placeholder="Prénom" required />
+          <input
+            type="text"
+            id="register-firstname"
+            placeholder="Prénom"
+            required
+          />
         </div>
         <div className="logo-input">
           <img
@@ -40,7 +45,12 @@ function UserForm() {
             alt="icon email"
             className="icon-form"
           />
-          <input type="email" id="register-email" placeholder="Email" required />
+          <input
+            type="email"
+            id="register-email"
+            placeholder="Email"
+            required
+          />
         </div>
         <div className="logo-input">
           <img
