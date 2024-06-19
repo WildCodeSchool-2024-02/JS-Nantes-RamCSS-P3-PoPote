@@ -3,23 +3,22 @@ import { NavLink } from "react-router-dom";
 function WelcomePage() {
   return (
     <>
-      <h1>WelcomePage</h1>
-      <div className="backgroundWelcomePage">
+      <h1>welcome</h1>
+      <section className="welcome-page">
         <img
-          src="./src/assets/logo_popote_titre.png"
+          className="welcome-page-logotitre"
+          src="./src/assets/logo/logo_popote_blanc.svg"
           alt="logo titre"
-          className="welcomePage-img-logotitre"
         />
-        <h1 className="welcomePageh1">
-          Viens t'inspirer avec les meilleurs recettes du moment
+        <h1 className="welcome-page-h1">
+          Viens t'inspirer avec les
+          <br /> meilleures recettes du moment
         </h1>
-        <NavLink className="navLinkHome" to="/Home">
-          Jeter un coup d'oeil
-        </NavLink>
-        <NavLink className="navLinkConnexion" to="/Connexion">
-          Connexion
-        </NavLink>
-      </div>
+        <nav className="welcome-nav">
+          <NavLink to="/home">Jeter un coup d'oeil</NavLink>
+          <NavLink to="/connexion">Connexion</NavLink>
+        </nav>
+      </section>
     </>
   );
 }

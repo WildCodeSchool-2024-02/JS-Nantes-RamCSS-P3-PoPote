@@ -1,10 +1,42 @@
-.backgroundWelcomePage {
-  background-color: orange;
+.welcome-page {
+  background: url("../../assets/background/background_mobile_welcome.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
-.welcomePageh1 {
+.welcome-page-h1 {
+  margin-top: 2vw;
+  text-align: center;
   color: var(--primary-bg-color);
   font-size: var(--font-size-h1);
   font-family: var(--patrick-font);
   font-weight: normal;
+}
+
+.welcome-nav {
+  display: flex;
+  flex-direction: column;
+  padding-top: 60vh;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  font-size: var(--font-size-text);
+}
+
+.welcome-nav a {
+  border-radius: 16px;
+  padding: 10px;
+  width: 30vw;
+  color: white;
+  text-decoration: none;
+  font-family: var(--poppins-font);
+
+  &:first-child {
+    border: solid 1px;
+  }
+
+  &:last-child {
+    background-color: var(--green-bg-color);
+  }
 }
