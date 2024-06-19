@@ -1,8 +1,8 @@
 .userform-page {
   display: flex;
   flex-direction: column;
-  gap: 2vh;
   margin: 30px;
+  gap: 2vh;
 }
 
 .register-form {
@@ -13,7 +13,9 @@
 }
 
 .icon-form {
-  width: 14vw;
+  width: 8vw;
+  height: 8vh;
+  margin: 0.5vw;
 }
 
 .logo-input {
@@ -24,7 +26,7 @@
 
   & input {
     border: none;
-    width: 60vw;
+    width: 70vw;
     font-family: var(--poppins-font);
   }
 
@@ -68,7 +70,7 @@
   }
 
   .logo-input {
-    width: 40vw;
+    width: 30vw;
 
     & input {
       border-radius: 5px;
@@ -76,7 +78,10 @@
   }
 
   .icon-form {
-    width: 14vw;
+    width: 4vw;
+    height: 4vh;
+    margin: 4px;
+    margin-right: 10px;
   }
 
   .cgu-container {

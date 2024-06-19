@@ -9,7 +9,7 @@
   background-size: cover;
   color: var(--light-font-color);
 
-  & img {
+  .logo-blanc {
     max-width: 60vw;
     padding: 5%;
   }
