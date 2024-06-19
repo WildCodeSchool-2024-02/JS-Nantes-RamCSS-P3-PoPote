@@ -63,7 +63,23 @@
 }
 
 @media screen and (min-width: 992px) {
-  .logo-input {
+  .register-form {
     width: 30vw;
+  }
+
+  .logo-input {
+    width: 40vw;
+
+    & input {
+      border-radius: 5px;
+    }
+  }
+
+  .icon-form {
+    width: 14vw;
+  }
+
+  .cgu-container {
+    width: 35vw;
   }
 }

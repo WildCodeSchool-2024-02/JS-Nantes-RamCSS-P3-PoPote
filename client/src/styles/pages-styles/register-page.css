@@ -34,10 +34,15 @@
 @media screen and (min-width: 992px) {
   .register-page {
     background: url("../../assets/background/background_desktop_welcome.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: var(--dark-font-color);
   }
 
   .desktop-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--beige-bg-color);
     width: 50vw;
     margin: 30px;
@@ -51,13 +56,5 @@
   .logo-orange {
     display: block;
     width: 23vw;
-  }
-
-  h2 {
-    color: var(--dark-font-color);
-  }
-
-  p {
-    color: var(--dark-font-color);
   }
 }
