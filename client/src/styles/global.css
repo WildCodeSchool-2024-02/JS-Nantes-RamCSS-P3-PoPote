@@ -38,11 +38,11 @@
   --poppins-font: Poppins;
   --patrick-font: Patrick Hand;
 
-  --font-size-h1: 24px;
-  --font-size-h2: 20px;
-  --font-size-h3: 16px;
-  --font-size-text: 14px;
-  --font-size-small-text: 12px;
+  --font-size-h1: 1.5rem;
+  --font-size-h2: 1.25rem;
+  --font-size-h3: 1rem;
+  --font-size-text: 0.875rem;
+  --font-size-small-text: 0.75rem;
 
   /* Element color */
   --primary-bg-color: white;
@@ -60,16 +60,16 @@
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: var(--poppins-font);
 }
 h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 h3 {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 p {
-  font-size: 14px;
+  font-size: 0.875rem;
 }

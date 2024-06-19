@@ -10,7 +10,7 @@
   color: var(--light-font-color);
 
   & img {
-    max-width: 50vw;
+    max-width: 60vw;
     padding: 5%;
   }
 
@@ -21,6 +21,10 @@
   & p {
     font-family: var(--poppins-font);
   }
+}
+
+.register-title {
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 992px) {

@@ -13,7 +13,11 @@ function UserForm() {
     <section className="userform-page">
       <form className="register-form">
         <div className="logo-input">
-          <img src="./src/assets/logo_form/icon-person.svg" alt="icon person" />
+          <img
+            src="./src/assets/logo_form/icon-person.svg"
+            alt="icon person"
+            className="icon-form"
+          />
           <input
             type="text"
             id="lastname"
@@ -23,32 +27,56 @@ function UserForm() {
           />
         </div>
         <div className="logo-input">
-          <img src="./src/assets/logo_form/icon-person.svg" alt="icon person" />
+          <img
+            src="./src/assets/logo_form/icon-person.svg"
+            alt="icon person"
+            className="icon-form"
+          />
           <input type="text" id="firstname" placeholder="Prénom" required />
         </div>
         <div className="logo-input">
-          <img src="./src/assets/logo_form/icon-mail.svg" alt="icon email" />
+          <img
+            src="./src/assets/logo_form/icon-mail.svg"
+            alt="icon email"
+            className="icon-form"
+          />
           <input type="email" id="email" placeholder="Email" required />
         </div>
         <div className="logo-input">
-          <img src="./src/assets/logo_form/icon-lock.svg" alt="icon lock" />
+          <img
+            src="./src/assets/logo_form/icon-lock.svg"
+            alt="icon lock"
+            className="icon-form"
+          />
           <input
             type="password"
             id="password"
             placeholder="Mot de passe"
             required
           />
-          <img src="./src/assets/logo_form/icon-eye.svg" alt="icon eye" />
+          <img
+            src="./src/assets/logo_form/icon-eye.svg"
+            alt="icon eye"
+            className="icon-form"
+          />
         </div>
         <div className="logo-input">
-          <img src="./src/assets/logo_form/icon-lock.svg" alt="icon lock" />
+          <img
+            src="./src/assets/logo_form/icon-lock.svg"
+            alt="icon lock"
+            className="icon-form"
+          />
           <input
             type="password"
             id="password-confirmation"
             placeholder="Confirmer mot de passe"
             required
           />
-          <img src="./src/assets/logo_form/icon-eye.svg" alt="icon eye" />
+          <img
+            src="./src/assets/logo_form/icon-eye.svg"
+            alt="icon eye"
+            className="icon-form"
+          />
         </div>
         <div className="cgu-container">
           <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />

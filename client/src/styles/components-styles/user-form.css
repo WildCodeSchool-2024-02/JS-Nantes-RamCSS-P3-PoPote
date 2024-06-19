@@ -3,11 +3,6 @@
   flex-direction: column;
   gap: 2vh;
   margin: 30px;
-
-  & p {
-    font-size: var(--font-size-small-text);
-    margin-top: 20px;
-  }
 }
 
 .register-form {
@@ -17,21 +12,19 @@
   gap: 2vh;
 }
 
+.icon-form {
+  width: 14vw;
+}
+
 .logo-input {
   display: flex;
   background-color: var(--primary-bg-color);
   border-radius: 5px;
+  width: 90vw;
 
   & input {
-    padding: 10px;
     border: none;
-    border-radius: 5px;
     width: 60vw;
-    font-family: var(--poppins-font);
-  }
-
-  & input::placeholder {
-    color: var(--gray-font-color);
     font-family: var(--poppins-font);
   }
 
@@ -41,7 +34,7 @@
 }
 
 .cgu-container {
-  width: 60vw;
+  width: 80vw;
   font-family: var(--poppins-font);
 
   & label {
@@ -50,8 +43,8 @@
 }
 
 .cgu-container input[type="checkbox"] {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 .submit-button {
@@ -62,10 +55,9 @@
   padding: 16px;
   font-family: var(--poppins-font);
   color: var(--light-font-color);
-  margin-top: 20px;
+  margin: 15px;
 }
 
 .url {
-  font-family: var(--poppins-font);
   color: var(--light-font-color);
 }
