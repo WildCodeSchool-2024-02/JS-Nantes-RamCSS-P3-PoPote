@@ -1,8 +1,13 @@
-function MaxiRecipeCard() {
+/* eslint-disable react/prop-types */
+
+function MaxiRecipeCard({recipeData}) {
   return (
     <>
-    <h1>coucou</h1>
-    <h1>coucou</h1>
+    {recipeData.map(el => 
+    <h1 key={el}>Coucou  {el.title}</h1>
+    )}
+
+   
     </>
     );
 }
