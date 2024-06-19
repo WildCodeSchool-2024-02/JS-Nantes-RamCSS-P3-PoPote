@@ -2,7 +2,7 @@
   display: none;
 }
 
-.navbar-desktop {
+.navbar {
   width: 100vw;
   height: 10vh;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -10,8 +10,12 @@
   justify-content: space-around;
   align-items: center;
 
-  & .desktop-link:hover,
-  .desktop-link.active {
+  & .nav-link {
+    text-decoration: none;
+  }
+
+  & .nav-link.active,
+  .nav-link:hover {
     color: var(--dark-font-color);
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
@@ -26,36 +30,68 @@
     font-family: var(--patrick-font);
     font-size: Var(--font-size-h1);
     color: var(--orange-font-color);
+  }
 
-    & img {
-      height: 10vh;
-      width: auto;
-      margin-right: 25rem;
-      margin-top: 0.5rem;
-    }
+  & #popote-logo {
+    height: 10vh;
+    width: auto;
+    margin-right: 25rem;
+    margin-top: 0.5rem;
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 475px) {
   .desktop-link {
     display: none;
   }
 
-  .navbar {
-    position: fixed;
-    width: 100dvw;
-    height: 10dvh;
-    bottom: 0px;
-    z-index: 1;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
-    background-image: url("");
+  .nav-link:nth-of-type(3) {
+    margin-right: 4em;
   }
 
-  .mobile-link {
-    display: inline-flex;
-    justify-content: space-between;
+  .navbar {
+    position: fixed;
+    bottom: 0px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    width: 100dvw;
+    height: 8dvh;
+
+    & .nav-bg {
+      position: fixed;
+      bottom: -5px;
+      width: 100%;
+      height: auto;
+      z-index: 1;
+    }
+    & .nav-link {
+      z-index: 2;
+    }
+    & .mobile-link {
+      display: flex;
+      gap: 0px;
+    }
+
+    & .nav-link.active > img > svg {
+      fill: blue;
+      background-color: black;
+    }
+
+    & #search-link {
+      position: absolute;
+      bottom: 7dvh;
+      left: 39dvw;
+      width: 22dvw;
+      height: 10dvh;
+      background-color: white;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+
+      & img {
+        width: 18dvw;
+      }
+    }
   }
 }
