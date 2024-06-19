@@ -93,5 +93,8 @@
         width: 18dvw;
       }
     }
+    & #search-link.active {
+      background-color: #97bf0d;
+    }
   }
 }
