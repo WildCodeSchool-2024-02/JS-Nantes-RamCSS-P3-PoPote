@@ -1,0 +1,16 @@
+<svg id="truc" width="375" height="85" viewBox="0 0 375 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_97_2226)">
+<path d="M0 33C0 21.9543 8.95431 13 20 13H136.004C142.513 13 148.076 14.8894 151.949 20.1201C159.903 30.8596 166.557 46 187.5 46C208.481 46 215.75 30.8049 223.985 20.062C227.945 14.8962 233.487 13 239.996 13H355C366.046 13 375 21.9543 375 33V78.5H0V33Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_d_97_2226" x="0" y="0" width="395" height="80" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-3"/>
+<feGaussianBlur stdDeviation="5"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_97_2226"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_97_2226" result="shape"/>
+</filter>
+</defs>
+</svg>

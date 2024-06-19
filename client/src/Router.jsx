@@ -66,9 +66,9 @@ const router = createBrowserRouter([
         element: <RecipePage />,
       },
       {
-        path:"admin",
-        element: <AdminPage />
-      }
+        path: "admin",
+        element: <AdminPage />,
+      },
     ],
   },
 ]);
