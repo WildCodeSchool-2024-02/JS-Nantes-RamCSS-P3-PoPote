@@ -1,19 +1,13 @@
 /* eslint-disable react/prop-types */
-import DurationElement from "./DurationElement"
 
-
-function MaxiRecipeCard({recipeData}) {
-
+function MaxiRecipeCard({ title, duration, photo }) {
   return (
-    <>
-    {recipeData.map(el => 
-    <h1 key={el}>Coucou toi {el.title}</h1>
-    )}
-
-   <DurationElement recipeData={recipeData}/>
-   
-    </>
-    );
+    <section className="recipe-card">
+      <img src={photo} alt="" />
+      <h1>{title}</h1>
+      <h2>{duration}</h2>
+    </section>
+  );
 }
 
 export default MaxiRecipeCard;

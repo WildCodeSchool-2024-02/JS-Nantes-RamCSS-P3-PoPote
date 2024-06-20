@@ -1,0 +1,17 @@
+.home-page-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  & .hp-container-title {
+    text-align: center;
+  }
+}
+
+.recipe-card-list {
+  border: solid black 2px;
+  width: 100dvw;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

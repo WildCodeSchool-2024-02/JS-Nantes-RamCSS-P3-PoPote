@@ -1,0 +1,8 @@
+.recipe-card {
+  display: flex;
+  margin: 15px;
+  width: 100dvw;
+  height: 40dvh;
+  border-radius: 20%;
+  background-color: grey;
+}
