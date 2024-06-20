@@ -40,7 +40,7 @@ function UserForm() {
             alt="icon email"
             className="icon-form"
           />
-          <input type="email" id="register-email" placeholder="Email" required />
+          <input type="email" id="register-email" placeholder="Email" pattern="/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g" required />
         </div>
         <div className="logo-input">
           <img
