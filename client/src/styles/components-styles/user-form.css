@@ -13,19 +13,22 @@
 }
 
 .icon-form {
-  width: 8vw;
-  height: 8vh;
+  width: 5vw;
   margin: 0.5vw;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .logo-input {
   display: flex;
   background-color: var(--primary-bg-color);
-  border-radius: 5px;
+  border-radius: 8px;
   width: 90vw;
+  height: 4.5vh;
 
   & input {
     border: none;
+    align-items: center;
     width: 70vw;
     font-family: var(--poppins-font);
   }
@@ -86,5 +89,9 @@
 
   .cgu-container {
     width: 35vw;
+  }
+
+  .submit-button {
+    width: 20vw;
   }
 }

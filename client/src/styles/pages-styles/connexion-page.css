@@ -19,6 +19,7 @@
 
   & h2 {
     font-family: var(--poppins-font);
+    font-size: 1.125rem;
   }
 
   & p {
@@ -27,5 +28,43 @@
 }
 
 .login-userform-page {
+  position: fixed;
+  bottom: 1px;
   display: flex;
+}
+
+@media screen and (min-width: 992px) {
+  .login-page {
+    background: url("../../assets/background/background_desktop_welcome.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--dark-font-color);
+  }
+
+  .desktop-frame-connexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--beige-bg-color);
+    width: 50vw;
+    margin: 30px;
+    border-radius: 10px;
+    /* gap: 50px; */
+    margin-top: 100px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .logo-blanc {
+    display: none;
+  }
+
+  .logo-orange {
+    display: block;
+    width: 23vw;
+  }
+
+  .login-userform-page {
+    position: relative;
+  }
 }
