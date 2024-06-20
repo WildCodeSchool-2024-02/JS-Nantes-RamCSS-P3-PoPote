@@ -1,9 +1,16 @@
-function DurationElement() {
+/* eslint-disable react/prop-types */
+
+function DurationElement({recipeData}) {
+ console.info(recipeData);
+
   return (
-    <>
-    <h1>coucou</h1>
-    <h1>coucou</h1>
-    </>
+    <section>
+      <h1>Coucou</h1>
+{/* 
+{recipeData.map(el => 
+ <h1 key={el}>{recipeData}</h1>
+)} */}
+    </section>
     );
 }
 
