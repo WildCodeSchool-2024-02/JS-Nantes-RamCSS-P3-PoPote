@@ -5,7 +5,7 @@ import "./styles/global.css";
 function App() {
   return (
     <>
-      <h1>coucou c'est nous</h1>
+      {/* <h1>coucou c'est nous</h1> */}
       <Outlet />
     </>
   );

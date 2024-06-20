@@ -1,36 +1,45 @@
 .welcome-page {
-  background: url("../../assets/background/background_mobile_welcome.svg");
+  background: url("../../assets/background/background_mobile_welcome_with_logo.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  text-align: center;
+}
+
+.welcome-page-logotitre {
+  margin-top: 2vh;
+  height: 10vh;
+  width: 60vw;
 }
 
 .welcome-page-h1 {
-  margin-top: 2vw;
-  text-align: center;
+  margin: 2vw auto 0 auto;
   color: var(--primary-bg-color);
-  font-size: var(--font-size-h1);
+  font-size: 32px;
   font-family: var(--patrick-font);
   font-weight: normal;
+  width: 25ch;
 }
 
 .welcome-nav {
   display: flex;
   flex-direction: column;
-  padding-top: 60vh;
+  padding-top: 50vh;
   align-items: center;
-  text-align: center;
   gap: 1rem;
-  font-size: var(--font-size-text);
+  font-size: 20px;
+  font-family: var(--poppins-font);
 }
 
 .welcome-nav a {
   border-radius: 16px;
-  padding: 10px;
-  width: 30vw;
+  height: 6vh;
+  width: 55vw;
   color: white;
   text-decoration: none;
-  font-family: var(--poppins-font);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:first-child {
     border: solid 1px;
@@ -38,5 +47,23 @@
 
   &:last-child {
     background-color: var(--green-bg-color);
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .welcome-page {
+    background: url("../../assets/background/background_desktop_with_logo.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .welcome-page-h1 {
+    width: 100%;
+  }
+
+  .welcome-nav a {
+    width: 20vw;
+    height: 10vh;
   }
 }
