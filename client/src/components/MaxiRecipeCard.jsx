@@ -7,7 +7,7 @@ function MaxiRecipeCard({recipeData}) {
   return (
     <>
     {recipeData.map(el => 
-    <h1 key={el}>Coucou {el.title}</h1>
+    <h1 key={el}>Coucou toi {el.title}</h1>
     )}
 
    <DurationElement recipeData={recipeData}/>
