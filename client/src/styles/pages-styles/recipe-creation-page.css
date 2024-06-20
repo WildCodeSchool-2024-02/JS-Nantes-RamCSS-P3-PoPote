@@ -1,0 +1,21 @@
+.recipe-creation-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+}
+
+.recipe-description {
+  border-radius: 5px;
+}
+
+.submit-recipe-creation-button {
+  background-color: var(--green-bg-color);
+  border: none;
+  border-radius: 16px;
+  width: 70vw;
+  padding: 16px;
+  font-family: var(--poppins-font);
+  color: var(--light-font-color);
+  margin: 15px;
+}

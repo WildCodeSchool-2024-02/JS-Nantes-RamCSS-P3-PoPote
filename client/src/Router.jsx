@@ -1,9 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage";
+
 import App from "./App";
 import WelcomePage from "./pages/WelcomePage";
-import ErrorPage from "./pages/ErrorPage";
 import ConnexionPage from "./pages/ConnexionPage";
 import RegisterPage from "./pages/RegisterPage";
+
+import Layout from "./Layout";
 import CguPage from "./pages/CguPage";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
@@ -21,7 +24,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "welcome",
+        path: "",
         element: <WelcomePage />,
       },
       {
@@ -32,14 +35,21 @@ const router = createBrowserRouter([
         path: "register",
         element: <RegisterPage />,
       },
-
       {
         path: "cgu",
         element: <CguPage />,
       },
+    ],
+  },
+  {
+    path: "/popote",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
         path: "home",
         element: <HomePage />,
+        loader: () => fetch("http://localhost:3310/api/recipe/"),
       },
       {
         path: "search",
