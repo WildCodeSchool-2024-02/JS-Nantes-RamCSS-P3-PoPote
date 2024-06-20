@@ -52,6 +52,7 @@ function UserForm() {
             type="password"
             id="register-password"
             placeholder="Mot de passe"
+            pattern="/^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9]).{8,50}$/"
             required
           />
           <img
