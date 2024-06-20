@@ -7,8 +7,9 @@
 }
 
 .welcome-page-logotitre {
-  margin-top: 2vh;
-  height: 10vh;
+  max-width: 60vw;
+  padding: 5%;
+  margin-top: 30px;
 }
 
 .welcome-page-h1 {
@@ -48,6 +49,7 @@
     background-color: var(--green-bg-color);
   }
 }
+/* --- media query pour desktop --- */
 
 @media screen and (min-width: 480px) {
   .welcome-page {
@@ -55,6 +57,12 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+  }
+
+  .welcome-page-logotitre {
+    max-width: 23vw;
+    padding: 0;
+    margin-top: 20px;
   }
 
   .welcome-page-h1 {
