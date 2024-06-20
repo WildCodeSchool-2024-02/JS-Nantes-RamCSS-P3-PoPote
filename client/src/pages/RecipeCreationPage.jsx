@@ -2,7 +2,7 @@ function RecipeCreationPage() {
   return (
     <section className="recipe-creation-page">
       <h1>Ajout recette</h1>
-      {/* <img src="./src/assets/image-recipe-creation.jpg" alt="photo-user-recipe"/> */}
+      <img src="" alt="" />
       {/* <div className="recipe-name"></div>
       <div className="recipe-ingredients"></div>
       <div className="recipe-tools"></div>
