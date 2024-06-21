@@ -3,21 +3,22 @@ import { NavLink } from "react-router-dom";
 function ConnexionPage() {
   return (
     <section className="login-page">
-      <div className="desktop-frame-connexion">
-        <img
-          src="./src/assets/logo/logo_popote_blanc.svg"
-          alt="logo Popote"
-          className="logo-blanc"
-        />
-        <img
-          src="./src/assets/logo/logo_popote_orange.svg"
-          alt="logo Popote"
-          className="logo-orange"
-        />
-        <h2>Nous sommes heureux de vous revoir !</h2>
-
-        <section className="userform-page login-userform-page">
-          <form className="register-form">
+      <div className="desktop-frame-connexion mobile-frame-connexion">
+        <div>
+          <img
+            src="./src/assets/logo/logo_popote_blanc.svg"
+            alt="logo Popote"
+            className="logo-blanc"
+          />
+          <img
+            src="./src/assets/logo/logo_popote_orange.svg"
+            alt="logo Popote"
+            className="logo-orange"
+          />
+          <h2>Nous sommes heureux de vous revoir !</h2>
+        </div>
+        <section className="login-userform-page">
+          <form className="login-form">
             <div className="logo-input">
               <img
                 src="./src/assets/logo_form/icon-mail.svg"
@@ -46,7 +47,7 @@ function ConnexionPage() {
               <img
                 src="./src/assets/logo_form/icon-eye.svg"
                 alt="icon eye"
-                className="icon-form"
+                className="icon-form login-eye"
               />
             </div>
 

@@ -65,6 +65,7 @@
 
 .url {
   color: var(--light-font-color);
+  /* color:  --green-font-color: rgb(151, 191, 13); */
 }
 
 @media screen and (min-width: 992px) {
@@ -72,8 +73,12 @@
     width: 30vw;
   }
 
+  .url {
+    color: var(--brown-font-color);
+  }
+
   .logo-input {
-    width: 30vw;
+    width: 25vw;
 
     & input {
       border-radius: 5px;
@@ -88,7 +93,7 @@
   }
 
   .cgu-container {
-    width: 35vw;
+    width: 25vw;
   }
 
   .submit-button {
