@@ -9,12 +9,11 @@ const CommentRepository = require("./models/CommentRepository");
 // Create an empty object to hold data repositories for different tables
 const tables = {
   user: new UserRepository(),
-  tool : new ToolRepository(),
-  recipe : new RecipeRepository(),
-  ingredient : new IngredientRepository(),
-  category : new CategoryRepository(),
-  comment : new CommentRepository(),
-  
+  tool: new ToolRepository(),
+  recipe: new RecipeRepository(),
+  ingredient: new IngredientRepository(),
+  category: new CategoryRepository(),
+  comment: new CommentRepository(),
 };
 
 /* ************************************************************************* */

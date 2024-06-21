@@ -87,7 +87,7 @@ INSERT INTO user (firstname, lastname, email, password, url_photo, is_admin, is_
 ( 'Eva', 'Green', 'eva.green@example.com', 'evaPassword', 'http://example.com/photos/eva.jpg', FALSE, FALSE);
 
 -- table recipe
-INSERT INTO recipe ( title, url_photo, duration, people_number, step_description, user_id) VALUES
+INSERT INTO recipe (title, url_photo, duration, people_number, step_description, user_id) VALUES
 ( 'Tarte aux pommes', 'url_photo', '01:00:00', 4, 'Étaler la pâte, ajouter les pommes et cuire au four.', 1),
 ( 'Soupe de légumes', 'url_photo2', '00:30:00', 2, 'Faire cuire les légumes et mixer.', 2),
 ( 'Spaghetti bolognaise', 'url_photo3', '00:45:00', 4, 'Faire revenir la viande, ajouter la sauce tomate et cuire les spaghettis.', 3),
@@ -115,7 +115,7 @@ INSERT INTO ingredient (name, nutritional_value) VALUES
 ( 'Œufs', 155);
 
 -- table add_ingredient
-INSERT INTO add_ingredient ( recipe_id, ingredient_id, quantity, unit) VALUES
+INSERT INTO add_ingredient (recipe_id, ingredient_id, quantity, unit) VALUES
 -- Tarte aux pommes
 (1, 1, 600, 'grammes'),
 (1, 2, 100, 'grammes'),
@@ -151,7 +151,7 @@ INSERT INTO add_ingredient ( recipe_id, ingredient_id, quantity, unit) VALUES
 (6, 16, 3, 'pièces');
 
 -- table category
-INSERT INTO category ( id, name) VALUES
+INSERT INTO category (id, name) VALUES
 (1, 'salade'),
 (2, 'soupe'),
 (3, 'sandwich'),
@@ -235,7 +235,7 @@ INSERT INTO tool (id, name) VALUES
 (49, 'Fouet électrique'),
 (50, 'Pince à glaçons');
 
-INSERT INTO add_favorite ( user_id, recipe_id) VALUES
+INSERT INTO add_favorite (user_id, recipe_id) VALUES
 (1, 1),
 (2, 4),
 (3, 6),
