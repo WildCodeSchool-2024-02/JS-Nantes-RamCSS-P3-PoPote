@@ -1,8 +1,8 @@
 function FavoriteButton() {
   return (
     <>
-      <h1>coucou</h1>
-      <h1>coucou</h1>
+      <h1>FavortiteButtton</h1>
+      <h1>FavortiteButtton</h1>
     </>
   );
 }

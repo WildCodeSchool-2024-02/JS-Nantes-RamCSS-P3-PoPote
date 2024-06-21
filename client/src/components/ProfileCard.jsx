@@ -1,8 +1,8 @@
 function ProfileCard() {
   return (
     <>
-      <h1>coucou</h1>
-      <h1>coucou</h1>
+      <h1>ProfileCard</h1>
+      <h1>ProfileCard</h1>
     </>
   );
 }

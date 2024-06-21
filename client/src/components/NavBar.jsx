@@ -24,7 +24,11 @@ function NavBar() {
   return (
     <nav className="navbar">
       <img src={navBg} className="mobile-link nav-bg" alt="" />
-      <NavLink className="nav-link" to="/" aria-label="Page d'acceuil">
+      <NavLink
+        className="nav-link"
+        to="/popote/home"
+        aria-label="Page d'acceuil"
+      >
         <img
           className="desktop-link"
           id="popote-logo"
@@ -33,52 +37,58 @@ function NavBar() {
         />
         <img
           className="mobile-link"
-          src={location.pathname === "/" ? homegreen : home}
+          src={location.pathname === "/popote/home" ? homegreen : home}
           alt=""
         />
       </NavLink>
       <NavLink
         className="nav-link"
         id="search-link"
-        to="/search"
+        to="/popote/search"
         aria-label="Page Recherche"
       >
         <h1 className="desktop-link">Rechercher</h1>
         <img
           className="mobile-link"
-          src={location.pathname === "/search" ? searchgreen : search}
+          src={location.pathname === "/popote/search" ? searchgreen : search}
           alt=""
         />
       </NavLink>
       <NavLink
         className="nav-link"
-        to="/favorites"
+        to="/popote/favorites"
         aria-label="Page Mes favoris"
       >
         <h1 className="desktop-link">Mes Favoris</h1>
         <img
           className="mobile-link"
-          src={location.pathname === "/favorites" ? favoritegreen : favorite}
+          src={
+            location.pathname === "/popote/favorites" ? favoritegreen : favorite
+          }
           alt=""
         />
       </NavLink>
       <NavLink
         className="nav-link"
-        to="/creation-recipe"
+        to="/popote/creation-recipe"
         aria-label="Page Creation de recette"
       >
         <h1 className="desktop-link">Créer une recette</h1>
         <img
           className="mobile-link"
-          src={location.pathname === "/creation-recipe" ? addgreen : add}
+          src={location.pathname === "/popote/creation-recipe" ? addgreen : add}
           alt=""
         />
       </NavLink>
-      <NavLink className="nav-link" to="/profile" aria-label="Page Mon Profil">
+      <NavLink
+        className="nav-link"
+        to="/popote/profile"
+        aria-label="Page Mon Profil"
+      >
         <h1 className="desktop-link">Mon Profil</h1>
         <img
           className="mobile-link"
-          src={location.pathname === "/profile" ? profilegreen : profile}
+          src={location.pathname === "/popote/profile" ? profilegreen : profile}
           alt=""
         />
       </NavLink>
