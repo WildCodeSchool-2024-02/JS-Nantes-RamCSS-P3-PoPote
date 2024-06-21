@@ -9,7 +9,6 @@
 }
 
 .recipe-card-list {
-  border: solid black 2px;
   width: 100dvw;
   height: 100%;
   display: flex;

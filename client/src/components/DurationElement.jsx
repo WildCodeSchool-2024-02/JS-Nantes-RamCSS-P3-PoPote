@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 
-function DurationElement({ recipeData }) {
-  console.info(recipeData);
+import iconD from "../assets/logo_card/icon-duration.svg";
 
+function DurationElement({ duration }) {
   return (
-    <section>
-      <h1>Coucou ceci est temps.</h1>
-      <h1>{recipeData.duration}</h1>
+    <section className="duration-container">
+      <img src={iconD} alt="" />
+      <h1>{duration}</h1>
     </section>
   );
 }
