@@ -34,6 +34,7 @@
   --light-font-color: white;
   --orange-font-color: rgb(245, 124, 0);
   --gray-font-color: rgb(135, 135, 135);
+  --brown-font-color: rgb(82, 40, 40);
 
   --poppins-font: Poppins;
   --patrick-font: Patrick Hand;
@@ -63,11 +64,15 @@ h1 {
   font-size: 1.5rem;
   font-family: var(--poppins-font);
 }
+
 h2 {
   font-size: 1.25rem;
+  font-family: var(--poppins-font);
 }
+
 h3 {
   font-size: 1rem;
+  font-family: var(--poppins-font);
 }
 
 p {
