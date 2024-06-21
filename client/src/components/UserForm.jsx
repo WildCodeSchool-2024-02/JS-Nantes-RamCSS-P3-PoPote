@@ -46,9 +46,13 @@ function UserForm() {
             className="icon-form"
           />
 
-          <input type="email" id="register-email" placeholder="Email" pattern="/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g" required />
-                                                                              
-
+          <input
+            type="email"
+            id="register-email"
+            placeholder="Email"
+            pattern="/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g"
+            required
+          />
         </div>
         <div className="logo-input">
           <img
@@ -60,7 +64,7 @@ function UserForm() {
             type="password"
             id="register-password"
             placeholder="Mot de passe"
-            pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]){8,}$"  
+            pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]){8,}$"
             required
           />
           <img
@@ -100,7 +104,9 @@ function UserForm() {
       <p>
         Tu as déjà un compte ? <NavLink to="/connexion" className="url">Connecte-toi</NavLink>
         <br />
-        <NavLink className="url">A propos de nous</NavLink>
+        <NavLink to="/about" className="url">
+          A propos de nous
+        </NavLink>
       </p>
     </section>
   );
