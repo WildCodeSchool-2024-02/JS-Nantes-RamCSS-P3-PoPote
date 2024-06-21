@@ -41,6 +41,7 @@ function UserForm() {
             className="icon-form"
           />
           <input type="email" id="register-email" placeholder="Email" pattern="/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g" required />
+                                                                              
         </div>
         <div className="logo-input">
           <img
@@ -52,7 +53,7 @@ function UserForm() {
             type="password"
             id="register-password"
             placeholder="Mot de passe"
-            pattern="/^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9]).{8,50}$/"
+            pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]){8,}$"  
             required
           />
           <img
