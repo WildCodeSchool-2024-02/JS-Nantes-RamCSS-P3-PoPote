@@ -15,3 +15,10 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@media screen and (min-width: 480px) {
+  .recipe-card-list {
+    padding-left: 35px;
+    gap: 15px;
+  }
+}

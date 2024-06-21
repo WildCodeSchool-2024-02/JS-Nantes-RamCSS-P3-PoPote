@@ -6,3 +6,9 @@
   border-radius: 20%;
   background-color: grey;
 }
+
+@media screen and (min-width: 480px) {
+  .recipe-card {
+    width: 20vw;
+  }
+}
