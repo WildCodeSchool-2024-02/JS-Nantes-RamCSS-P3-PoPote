@@ -1,8 +1,8 @@
 function DurationElement() {
   return (
     <>
-      <h1>coucou</h1>
-      <h1>coucou</h1>
+      <h1>DurationElement</h1>
+      <h1>DurationElement</h1>
     </>
   );
 }
