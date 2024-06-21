@@ -24,7 +24,7 @@
 .welcome-nav {
   display: flex;
   flex-direction: column;
-  padding-top: 50vh;
+  padding-top: 47vh;
   align-items: center;
   gap: 1rem;
   font-size: 20px;
