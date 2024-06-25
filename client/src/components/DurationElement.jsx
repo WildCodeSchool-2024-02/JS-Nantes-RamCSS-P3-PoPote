@@ -1,9 +1,13 @@
-function DurationElement() {
+/* eslint-disable react/prop-types */
+
+import iconD from "../assets/logo_card/icon-duration.svg";
+
+function DurationElement({ duration }) {
   return (
-    <>
-      <h1>coucou</h1>
-      <h1>coucou</h1>
-    </>
+    <section className="duration-container">
+      <img src={iconD} alt="" />
+      <h1>{duration}</h1>
+    </section>
   );
 }
 

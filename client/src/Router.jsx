@@ -16,6 +16,7 @@ import ProfilePage from "./pages/ProfilePage";
 import SetProfilePage from "./pages/SetProfilePage";
 import RecipePage from "./pages/RecipePage";
 import AdminPage from "./pages/AdminPage";
+import AboutPage from "./pages/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "cgu",
         element: <CguPage />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
       },
     ],
   },

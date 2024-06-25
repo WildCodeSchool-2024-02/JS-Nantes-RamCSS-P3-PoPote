@@ -5,8 +5,8 @@
 function ToolsList() {
   return (
     <>
-      <h1>coucou</h1>
-      <h1>coucou</h1>
+      <h1>ToolsList</h1>
+      <h1>ToolsList</h1>
     </>
   );
 }

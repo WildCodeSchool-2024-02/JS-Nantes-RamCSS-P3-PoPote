@@ -1,0 +1,14 @@
+.duration-container {
+  display: flex;
+  gap: 5px;
+  width: 40%;
+  height: 30%;
+  margin-left: 15px;
+
+  & img {
+    width: 3em;
+    height: 2em;
+    background-color: var(--darkgray-bg-color);
+    border-radius: 5px;
+  }
+}
