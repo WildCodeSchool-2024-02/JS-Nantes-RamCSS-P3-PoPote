@@ -5,13 +5,30 @@
 import { NavLink } from "react-router-dom";
 
 function UserForm() {
-  // handleSubmit(event) {
-  //     event.preventDefault();
-  // }
+
+  function handleSubmit(event) {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData);
+
+      fetch("http://localhost:3310/api/user/",{
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      })
+      .then((res) => {
+        if (res.ok) {
+          console.warn("Victoire !")
+        }
+      } )
+  }
 
   return (
     <section className="userform-page">
-      <form className="register-form">
+      <form className="register-form" onSubmit={handleSubmit}>
         <div className="logo-input">
           <img
             src="./src/assets/logo_form/icon-person.svg"
@@ -20,7 +37,7 @@ function UserForm() {
           />
           <input
             type="text"
-            id="reigster-lastname"
+            id="register-lastname"
             name="lastname"
             placeholder="Nom"
             required
@@ -48,7 +65,7 @@ function UserForm() {
 
           <input
             type="email"
-            id="register-email"
+            id="email"
             placeholder="Email"
             pattern="/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g"
             required
@@ -62,7 +79,7 @@ function UserForm() {
           />
           <input
             type="password"
-            id="register-password"
+            id="password"
             placeholder="Mot de passe"
             pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]){8,}$"
             required
@@ -79,12 +96,12 @@ function UserForm() {
             alt="icon lock"
             className="icon-form"
           />
-          <input
+          {/* <input
             type="password"
             id="register-password-confirmation"
             placeholder="Confirmer mot de passe"
             required
-          />
+          /> */}
           <img
             src="./src/assets/logo_form/icon-eye.svg"
             alt="icon eye"
@@ -92,14 +109,15 @@ function UserForm() {
           />
         </div>
         <div className="cgu-container">
-          <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" />
-          <label htmlFor="cgu">
+          {/* <input type="checkbox" id="cgu" name="validation-cgu" value="cgu" /> */}
+          {/* <label htmlFor="cgu">
             {" "}
             J'accepte les Conditions Générales d'Utilisation et reconnais avoir
             été informé que mes données personnelles seront utilisées.
-          </label>
+          </label> */}
         </div>
-        <input type="submit" value="Inscription" className="submit-button" />
+        {/* <input type="submit" value="Inscription" className="submit-button" /> */}
+        <button type="submit" value="Inscription" className="submit-button">Inscription</button>
       </form>
       <p>
         Tu as déjà un compte ? <NavLink to="/connexion" className="url">Connecte-toi</NavLink>
