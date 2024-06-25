@@ -41,6 +41,13 @@ class RecipeRepository extends AbstractRepository {
     return rows;
   }
 
+  async readAddIngredient() {
+    const [rows] = await this.database.query(`SELECT r.title, r.user_id, i.name, i.nutritional_value, ai.quantity, ai.unit
+FROM recipe r
+JOIN add_ingredient ai ON r.id = ai.recipe_id
+JOIN ingredient i ON i.id = ai.ingredient_id;  `);
+    return rows;
+  }
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing Recipe
 
