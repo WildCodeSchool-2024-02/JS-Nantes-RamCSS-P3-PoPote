@@ -15,24 +15,6 @@ const browse = async (req, res, next) => {
   }
 };
 
-// browse jointure add_ingredient 
-const browseAddIngredient = async (req, res, next) => {
-  try {
-    // Fetch a specific item from the database based on the provided ID
-    const addIngredient = await tables.recipe.readAddIngredient();
-
-    // If the item is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the item in JSON format
-    if (addIngredient == null) {
-      res.sendStatus(404);
-    } else {
-      res.json(addIngredient);
-    }
-  } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
-  }
-};
 
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
@@ -79,7 +61,6 @@ const add = async (req, res, next) => {
 // Ready to export the controller functions
 module.exports = {
   browse,
-  browseAddIngredient,
   read,
   // edit,
   add,

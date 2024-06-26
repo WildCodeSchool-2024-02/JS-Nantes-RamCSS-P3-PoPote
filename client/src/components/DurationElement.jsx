@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 
 import iconD from "../assets/logo_card/icon-duration.svg";
 
@@ -11,16 +11,16 @@ function DurationElement({ duration }) {
     let formattedDuration = "";
     if (hours > 0) {
       if (minutes <= 0) {
-          // Si hours > 0 et minutes <= 0, ajoute seulement les heures
-          formattedDuration += `${hours} h`;
+        // Si hours > 0 et minutes <= 0, ajoute seulement les heures
+        formattedDuration += `${hours} h`;
       } else {
-          // Si hours > 0 et minutes > 0, ajoute les heures et les minutes
-          formattedDuration += `${hours} h ${minutes.toString().padStart(2, '0')} min`;
+        // Si hours > 0 et minutes > 0, ajoute les heures et les minutes
+        formattedDuration += `${hours} h ${minutes.toString().padStart(2, "0")} min`;
       }
-  } else {
+    } else {
       // Si hours == 0, ajouter seulement les minutes
-      formattedDuration += `${minutes.toString().padStart(2, '0')} min`;
-  }
+      formattedDuration += `${minutes.toString().padStart(2, "0")} min`;
+    }
     return formattedDuration;
   }
 
@@ -31,5 +31,9 @@ function DurationElement({ duration }) {
     </section>
   );
 }
+
+DurationElement.propTypes = {
+  duration: PropTypes.string.isRequired,
+};
 
 export default DurationElement;

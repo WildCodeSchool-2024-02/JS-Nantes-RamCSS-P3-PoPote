@@ -102,7 +102,10 @@ function UserForm() {
         <input type="submit" value="Inscription" className="submit-button" />
       </form>
       <p>
-        Tu as déjà un compte ? <NavLink to="/connexion" className="url">Connecte-toi</NavLink>
+        Tu as déjà un compte ?{" "}
+        <NavLink to="/connexion" className="url">
+          Connecte-toi
+        </NavLink>
         <br />
         <NavLink to="/about" className="url">
           A propos de nous
