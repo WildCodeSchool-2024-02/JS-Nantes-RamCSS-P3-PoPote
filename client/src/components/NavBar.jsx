@@ -24,11 +24,7 @@ function NavBar() {
   return (
     <nav className="navbar">
       <img src={navBg} className="mobile-link nav-bg" alt="" />
-      <NavLink
-        className="nav-link"
-        to="/popote/home"
-        aria-label="Page d'acceuil"
-      >
+      <NavLink className="nav-link" to="/popote/" aria-label="Page d'acceuil">
         <img
           className="desktop-link"
           id="popote-logo"
@@ -37,7 +33,7 @@ function NavBar() {
         />
         <img
           className="mobile-link"
-          src={location.pathname === "/popote/home" ? homegreen : home}
+          src={location.pathname === "/popote/" ? homegreen : home}
           alt=""
         />
       </NavLink>

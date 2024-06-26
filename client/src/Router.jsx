@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-        loader: () => fetch("http://localhost:3310/api/recipe/"),
+        loader: () => fetch(`http://localhost:3310/api/recipe/`),
       },
       {
         path: "search",
@@ -79,6 +79,8 @@ const router = createBrowserRouter([
       {
         path: "recipe/:id",
         element: <RecipePage />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3310/api/recipe/${params.id}`),
       },
       {
         path: "admin",
