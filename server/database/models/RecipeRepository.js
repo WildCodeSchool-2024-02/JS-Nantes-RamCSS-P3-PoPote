@@ -35,11 +35,27 @@ class RecipeRepository extends AbstractRepository {
 
   async readAll() {
     // Execute the SQL SELECT query to retrieve all Recipes from the "Recipe" table
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(`
+      SELECT r.title, r.url_photo, r.user_id, r.duration, r.people_number, r.step_description, SUM(i.nutritional_value * ai.quantity / 1000) AS nutValue
+FROM recipe r
+JOIN add_ingredient ai ON r.id = ai.recipe_id
+JOIN ingredient i ON i.id = ai.ingredient_id
+GROUP BY r.id, r.title, r.url_photo, r.user_id, r.duration, r.people_number, r.step_description;
+`);
 
     // Return the array of Recipes
     return rows;
   }
+
+  // requete qui calcul les valeur nutritionnelle des recettes.
+
+  //   async readNutValue() {
+  //     const [rows] = await this.database.query(`
+  // SELECT r.title, SUM(i.nutritional_value * ai.quantity / 1000) AS nutValue
+  //     FROM recipe r
+  //     `);
+  //     return rows;
+  //   }
 
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing Recipe

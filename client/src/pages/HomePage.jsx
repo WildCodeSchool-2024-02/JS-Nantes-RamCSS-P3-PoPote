@@ -7,7 +7,7 @@ function HomePage() {
 
   return (
     <section className="home-page-container">
-      <h1 className="hp-container-title"> Hello USERS </h1>
+      <h1 className="hp-container-title"> Hello Visiteurs </h1>
       <h2 className="hp-container-title"> Que veux-tu manger aujourd'hui</h2>
       <h2 className="hp-container-title"> Recette recommandés</h2>
       <article className="recipe-card-list">
@@ -18,6 +18,7 @@ function HomePage() {
             title={el.title}
             photo={el.url_photo}
             duration={el.duration}
+            nutValue={el.nutValue}
           />
         ))}
       </article>
