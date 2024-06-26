@@ -1,0 +1,26 @@
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  width: 100dvw;
+  height: 40dvh;
+  border-radius: 10%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  overflow: hidden;
+
+  & #recipe-card-img {
+    width: 100%;
+    height: 25vh;
+  }
+
+  & #recipe-card-title {
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .recipe-card {
+    width: 20vw;
+  }
+}
