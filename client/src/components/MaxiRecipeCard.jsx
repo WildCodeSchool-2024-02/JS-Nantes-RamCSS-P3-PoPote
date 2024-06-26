@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
-// import tarte from "../../../server/public/assets/images/recipe_image/tarte-au-pommes.jpg"
-import DurationElement from "./DurationElement";
-// import NutValueElement from "./NutValueElement";
+import PropTypes from "prop-types";
 
-function MaxiRecipeCard({ title, duration, photo }) {
+import DurationElement from "./DurationElement";
+import NutValueElement from "./NutValueElement";
+
+function MaxiRecipeCard({ title, duration, photo, nutValue }) {
   return (
     <section className="recipe-card">
       <img
@@ -12,12 +12,19 @@ function MaxiRecipeCard({ title, duration, photo }) {
         alt=""
       />
       <h2 id="recipe-card-title">{title}</h2>
-      <div className="nut&dur-element">
+      <div className="nutdur-element">
         <DurationElement duration={duration} />
-        {/* <NutValueElement /> */}
+        <NutValueElement nutValue={nutValue} />
       </div>
     </section>
   );
 }
+
+MaxiRecipeCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  duration: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  nutValue: PropTypes.string.isRequired,
+};
 
 export default MaxiRecipeCard;

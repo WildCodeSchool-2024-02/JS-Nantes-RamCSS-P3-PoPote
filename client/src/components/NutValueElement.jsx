@@ -1,10 +1,17 @@
-function NutValueElement() {
+import PropTypes from "prop-types";
+import iconN from "../assets/logo_card/icon-nutvalue.svg";
+
+function NutValueElement({ nutValue }) {
   return (
-    <>
-      <h1>NutValueElemenent</h1>
-      <h1>NutValueElemenent</h1>
-    </>
+    <section className="nutvalue-container">
+      <img id="nutvalue-img" src={iconN} alt="" />
+      <h3>{Math.round(parseInt(nutValue, 10))} Kcal</h3>
+    </section>
   );
 }
+
+NutValueElement.propTypes = {
+  nutValue: PropTypes.string.isRequired,
+};
 
 export default NutValueElement;
