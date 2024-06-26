@@ -67,7 +67,7 @@ function UserForm() {
             id="register-email"
             name="email"
             placeholder="Email"
-            pattern="/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g"
+            pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
             required
           />
         </div>
