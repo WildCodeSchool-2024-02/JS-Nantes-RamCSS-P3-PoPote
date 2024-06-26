@@ -59,6 +59,7 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchPage />,
+        loader: () => fetch("http://localhost:3310/api/recipe"),
       },
       {
         path: "favorites",
