@@ -4,17 +4,15 @@ import SearchBar from "../components/SearchBar";
 
 function SearchPage() {
   const recipes = useLoaderData();
-  // const ingredients = useLoaderData();
   const [query, setQuery] = useState("");
-
-  // console.log("c'est koi ingredients?", ingredients);
-  // console.log("c'est koi recipes?", recipes);
 
   // filtre recherche
   const filteredRecipe =
     query !== ""
-      ? recipes.filter((recipe) =>
-          recipe.title.toLowerCase().includes(query.toLowerCase())
+      ? recipes.filter(
+          (recipe) =>
+            recipe.title.toLowerCase().includes(query.toLowerCase()) ||
+            recipe.ingredients.toLowerCase().includes(query.toLowerCase())
         )
       : recipes;
 
