@@ -6,22 +6,33 @@ import { NavLink } from "react-router-dom";
 
 function UserForm() {
   function handleSubmit(event) {
-    event.preventDefault();
+    const password1 = document.getElementById("register-password").value;
+    const password2 = document.getElementById(
+      "register-password-confirmation"
+    ).value;
+    const CGU = document.getElementById("cgu").checked;
+    if (password1 === password2 && CGU) {
+      event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData);
 
-    fetch("http://localhost:3310/api/user/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then((res) => {
-      if (res.ok) {
-        console.warn("Victoire !");
-      }
-    });
+      fetch("http://localhost:3310/api/user/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((res) => {
+        if (res.ok) {
+          console.warn("Victoire !");
+        }
+      });
+    } else {
+      alert(
+        "Les deux mots de passe ne sont pas identiques ou les CGU ne sont pas cochées"
+      );
+    }
   }
 
   return (
@@ -110,12 +121,12 @@ function UserForm() {
           />
         </div>
         <div className="cgu-container">
-          {/* <input type="checkbox" id="cgu" value="cgu" /> */}
-          {/* <label htmlFor="cgu">
+          <input type="checkbox" id="cgu" value="cgu" />
+          <label htmlFor="cgu">
             {" "}
             J'accepte les Conditions Générales d'Utilisation et reconnais avoir
             été informé que mes données personnelles seront utilisées.
-          </label> */}
+          </label>
         </div>
         {/* <input type="submit" value="Inscription" className="submit-button" /> */}
         <button type="submit" value="Inscription" className="submit-button">
