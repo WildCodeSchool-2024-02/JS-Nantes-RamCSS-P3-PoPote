@@ -7,15 +7,32 @@ function RecipePage() {
   console.info(recipeDetailData);
 
   return (
-    <section>
-      <h1>{recipeDetailData.title}</h1>
-      <img src={recipeDetailData.url_photo} alt="" />
-      <h2>{recipeDetailData.people_number}</h2>
-      <DurationElement duration={recipeDetailData.duration} />
-      <NutValueElement nutValue={recipeDetailData.nutValue}/>
-      <p>{recipeDetailData.step_description}</p>
+    <section className="recipe-page-container">
+      <h1 id="recipe-page-title">{recipeDetailData.title}</h1>
+      <img
+        id="recipe-page-img"
+        src={import.meta.env.VITE_API_URL + recipeDetailData.url_photo}
+        alt=""
+      />
 
-      <h1>Page de la recette</h1>
+      <section className="recipe-page-context-element">
+        <h2>Nombre de personne : {recipeDetailData.people_number}</h2>
+        <DurationElement duration={recipeDetailData.duration} />
+        <NutValueElement nutValue={recipeDetailData.nutValue} />
+      </section>
+
+      <div className="radio-inputs">
+        <label className="radio">
+          <input type="radio" name="radio" checked />
+          <span className="name">Ingredients</span>
+        </label>
+        <label className="radio">
+          <input type="radio" name="radio" />
+          <span className="name">Instructions</span>
+        </label>
+      </div>
+
+      <p>{recipeDetailData.step_description}</p>
     </section>
   );
 }
