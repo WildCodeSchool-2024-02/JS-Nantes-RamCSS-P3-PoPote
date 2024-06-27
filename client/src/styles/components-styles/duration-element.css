@@ -1,0 +1,15 @@
+.duration-container {
+  display: flex;
+  gap: 5px;
+  width: 45%;
+  margin-left: 10px;
+  align-items: center;
+
+  & #duration-img {
+    padding: 0.3em;
+    width: 2em;
+    height: 2em;
+    background-color: var(--darkgray-bg-color);
+    border-radius: 5px;
+  }
+}

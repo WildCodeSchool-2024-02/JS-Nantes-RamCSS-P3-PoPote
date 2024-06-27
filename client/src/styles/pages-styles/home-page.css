@@ -1,0 +1,24 @@
+.home-page-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10px;
+
+  & .hp-container-title {
+    text-align: center;
+  }
+}
+
+.recipe-card-list {
+  width: 100dvw;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 480px) {
+  .recipe-card-list {
+    padding-left: 35px;
+    gap: 15px;
+  }
+}
