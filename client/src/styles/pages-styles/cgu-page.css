@@ -15,8 +15,9 @@
   flex-direction: column;
   align-items: center;
   background-color: var(--beige-bg-color);
-  width: 60vw;
   border-radius: 10px;
+  max-height: auto;
+  width: 80vw;
 
   & p {
     margin: 15px;
@@ -27,7 +28,6 @@
 
 .cgu-button {
   background-color: var(--green-bg-color);
-  border: none;
   border-radius: 16px;
   width: 40vw;
   padding: 16px;
