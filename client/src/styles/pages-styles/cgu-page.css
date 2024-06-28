@@ -1,0 +1,21 @@
+.cgu-page {
+  background: url("../../assets/background/background_desktop_welcome.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cgu-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--beige-bg-color);
+  width: 60vw;
+  margin: 30px;
+  border-radius: 10px;
+}
