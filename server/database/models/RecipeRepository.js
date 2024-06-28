@@ -23,9 +23,27 @@ class RecipeRepository extends AbstractRepository {
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific Recipe by its ID
+    // Execute the SQL SELECT query to retrieve a specific Recipe +info about add_ingredient ingredient by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `SELECT 
+    r.title, 
+    r.url_photo, 
+    r.user_id, 
+    r.duration, 
+    r.people_number, 
+    r.step_description, 
+    SUM(i.nutritional_value * ai.quantity / 1000) AS nutValue
+FROM 
+    recipe r
+JOIN 
+    add_ingredient ai ON r.id = ai.recipe_id
+JOIN 
+    ingredient i ON i.id = ai.ingredient_id
+WHERE 
+    r.id = ?
+GROUP BY 
+    r.id, r.title, r.url_photo, r.user_id, r.duration, r.people_number, r.step_description;
+`,
       [id]
     );
 
@@ -37,6 +55,7 @@ class RecipeRepository extends AbstractRepository {
     // Execute the SQL SELECT query to retrieve all Recipes from the "Recipe" table
     const [rows] = await this.database.query(`
      SELECT 
+    r.id,
     r.title, 
     r.url_photo, 
     r.user_id, 
@@ -59,6 +78,7 @@ GROUP BY
     r.duration, 
     r.people_number, 
     r.step_description;`);
+
 
     // Return the array of Recipes
     return rows;
