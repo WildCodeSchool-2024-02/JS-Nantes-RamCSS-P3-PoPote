@@ -4,23 +4,31 @@
   margin: 15px;
   width: 100dvw;
   height: 40dvh;
+  gap: 0.5em;
   border-radius: 10%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   overflow: hidden;
 
   & #recipe-card-img {
     width: 100%;
-    height: 25vh;
+    height: 28vh;
   }
 
   & #recipe-card-title {
     margin-left: 10px;
-    margin-top: 5px;
+  }
+
+  & .nutdur-element {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
   }
 }
 
 @media screen and (min-width: 480px) {
   .recipe-card {
-    width: 20vw;
+    width: 22vw;
+    height: 45vh;
+    margin: 5px;
   }
 }
