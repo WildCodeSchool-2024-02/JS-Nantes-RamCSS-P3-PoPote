@@ -124,7 +124,7 @@ function UserForm() {
           <input type="checkbox" id="cgu" value="cgu" />
           <label htmlFor="cgu">
             {" "}
-            J'accepte les Conditions Générales d'Utilisation et reconnais avoir
+            J'accepte les <NavLink to="/cgu" className="cgu-link">Conditions Générales d'Utilisation</NavLink> et reconnais avoir
             été informé que mes données personnelles seront utilisées.
           </label>
         </div>
