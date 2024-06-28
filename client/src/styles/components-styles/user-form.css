@@ -47,6 +47,10 @@
   }
 }
 
+.cgu-link {
+  color: var(--light-font-color);
+}
+
 .cgu-container input[type="checkbox"] {
   width: 12px;
   height: 12px;
@@ -94,6 +98,10 @@
 
   .cgu-container {
     width: 25vw;
+  }
+
+  .cgu-link {
+    color: var(--dark-font-color);
   }
 
   .submit-button {
