@@ -54,12 +54,31 @@ GROUP BY
   async readAll() {
     // Execute the SQL SELECT query to retrieve all Recipes from the "Recipe" table
     const [rows] = await this.database.query(`
-      SELECT r.id, r.title, r.url_photo, r.user_id, r.duration, r.people_number, r.step_description, SUM(i.nutritional_value * ai.quantity / 1000) AS nutValue
-FROM recipe r
-JOIN add_ingredient ai ON r.id = ai.recipe_id
-JOIN ingredient i ON i.id = ai.ingredient_id
-GROUP BY r.id, r.title, r.url_photo, r.user_id, r.duration, r.people_number, r.step_description;
-`);
+     SELECT 
+    r.id,
+    r.title, 
+    r.url_photo, 
+    r.user_id, 
+    r.duration, 
+    r.people_number, 
+    r.step_description, 
+    GROUP_CONCAT(i.name) AS ingredients,
+    SUM(i.nutritional_value * ai.quantity / 1000) AS nutValue
+FROM 
+    recipe r
+JOIN 
+    add_ingredient ai ON r.id = ai.recipe_id
+JOIN 
+    ingredient i ON i.id = ai.ingredient_id
+GROUP BY 
+    r.id, 
+    r.title, 
+    r.url_photo, 
+    r.user_id, 
+    r.duration, 
+    r.people_number, 
+    r.step_description;`);
+
 
     // Return the array of Recipes
     return rows;
