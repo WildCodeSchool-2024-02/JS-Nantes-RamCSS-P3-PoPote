@@ -16,6 +16,38 @@
   align-items: center;
   background-color: var(--beige-bg-color);
   width: 60vw;
-  margin: 30px;
   border-radius: 10px;
+
+  & p {
+    margin: 15px;
+    text-align: justify;
+    font-family: var(--poppins-font);
+  }
+}
+
+.cgu-button {
+  background-color: var(--green-bg-color);
+  border: none;
+  border-radius: 16px;
+  width: 40vw;
+  padding: 16px;
+  font-family: var(--poppins-font);
+  color: var(--light-font-color);
+  margin: 15px;
+  text-decoration: none;
+  text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+  .cgu-button {
+    width: 15vw;
+  }
+
+  .cgu-frame {
+    width: 52vw;
+
+    & p {
+      margin: 30px;
+    }
+  }
 }
