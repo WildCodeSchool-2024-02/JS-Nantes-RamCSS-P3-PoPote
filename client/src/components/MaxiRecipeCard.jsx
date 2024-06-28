@@ -28,8 +28,7 @@ MaxiRecipeCard.propTypes = {
   duration: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
   nutValue: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
 };
 
 export default MaxiRecipeCard;
