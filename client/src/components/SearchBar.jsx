@@ -6,8 +6,9 @@ function SearchBar({ query, setQuery }) {
       <h1>SearchBar</h1>
 
       <input
+        className="search-bar"
         type="text"
-        placeholder="  Rechercher chez Po'pote"
+        placeholder=" Rechercher chez Po'pote"
         alt="barre de recherche"
         onChange={(event) => {
           setQuery(event.target.value);
