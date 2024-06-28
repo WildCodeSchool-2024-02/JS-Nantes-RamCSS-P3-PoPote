@@ -1,7 +1,9 @@
+/* --- recipe présentation ---- */
+
 .recipe-page-container {
   background-color: bisque;
   margin: 2em;
-  height: 100em;
+  height: auto;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -15,59 +17,69 @@
     border-radius: 40px;
     width: 50dvw;
   }
-}
 
-.recipe-page-context-element {
-  display: flex;
-  gap: 5px;
-  margin: 1em;
+  & .recipe-page-context-element {
+    display: flex;
+    gap: 5px;
+    margin: 1em;
+  }
 }
 
 /* ------- radio ------- */
 
-.radio-inputs {
-  position: relative;
+.recipe-page-radio-group {
   display: flex;
   flex-wrap: wrap;
   border-radius: 0.5rem;
   background-color: var(--ligthgray-bg-color);
-  box-sizing: border-box;
-  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+  margin: 2rem;
   padding: 0.25rem;
   width: 300px;
-  font-size: 14px;
+
+  & .recipe-page-radio-label {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  & .recipe-page-radio-input {
+    display: none;
+  }
+
+  & .recipe-page-span-name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all 0.15s ease-in-out;
+    user-select: none;
+  }
+
+  & .recipe-page-radio-input:checked + .recipe-page-span-name {
+    background-color: var(--orange-bg-color);
+    color: var(--primary-bg-color);
+    font-weight: 600;
+  }
 }
 
-.radio-inputs .radio {
-  flex: 1 1 auto;
-  text-align: center;
+/* -------- radio - contenu ----- */
+
+.recipe-page-instructions-container {
+  margin: 40px;
 }
 
-.radio-inputs .radio input {
-  display: none;
+.recipe-page-ingrédients-container {
+  margin: 40px;
+  /* A COMPLETER avec les composants finalisé */
 }
 
-.radio-inputs .radio .name {
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  border: none;
-  padding: 0.5rem 0;
-  color: rgba(51, 65, 85, 1);
-  transition: all 0.15s ease-in-out;
-}
+/* ------------------ Version desktop ------------------ */
 
-.radio-inputs .radio input:checked + .name {
-  background-color: var(--orange-bg-color);
-  color: var(--primary-bg-color);
-  font-weight: 600;
-}
-
-/* Version desktop */
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 480px) {
   #recipe-page-img {
-    width: 20dvw;
+    width: 45vw;
+    border-radius: 0px;
   }
 }

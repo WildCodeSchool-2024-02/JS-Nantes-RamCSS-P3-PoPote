@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import DurationElement from "./DurationElement";
 import NutValueElement from "./NutValueElement";
@@ -28,7 +28,8 @@ MaxiRecipeCard.propTypes = {
   duration: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
   nutValue: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  id: PropTypes.number,
 };
 
 export default MaxiRecipeCard;

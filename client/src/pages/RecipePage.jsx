@@ -1,10 +1,20 @@
 import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import DurationElement from "../components/DurationElement";
 import NutValueElement from "../components/NutValueElement";
+import IngredientsList from "../components/IngredientsList";
+import ToolsList from "../components/ToolsList";
 
 function RecipePage() {
   const recipeDetailData = useLoaderData();
   console.info(recipeDetailData);
+
+  const [inputChecked, setInputChecked] = useState("ingredients");
+
+  const handleRadioChange = (event) => {
+    setInputChecked(event.target.value);
+    console.info(setInputChecked);
+  };
 
   return (
     <section className="recipe-page-container">
@@ -21,18 +31,42 @@ function RecipePage() {
         <NutValueElement nutValue={recipeDetailData.nutValue} />
       </section>
 
-      <div className="radio-inputs">
-        <label className="radio">
-          <input type="radio" name="radio" checked />
-          <span className="name">Ingredients</span>
+      <div className="recipe-page-radio-group">
+        <label className="recipe-page-radio-label">
+          <input
+            className="recipe-page-radio-input"
+            type="radio"
+            name="radio"
+            value="ingredients"
+            checked={inputChecked === "ingredients"}
+            onChange={handleRadioChange}
+          />
+          <span className="recipe-page-span-name">Ingredients</span>
         </label>
-        <label className="radio">
-          <input type="radio" name="radio" />
-          <span className="name">Instructions</span>
+
+        <label className="recipe-page-radio-label">
+          <input
+            className="recipe-page-radio-input"
+            type="radio"
+            name="radio"
+            value="instructions"
+            checked={inputChecked === "instructions"}
+            onChange={handleRadioChange}
+          />
+          <span className="recipe-page-span-name">Instructions</span>
         </label>
       </div>
 
-      <p>{recipeDetailData.step_description}</p>
+      {inputChecked === "ingredients" ? (
+        <div className="recipe-page-ingredients-container">
+          <IngredientsList />
+          <ToolsList />
+        </div>
+      ) : (
+        <div className="recipe-page-instructions-container">
+          <p>{recipeDetailData.step_description}</p>
+        </div>
+      )}
     </section>
   );
 }
