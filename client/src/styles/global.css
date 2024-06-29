@@ -11,6 +11,7 @@
 @import "./components-styles/search-bar.css";
 @import "./components-styles/tools-list.css";
 @import "./components-styles/user-form.css";
+@import "./components-styles/about.css";
 
 @import "./pages-styles/admin-page.css";
 @import "./pages-styles/cgu-page.css";
