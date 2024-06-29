@@ -14,6 +14,7 @@ function HomePage() {
         {recipeData.map((el) => (
           <MaxiRecipeCard
             key={el.id}
+            id={el.id}
             title={el.title}
             photo={el.url_photo}
             duration={el.duration}

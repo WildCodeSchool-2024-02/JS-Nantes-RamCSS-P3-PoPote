@@ -4,10 +4,10 @@
 
 function ToolsList() {
   return (
-    <>
+    <section className="tools-list-container">
       <h1>ToolsList</h1>
       <h1>ToolsList</h1>
-    </>
+    </section>
   );
 }
 

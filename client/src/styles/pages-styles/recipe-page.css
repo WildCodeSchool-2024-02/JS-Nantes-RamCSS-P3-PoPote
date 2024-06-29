@@ -1,0 +1,85 @@
+/* --- recipe présentation ---- */
+
+.recipe-page-container {
+  background-color: bisque;
+  margin: 2em;
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & #recipe-page-title {
+    margin: 1em;
+  }
+
+  & #recipe-page-img {
+    border-radius: 40px;
+    width: 50dvw;
+  }
+
+  & .recipe-page-context-element {
+    display: flex;
+    gap: 5px;
+    margin: 1em;
+  }
+}
+
+/* ------- radio ------- */
+
+.recipe-page-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  background-color: var(--ligthgray-bg-color);
+  margin: 2rem;
+  padding: 0.25rem;
+  width: 300px;
+
+  & .recipe-page-radio-label {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  & .recipe-page-radio-input {
+    display: none;
+  }
+
+  & .recipe-page-span-name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all 0.15s ease-in-out;
+    user-select: none;
+  }
+
+  & .recipe-page-radio-input:checked + .recipe-page-span-name {
+    background-color: var(--orange-bg-color);
+    color: var(--primary-bg-color);
+    font-weight: 600;
+  }
+}
+
+/* -------- radio - contenu ----- */
+
+.recipe-page-instructions-container {
+  margin: 40px;
+}
+
+.recipe-page-ingrédients-container {
+  margin: 40px;
+  /* A COMPLETER avec les composants finalisé */
+}
+
+/* ------------------ Version desktop ------------------ */
+
+@media screen and (max-width: 480px) {
+  #recipe-page-img {
+    width: 45vw;
+    border-radius: 0px;
+  }
+}

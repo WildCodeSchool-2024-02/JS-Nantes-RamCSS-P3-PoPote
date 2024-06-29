@@ -4,10 +4,10 @@
 
 function IngredientsList() {
   return (
-    <>
+    <section className="ingredient-list-container">
       <h1>IngredientList</h1>
       <h1>IngredientList</h1>
-    </>
+    </section>
   );
 }
 

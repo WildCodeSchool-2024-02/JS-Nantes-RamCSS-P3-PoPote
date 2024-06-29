@@ -1,0 +1,27 @@
+.search-bar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
+  height: 5vh;
+  border-radius: 16px;
+  border: solid lightgray 1px;
+  background-image: url(../../assets/search_loupe.svg);
+  background-repeat: no-repeat;
+  background-position: 3%;
+  text-indent: 8%;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+/* desktop version */
+@media screen and (min-width: 480px) {
+  .search-bar {
+    width: 50vw;
+    height: 6vh;
+    box-shadow: 5px 5px 5px grey;
+    border: none;
+  }
+}
