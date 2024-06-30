@@ -3,17 +3,25 @@
 // - la page de modification de profil
 
 import { NavLink } from "react-router-dom";
+import { useRef, useState } from "react";
 
 function UserForm() {
-  function handleSubmit(event) {
-    const password1 = document.getElementById("register-password").value;
-    const password2 = document.getElementById(
-      "register-password-confirmation"
-    ).value;
-    const CGU = document.getElementById("cgu").checked;
-    if (password1 === password2 && CGU) {
-      event.preventDefault();
+  const passwordRef = useRef();
+  const passwordConfirmationRef = useRef();
+  const [cguChecked, setCguChecked] = useState(false);
 
+  function handleSubmit(event) {
+    // const password1 = document.getElementById("register-password").value;
+    // const password2 = document.getElementById(
+    //   "register-password-confirmation"
+    // ).value;
+    // const CGU = document.getElementById("cgu").checked;
+
+    event.preventDefault();
+    const password1 = passwordRef.current.value;
+    const password2 = passwordConfirmationRef.current.value;
+
+    if (password1 === password2 && cguChecked) {
       const formData = new FormData(event.target);
       const data = Object.fromEntries(formData);
 
@@ -95,6 +103,7 @@ function UserForm() {
             placeholder="Mot de passe"
             pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]){8,}$"
             required
+            ref={passwordRef}
           />
           <img
             src="./src/assets/logo_form/icon-eye.svg"
@@ -113,6 +122,7 @@ function UserForm() {
             id="register-password-confirmation"
             placeholder="Confirmer mot de passe"
             required
+            ref={passwordConfirmationRef}
           />
           <img
             src="./src/assets/logo_form/icon-eye.svg"
@@ -121,11 +131,21 @@ function UserForm() {
           />
         </div>
         <div className="cgu-container">
-          <input type="checkbox" id="cgu" value="cgu" />
+          <input
+            type="checkbox"
+            id="cgu"
+            value="cgu"
+            checked={cguChecked}
+            onChange={(item) => setCguChecked(item.target.checked)}
+          />
           <label htmlFor="cgu">
             {" "}
-            J'accepte les <NavLink to="/cgu" className="cgu-link">Conditions Générales d'Utilisation</NavLink> et reconnais avoir
-            été informé que mes données personnelles seront utilisées.
+            J'accepte les{" "}
+            <NavLink to="/cgu" className="cgu-link">
+              Conditions Générales d'Utilisation
+            </NavLink>{" "}
+            et reconnais avoir été informé que mes données personnelles seront
+            utilisées.
           </label>
         </div>
         {/* <input type="submit" value="Inscription" className="submit-button" /> */}
