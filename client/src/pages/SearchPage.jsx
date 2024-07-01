@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
+import MaxiRecipeCard from "../components/MaxiRecipeCard";
 
 function SearchPage() {
-  const recipes = useLoaderData();
+  const data = useLoaderData();
   const [query, setQuery] = useState("");
+
+  const recipes = data || [];
 
   // filtre recherche
   const filteredRecipe =
@@ -28,10 +31,14 @@ function SearchPage() {
 
       <ul>
         {filteredRecipe.length > 0 ? (
-          filteredRecipe.map((recipe) => (
-            <li key={recipe.id}>
-              <h3>{recipe.title}</h3>
-            </li>
+          filteredRecipe.map((el) => (
+            <MaxiRecipeCard
+              key={el.id}
+              title={el.title}
+              duration={el.duration}
+              photo={el.url_photo}
+              nutValue={el.nutValue}
+            />
           ))
         ) : (
           <li>Aucune recette trouvée.</li>
