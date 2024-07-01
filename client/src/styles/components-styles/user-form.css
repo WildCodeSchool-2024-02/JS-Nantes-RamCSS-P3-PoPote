@@ -78,7 +78,7 @@
   }
 
   .error-form-register {
-    background-color: aliceblue;
+    background-color: var(--primary-bg-color);
     padding-top: 5px;
     padding-bottom: 5px;
     width: 90vw;
