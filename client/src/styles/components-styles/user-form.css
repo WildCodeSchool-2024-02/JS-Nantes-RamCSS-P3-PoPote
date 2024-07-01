@@ -72,9 +72,32 @@
   /* color:  --green-font-color: rgb(151, 191, 13); */
 }
 
+@media screen and (max-width: 992px) {
+  .error-form-register-none {
+    background-color: #860000;
+  }
+
+  .error-form-register {
+    background-color: aliceblue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 90vw;
+
+    margin-top: -5px;
+    text-align: left;
+    padding-left: 10px;
+    color: red;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .register-form {
     width: 30vw;
+  }
+
+  .error-form-register {
+    color: red;
+    text-decoration: none;
   }
 
   .url {
