@@ -51,6 +51,7 @@ function UserForm() {
             id="register-lastname"
             name="lastname"
             placeholder="Nom"
+            aria-label="Nom"
             required
           />
         </div>
@@ -65,6 +66,7 @@ function UserForm() {
             id="register-firstname"
             name="firstname"
             placeholder="Prénom"
+            aria-label="Prénom"
             required
           />
         </div>
@@ -80,6 +82,7 @@ function UserForm() {
             id="register-email"
             name="email"
             placeholder="Email"
+            aria-label="Email"
             pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
             required
           />
@@ -95,6 +98,7 @@ function UserForm() {
             id="register-password"
             name="password"
             placeholder="Mot de passe"
+            aria-label="Mot de passe"
             pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$"
             required
             ref={passwordRef}
@@ -114,7 +118,8 @@ function UserForm() {
           <input
             type="password"
             id="register-password-confirmation"
-            placeholder="Confirmer mot de passe"
+            placeholder="Confirmation mot de passe"
+            aria-label="Confirmation mot de passe"
             required
             ref={passwordConfirmationRef}
           />
