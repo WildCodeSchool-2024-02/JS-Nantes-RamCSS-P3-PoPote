@@ -60,7 +60,9 @@ function ConnexionPage() {
           </form>
           <p>
             Tu n’as pas de compte ?{" "}
-            <NavLink to="/register" className="url">Inscris-toi</NavLink>
+            <NavLink to="/register" className="url">
+              Inscris-toi
+            </NavLink>
             <br />
             <NavLink className="url">A propos de nous</NavLink>
           </p>

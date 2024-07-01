@@ -7,10 +7,13 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import tool-related actions
-const { browse, read, add } = require("../../../controllers/toolActions");
+const { browse, browseSpecTools, read, add } = require("../../../controllers/toolActions");
 
 // Route to get a list of tools
 router.get("/", browse);
+
+// Route to get a list of Recipe tools by ID
+router.get("/TofR/:id", browseSpecTools)
 
 // Route to get a specific tool by ID
 router.get("/:id", read);

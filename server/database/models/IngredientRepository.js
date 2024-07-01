@@ -41,6 +41,31 @@ class IngredientRepository extends AbstractRepository {
     return rows;
   }
 
+  // SQL query for provide all ingredients of a recipe
+  async readSpec(id) {
+    const [rows] = await this.database.query(
+      `SELECT 
+    r.id,
+    r.title, 
+    GROUP_CONCAT(CONCAT(i.name, ' ', ai.quantity, ' ', ai.unit) SEPARATOR ', ') AS ingredientList
+FROM 
+    recipe r
+JOIN 
+    add_ingredient ai ON r.id = ai.recipe_id
+JOIN 
+    ingredient i ON i.id = ai.ingredient_id
+WHERE
+      r.id = ?
+GROUP BY
+    r.id,
+    r.title;
+  `,
+      [id]
+    );
+
+    return rows[0];
+  }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing Ingredient
 

@@ -8,6 +8,7 @@
   border-radius: 10%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   overflow: hidden;
+  color: var(--dark-font-color);
 
   & #recipe-card-img {
     width: 100%;

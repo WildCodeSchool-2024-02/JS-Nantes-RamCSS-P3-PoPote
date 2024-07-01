@@ -15,6 +15,21 @@ const browse = async (req, res, next) => {
   }
 };
 
+// Browse Ingredient of a recipe
+const browseSpec = async (req, res, next) => {
+try {
+  const ingredientsOfRecipe = await tables.ingredient.readSpec(req.params.id);
+  
+  if (ingredientsOfRecipe == null) {
+    res.sendStatus(404);
+  } else {
+    res.json(ingredientsOfRecipe);
+  }
+} catch (err) {
+  next(err);
+}
+};
+
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
@@ -60,6 +75,7 @@ const add = async (req, res, next) => {
 // Ready to export the controller functions
 module.exports = {
   browse,
+  browseSpec,
   read,
   // edit,
   add,
