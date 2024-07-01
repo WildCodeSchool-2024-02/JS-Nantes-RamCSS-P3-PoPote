@@ -11,12 +11,6 @@ function UserForm() {
   const [cguChecked, setCguChecked] = useState(false);
 
   function handleSubmit(event) {
-    // const password1 = document.getElementById("register-password").value;
-    // const password2 = document.getElementById(
-    //   "register-password-confirmation"
-    // ).value;
-    // const CGU = document.getElementById("cgu").checked;
-
     event.preventDefault();
     const password1 = passwordRef.current.value;
     const password2 = passwordConfirmationRef.current.value;
