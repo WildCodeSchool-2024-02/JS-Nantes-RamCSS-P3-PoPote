@@ -8,7 +8,7 @@ function SearchBar({ query, setQuery }) {
       <input
         className="search-bar"
         type="text"
-        placeholder=" Rechercher chez Po'pote"
+        placeholder=" Recherchez une recette ou des ingrédients (ex: lasagnes, courgette)"
         alt="barre de recherche"
         onChange={(event) => {
           setQuery(event.target.value);

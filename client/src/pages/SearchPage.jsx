@@ -21,6 +21,11 @@ function SearchPage() {
       <h1>Page de recherche</h1>
 
       <SearchBar query={query} setQuery={setQuery} />
+
+      <h2>Catégorie de recherches</h2>
+
+      <h2>Résultats</h2>
+
       <ul>
         {filteredRecipe.length > 0 ? (
           filteredRecipe.map((recipe) => (
