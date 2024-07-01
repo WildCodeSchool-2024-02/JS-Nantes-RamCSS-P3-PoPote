@@ -101,7 +101,7 @@ function UserForm() {
             id="register-password"
             name="password"
             placeholder="Mot de passe"
-            pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]){8,}$"
+            pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$"
             required
             ref={passwordRef}
           />
