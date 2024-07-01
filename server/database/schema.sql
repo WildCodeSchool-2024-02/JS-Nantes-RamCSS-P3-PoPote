@@ -3,7 +3,7 @@ create table user (
     firstname varchar(55) not null,
     lastname varchar(55) not null,
     email varchar(80) not null unique,
-    password varchar(50) not null,
+    password varchar(500) not null,
     url_photo varchar(80) null,
     is_admin bool not null default 0,
     is_superadmin bool not null default 0
