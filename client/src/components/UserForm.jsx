@@ -9,6 +9,10 @@ function UserForm() {
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
   const [cguChecked, setCguChecked] = useState(false);
+  const [ErrorForm, setErrorForm] = useState("");
+  const [ErrorFormNone, setErrorFormNone] = useState(
+    "error-form-register-none"
+  );
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +35,8 @@ function UserForm() {
         }
       });
     } else {
-      alert(
+      setErrorFormNone("error-form-register");
+      setErrorForm(
         "Les deux mots de passe ne sont pas identiques ou les CGU ne sont pas cochées"
       );
     }
@@ -124,6 +129,7 @@ function UserForm() {
             className="icon-form"
           />
         </div>
+        <p className={ErrorFormNone}>{ErrorForm}</p>
         <div className="cgu-container">
           <input
             type="checkbox"
