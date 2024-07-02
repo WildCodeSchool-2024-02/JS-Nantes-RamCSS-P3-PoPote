@@ -77,6 +77,7 @@ function ConnexionPage() {
                 name="email"
                 placeholder="Email"
                 onFocus={() => !isEmail && setIsEmail(true)}
+                aria-label="Email"
                 required
               />
             </div>
@@ -92,6 +93,7 @@ function ConnexionPage() {
                 name="password"
                 placeholder="Mot de passe"
                 onFocus={() => !isPassword && setIsPassword(true)}
+                aria-label="Mot de passe"
                 required
               />
               <img
