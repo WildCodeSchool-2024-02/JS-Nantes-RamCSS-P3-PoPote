@@ -20,16 +20,12 @@ function SearchPage() {
       : recipes;
 
   return (
-    <>
-      <h1>Page de recherche</h1>
-
+    <section className="search-section">
       <SearchBar query={query} setQuery={setQuery} />
 
-      <h2>Catégorie de recherches</h2>
+      <h2 className="resultats">Résultats :</h2>
 
-      <h2>Résultats</h2>
-
-      <ul>
+      <ul className="search-result">
         {filteredRecipe.length > 0 ? (
           filteredRecipe.map((el) => (
             <MaxiRecipeCard
@@ -44,7 +40,7 @@ function SearchPage() {
           <li>Aucune recette trouvée.</li>
         )}
       </ul>
-    </>
+    </section>
   );
 }
 
