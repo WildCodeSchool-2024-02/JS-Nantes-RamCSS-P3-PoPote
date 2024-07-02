@@ -29,6 +29,7 @@ function ConnexionPage() {
                 type="email"
                 id="login-email"
                 placeholder="Email"
+                aria-label="Email"
                 required
               />
             </div>
@@ -42,6 +43,7 @@ function ConnexionPage() {
                 type="password"
                 id="login-password"
                 placeholder="Mot de passe"
+                aria-label="Mot de passe"
                 required
               />
               <img

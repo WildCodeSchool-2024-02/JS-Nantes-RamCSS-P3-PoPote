@@ -50,6 +50,7 @@
   /* Element color */
   --primary-bg-color: white;
   --orange-bg-color: rgb(245, 124, 0);
+  --dark-orange-bg-color: rgba(165, 84, 0, 255);
   --green-bg-color: rgb(151, 191, 13);
   --beige-bg-color: rgb(236, 232, 218);
   --darkgray-bg-color: rgb(92, 92, 92);

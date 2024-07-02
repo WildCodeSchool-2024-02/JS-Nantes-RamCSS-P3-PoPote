@@ -9,6 +9,10 @@ function UserForm() {
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
   const [cguChecked, setCguChecked] = useState(false);
+  const [ErrorForm, setErrorForm] = useState("");
+  const [ErrorFormNone, setErrorFormNone] = useState(
+    "error-form-register-none"
+  );
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +35,8 @@ function UserForm() {
         }
       });
     } else {
-      alert(
+      setErrorFormNone("error-form-register");
+      setErrorForm(
         "Les deux mots de passe ne sont pas identiques ou les CGU ne sont pas cochées"
       );
     }
@@ -51,6 +56,7 @@ function UserForm() {
             id="register-lastname"
             name="lastname"
             placeholder="Nom"
+            aria-label="Nom"
             required
           />
         </div>
@@ -65,6 +71,7 @@ function UserForm() {
             id="register-firstname"
             name="firstname"
             placeholder="Prénom"
+            aria-label="Prénom"
             required
           />
         </div>
@@ -80,6 +87,7 @@ function UserForm() {
             id="register-email"
             name="email"
             placeholder="Email"
+            aria-label="Email"
             pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
             required
           />
@@ -95,6 +103,7 @@ function UserForm() {
             id="register-password"
             name="password"
             placeholder="Mot de passe"
+            aria-label="Mot de passe"
             pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$"
             required
             ref={passwordRef}
@@ -114,7 +123,8 @@ function UserForm() {
           <input
             type="password"
             id="register-password-confirmation"
-            placeholder="Confirmer mot de passe"
+            placeholder="Confirmation mot de passe"
+            aria-label="Confirmation mot de passe"
             required
             ref={passwordConfirmationRef}
           />
@@ -124,6 +134,7 @@ function UserForm() {
             className="icon-form"
           />
         </div>
+        <p className={ErrorFormNone}>{ErrorForm}</p>
         <div className="cgu-container">
           <input
             type="checkbox"
