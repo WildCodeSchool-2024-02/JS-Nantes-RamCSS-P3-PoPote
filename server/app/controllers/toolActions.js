@@ -14,6 +14,25 @@ const browse = async (req, res, next) => {
   }
 };
 
+// browseSpecTools - Browse tools of a specifique recipe by ID
+const browseSpecTools = async (req, res, next) => {
+  try {
+    // Fetch a specific item from the database based on the provided ID
+    const specTool = await tables.tool.readSpecTools(req.params.id);
+
+    // If the item is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the item in JSON format
+    if (specTool == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(specTool);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
@@ -60,6 +79,7 @@ const add = async (req, res, next) => {
 module.exports = {
   browse,
   read,
+  browseSpecTools,
   // edit,
   add,
   // destroy,

@@ -14,7 +14,7 @@ function WelcomePage() {
           Viens t'inspirer avec les meilleures recettes du moment
         </h1>
         <nav className="welcome-nav">
-          <NavLink to="/popote/home">Jeter un coup d'oeil</NavLink>
+          <NavLink to="/popote">Jeter un coup d'oeil</NavLink>
           <NavLink to="/connexion">Connexion</NavLink>
         </nav>
       </section>
