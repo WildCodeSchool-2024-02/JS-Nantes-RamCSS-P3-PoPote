@@ -13,18 +13,18 @@
     margin: 1em;
   }
 
-  & .recipe-page-img {
-    border-radius: 40px;
-    width: 50dvw;
-  }
-
   & .recipe-page-context-element {
     display: flex;
-    gap: 5px;
+    justify-content: space-around;
+    gap: 15px;
     margin: 1em;
   }
 }
 
+.recipe-page-img {
+  border-radius: 20px;
+  width: 60dvw;
+}
 /* ------- radio ------- */
 
 .recipe-page-radio-group {
@@ -32,7 +32,7 @@
   flex-wrap: wrap;
   border-radius: 0.5rem;
   background-color: var(--ligthgray-bg-color);
-  margin: 2rem;
+  margin: 1.5rem;
   padding: 0.25rem;
   width: 300px;
 
@@ -67,7 +67,9 @@
 /* -------- radio - contenu ----- */
 
 .recipe-page-instructions-container {
-  margin: 40px;
+  margin: 2em;
+  background-color: var(--primary-bg-color);
+  padding: 1em;
 }
 
 .recipe-page-ingredients-container {
@@ -88,10 +90,15 @@
 
 @media screen and (min-width: 480px) {
   .recipe-page-img {
-    width: 5%;
-    border-radius: 0px;
+    width: 45vw;
+    border-radius: 20px;
   }
 
+  .recipe-page-context-element {
+    display: flex;
+    width: 50%;
+    margin: 1em;
+  }
   .recipe-page-ingredients-container {
     margin: 20px;
     display: flex;

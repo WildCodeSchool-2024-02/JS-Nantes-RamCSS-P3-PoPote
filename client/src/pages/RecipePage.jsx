@@ -81,6 +81,7 @@ function RecipePage() {
         </div>
       ) : (
         <div className="recipe-page-instructions-container">
+          <h1>Instructions : </h1>
           <p>{recipeDetailData[0].step_description}</p>
         </div>
       )}
