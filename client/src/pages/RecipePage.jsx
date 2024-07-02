@@ -2,12 +2,13 @@ import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import DurationElement from "../components/DurationElement";
 import NutValueElement from "../components/NutValueElement";
-import IngredientsList from "../components/IngredientsList";
-import ToolsList from "../components/ToolsList";
+import IngredientList from "../components/IngredientsList";
+import NbPeopleElement from "../components/NbPeopleElement";
+import ToolList from "../components/ToolsList";
 
 function RecipePage() {
   const recipeDetailData = useLoaderData();
-  console.info(recipeDetailData);
+  console.info("coucou", recipeDetailData);
 
   const [inputChecked, setInputChecked] = useState("ingredients");
 
@@ -16,19 +17,25 @@ function RecipePage() {
     console.info(setInputChecked);
   };
 
+  const ingredientArray = recipeDetailData[1].ingredientList.split(", ");
+  console.info("ceci est", ingredientArray);
+
+  const toolArray = recipeDetailData[2].toolList.split(", ");
+  console.info("ceci est", toolArray);
+
   return (
     <section className="recipe-page-container">
-      <h1 id="recipe-page-title">{recipeDetailData.title}</h1>
+      <h1 id="recipe-page-title">{recipeDetailData[0].title}</h1>
       <img
-        id="recipe-page-img"
-        src={import.meta.env.VITE_API_URL + recipeDetailData.url_photo}
+        className="recipe-page-img"
+        src={import.meta.env.VITE_API_URL + recipeDetailData[0].url_photo}
         alt=""
       />
 
       <section className="recipe-page-context-element">
-        <h2>Nombre de personne : {recipeDetailData.people_number}</h2>
-        <DurationElement duration={recipeDetailData.duration} />
-        <NutValueElement nutValue={recipeDetailData.nutValue} />
+        <NbPeopleElement peopleNb={recipeDetailData[0].people_number} />
+        <DurationElement duration={recipeDetailData[0].duration} />
+        <NutValueElement nutValue={recipeDetailData[0].nutValue} />
       </section>
 
       <div className="recipe-page-radio-group">
@@ -59,12 +66,23 @@ function RecipePage() {
 
       {inputChecked === "ingredients" ? (
         <div className="recipe-page-ingredients-container">
-          <IngredientsList />
-          <ToolsList />
+          <div className="ingredients-group">
+            <h1>Ingredients : </h1>
+            {ingredientArray.map((el) => (
+              <IngredientList key={el} el={el} />
+            ))}
+          </div>
+          <div className="tools-group">
+            <h1>Ustensiles : </h1>
+            {toolArray.map((el) => (
+              <ToolList key={el} el={el} />
+            ))}
+          </div>
         </div>
       ) : (
         <div className="recipe-page-instructions-container">
-          <p>{recipeDetailData.step_description}</p>
+          <h1>Instructions : </h1>
+          <p>{recipeDetailData[0].step_description}</p>
         </div>
       )}
     </section>

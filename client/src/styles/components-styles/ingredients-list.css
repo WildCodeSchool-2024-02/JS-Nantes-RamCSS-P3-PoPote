@@ -1,0 +1,20 @@
+.ingredient-list-container {
+  display: flex;
+  background-color: var(--primary-bg-color);
+  border-radius: 10px;
+  width: 60vw;
+  height: 5vh;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 480px) {
+  .ingredient-list-container {
+    width: 10vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-align: center;
+  }
+}

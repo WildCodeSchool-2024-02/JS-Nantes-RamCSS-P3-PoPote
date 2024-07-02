@@ -5,7 +5,10 @@ function NutValueElement({ nutValue }) {
   return (
     <section className="nutvalue-container">
       <img id="nutvalue-img" src={iconN} alt="" />
-      <h3>{Math.round(parseInt(nutValue, 10))} Kcal</h3>
+      <h3>
+        {Math.round(parseInt(nutValue, 10))} Kcal <br />{" "}
+        <strong>pour 100 g</strong>
+      </h3>
     </section>
   );
 }
