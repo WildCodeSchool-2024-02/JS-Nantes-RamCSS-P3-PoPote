@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { emailValidation, passwordValidation } from "../services/validation";
 
 function ConnexionPage() {
   const [isEmail, setIsEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
+  const navigate = useNavigate();
 
   const handleFetch = async (data) => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
@@ -22,6 +23,7 @@ function ConnexionPage() {
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
+      navigate('/popote')
       console.info("Logged", res);
     }
   };

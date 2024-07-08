@@ -23,7 +23,7 @@ function UserForm() {
       const formData = new FormData(event.target);
       const data = Object.fromEntries(formData);
 
-      fetch("http://localhost:3310/api/user/", {
+        fetch(`${import.meta.env.VITE_API_URL}/api/user/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
