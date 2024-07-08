@@ -108,11 +108,6 @@ function UserForm() {
             required
             ref={passwordRef}
           />
-          <img
-            src="./src/assets/logo_form/icon-eye.svg"
-            alt="icon eye"
-            className="icon-form"
-          />
         </div>
         <div className="logo-input">
           <img
@@ -127,11 +122,6 @@ function UserForm() {
             aria-label="Confirmation mot de passe"
             required
             ref={passwordConfirmationRef}
-          />
-          <img
-            src="./src/assets/logo_form/icon-eye.svg"
-            alt="icon eye"
-            className="icon-form"
           />
         </div>
         <p className={ErrorFormNone}>{ErrorForm}</p>

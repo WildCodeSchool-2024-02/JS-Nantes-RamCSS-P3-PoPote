@@ -96,11 +96,6 @@ function ConnexionPage() {
                 aria-label="Mot de passe"
                 required
               />
-              <img
-                src="./src/assets/logo_form/icon-eye.svg"
-                alt="icon eye"
-                className="icon-form login-eye"
-              />
             </div>
 
             <input
