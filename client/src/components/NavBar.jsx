@@ -21,8 +21,8 @@ function NavBar() {
           className="mobile-link"
           src={
             location.pathname === "/popote/"
-              ? `${import.meta.env.VITE_API_URL}/home_green_icone.svg`
-              : `${import.meta.env.VITE_API_URL}/home_icone.svg`
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/home_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/home_icone.svg`
           }
           alt=""
         />
@@ -38,8 +38,8 @@ function NavBar() {
           className="mobile-link"
           src={
             location.pathname === "/popote/search"
-              ? `${import.meta.env.VITE_API_URL}/search_green_icone.svg`
-              : `${import.meta.env.VITE_API_URL}/search_icone.svg`
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/search_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/search_icone.svg`
           }
           alt=""
         />
@@ -54,8 +54,8 @@ function NavBar() {
           className="mobile-link"
           src={
             location.pathname === "/popote/favorites"
-              ? `${import.meta.env.VITE_API_URL}/favorite_icone.svg`
-              : `${import.meta.env.VITE_API_URL}/favorite_green_icone.svg`
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/favorite_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/favorite_icone.svg`
           }
           alt=""
         />
@@ -70,8 +70,8 @@ function NavBar() {
           className="mobile-link"
           src={
             location.pathname === "/popote/creation-recipe"
-              ? `${import.meta.env.VITE_API_URL}/add_icone.svg`
-              : `${import.meta.env.VITE_API_URL}/add_green_icone.svg`
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/add_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/add_icone.svg`
           }
           alt=""
         />
