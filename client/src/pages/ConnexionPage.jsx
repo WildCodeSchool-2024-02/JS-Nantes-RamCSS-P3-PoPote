@@ -6,6 +6,10 @@ function ConnexionPage() {
   const [isEmail, setIsEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
   const navigate = useNavigate();
+  const [ErrorForm, setErrorForm] = useState("");
+  const [ErrorFormNone, setErrorFormNone] = useState(
+    "error-form-register-none"
+  );
 
   const handleFetch = async (data) => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
@@ -20,6 +24,10 @@ function ConnexionPage() {
     if (!response.ok) {
       setIsEmail(() => false);
       setIsPassword(() => false);
+      setErrorFormNone("error-form-register");
+      setErrorForm(
+        "Identifiant ou mot de passe incorrect"
+      );
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
@@ -80,6 +88,7 @@ function ConnexionPage() {
                 placeholder="Email"
                 onFocus={() => !isEmail && setIsEmail(true)}
                 aria-label="Email"
+                pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
                 required
               />
             </div>
@@ -96,16 +105,12 @@ function ConnexionPage() {
                 placeholder="Mot de passe"
                 onFocus={() => !isPassword && setIsPassword(true)}
                 aria-label="Mot de passe"
+                pattern="^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$"
                 required
               />
             </div>
-
-            <input
-              type="submit"
-              id="login-submit"
-              value="Connexion"
-              className="submit-button"
-            />
+            <p className={ErrorFormNone}>{ErrorForm}</p>
+            <button type="submit" value="Connexion" className="submit-button">Connexion</button>
           </form>
           <p>
             Tu n’as pas de compte ?{" "}
