@@ -47,7 +47,7 @@ function UserForm() {
       <form className="register-form" onSubmit={handleSubmit}>
         <div className="logo-input">
           <img
-            src="./src/assets/logo_form/icon-person.svg"
+            src={`${import.meta.env.VITE_API_URL}/logo_form/icon-person.svg`}
             alt="icon person"
             className="icon-form"
           />
@@ -62,7 +62,7 @@ function UserForm() {
         </div>
         <div className="logo-input">
           <img
-            src="./src/assets/logo_form/icon-person.svg"
+            src={`${import.meta.env.VITE_API_URL}/logo_form/icon-person.svg`}
             alt="icon person"
             className="icon-form"
           />
@@ -77,7 +77,7 @@ function UserForm() {
         </div>
         <div className="logo-input">
           <img
-            src="./src/assets/logo_form/icon-mail.svg"
+            src={`${import.meta.env.VITE_API_URL}/logo_form/icon-mail.svg`}
             alt="icon email"
             className="icon-form"
           />
@@ -94,7 +94,7 @@ function UserForm() {
         </div>
         <div className="logo-input">
           <img
-            src="./src/assets/logo_form/icon-lock.svg"
+            src={`${import.meta.env.VITE_API_URL}/logo_form/icon-lock.svg`}
             alt="icon lock"
             className="icon-form"
           />
@@ -111,7 +111,7 @@ function UserForm() {
         </div>
         <div className="logo-input">
           <img
-            src="./src/assets/logo_form/icon-lock.svg"
+            src={`${import.meta.env.VITE_API_URL}/logo_form/icon-lock.svg`}
             alt="icon lock"
             className="icon-form"
           />

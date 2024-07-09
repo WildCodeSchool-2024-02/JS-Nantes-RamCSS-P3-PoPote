@@ -1,11 +1,14 @@
 import PropTypes from "prop-types";
-import iconPNB from "../assets/logo_card/icon-peopleNb.svg";
 
 function NbPeopleElement({ peopleNb }) {
   return (
     <section className="nb-people-container">
-      <img id="nb-people-img" src={iconPNB} alt="" />
-      <h3>{peopleNb}</h3>
+      <img
+        id="nb-people-img"
+        src={`${import.meta.env.VITE_API_URL}/logo_card/icon-peopleNb.svg`}
+        alt="icone de personnage pour le nombre de personnes "
+      />
+      <h3>{peopleNb} pers.</h3>
     </section>
   );
 }
