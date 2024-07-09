@@ -6,12 +6,12 @@ import NutValueElement from "./NutValueElement";
 
 function MaxiRecipeCard({ title, duration, photo, nutValue, id }) {
   return (
-    <NavLink to={`recipe/${id}`}>
+    <NavLink to={`/popote/recipe/${id}`}>
       <section className="recipe-card">
         <img
           id="recipe-card-img"
           src={import.meta.env.VITE_API_URL + photo}
-          alt=""
+          alt="illustration de recette"
         />
         <h2 id="recipe-card-title">{title}</h2>
         <div className="nutdur-element">

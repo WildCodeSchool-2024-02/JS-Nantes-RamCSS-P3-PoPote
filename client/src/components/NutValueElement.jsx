@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
-import iconN from "../assets/logo_card/icon-nutvalue.svg";
 
 function NutValueElement({ nutValue }) {
   return (
     <section className="nutvalue-container">
-      <img id="nutvalue-img" src={iconN} alt="" />
+      <img
+        id="nutvalue-img"
+        src={`${import.meta.env.VITE_API_URL}/logo_card/icon-nutvalue.svg`}
+        alt="icone de flamme pour la valeur calorique de la recette"
+      />
       <h3>
         {Math.round(parseInt(nutValue, 10))} Kcal <br />{" "}
         <strong>pour 100 g</strong>

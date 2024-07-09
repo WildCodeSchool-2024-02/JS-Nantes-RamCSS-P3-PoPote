@@ -30,6 +30,7 @@ function SearchPage() {
           filteredRecipe.map((el) => (
             <MaxiRecipeCard
               key={el.id}
+              id={el.id}
               title={el.title}
               duration={el.duration}
               photo={el.url_photo}
