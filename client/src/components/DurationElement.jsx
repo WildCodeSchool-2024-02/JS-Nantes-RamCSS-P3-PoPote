@@ -27,7 +27,7 @@ function DurationElement({ duration }) {
       <img
         id="duration-img"
         src={`${import.meta.env.VITE_API_URL}/logo_card/icon-duration.svg`}
-        alt=""
+        alt="icone de durée de recette"
       />
       <h3>{formatDuration()}</h3>
     </section>

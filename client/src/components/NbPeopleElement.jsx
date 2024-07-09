@@ -6,9 +6,9 @@ function NbPeopleElement({ peopleNb }) {
       <img
         id="nb-people-img"
         src={`${import.meta.env.VITE_API_URL}/logo_card/icon-peopleNb.svg`}
-        alt=""
+        alt="icone de personnage pour le nombre de personnes "
       />
-      <h3>{peopleNb}</h3>
+      <h3>{peopleNb} pers.</h3>
     </section>
   );
 }

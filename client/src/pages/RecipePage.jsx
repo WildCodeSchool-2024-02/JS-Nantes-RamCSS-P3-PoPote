@@ -29,7 +29,7 @@ function RecipePage() {
       <img
         className="recipe-page-img"
         src={import.meta.env.VITE_API_URL + recipeDetailData[0].url_photo}
-        alt=""
+        alt="illustration de la recette"
       />
 
       <section className="recipe-page-context-element">

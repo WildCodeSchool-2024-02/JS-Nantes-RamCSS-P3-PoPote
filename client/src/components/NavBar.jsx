@@ -24,7 +24,7 @@ function NavBar() {
               ? `${import.meta.env.VITE_API_URL}/logo_navigation/home_green_icone.svg`
               : `${import.meta.env.VITE_API_URL}/logo_navigation/home_icone.svg`
           }
-          alt=""
+          alt="icone de maison pour la page acceuil"
         />
       </NavLink>
       <NavLink
@@ -41,7 +41,7 @@ function NavBar() {
               ? `${import.meta.env.VITE_API_URL}/logo_navigation/search_green_icone.svg`
               : `${import.meta.env.VITE_API_URL}/logo_navigation/search_icone.svg`
           }
-          alt=""
+          alt="icone popote pour la page recherche"
         />
       </NavLink>
       <NavLink
@@ -57,7 +57,7 @@ function NavBar() {
               ? `${import.meta.env.VITE_API_URL}/logo_navigation/favorite_green_icone.svg`
               : `${import.meta.env.VITE_API_URL}/logo_navigation/favorite_icone.svg`
           }
-          alt=""
+          alt="icone coeur pour la page favoris"
         />
       </NavLink>
       <NavLink
@@ -73,7 +73,7 @@ function NavBar() {
               ? `${import.meta.env.VITE_API_URL}/logo_navigation/add_green_icone.svg`
               : `${import.meta.env.VITE_API_URL}/logo_navigation/add_icone.svg`
           }
-          alt=""
+          alt="icone de signe plus pour la page creation de recette"
         />
       </NavLink>
       <NavLink
@@ -89,7 +89,7 @@ function NavBar() {
               ? `${import.meta.env.VITE_API_URL}/profile_green_icone.svg`
               : `${import.meta.env.VITE_API_URL}/profile_icone.svg`
           }
-          alt=""
+          alt="icone de personnage pour la page profile"
         />
       </NavLink>
     </nav>

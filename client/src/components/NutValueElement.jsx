@@ -6,7 +6,7 @@ function NutValueElement({ nutValue }) {
       <img
         id="nutvalue-img"
         src={`${import.meta.env.VITE_API_URL}/logo_card/icon-nutvalue.svg`}
-        alt=""
+        alt="icone de flamme pour la valeur calorique de la recette"
       />
       <h3>
         {Math.round(parseInt(nutValue, 10))} Kcal <br />{" "}
