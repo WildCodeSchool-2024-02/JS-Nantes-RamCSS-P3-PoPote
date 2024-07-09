@@ -1,7 +1,5 @@
 import PropTypes from "prop-types";
 
-import iconD from "../assets/logo_card/icon-duration.svg";
-
 function DurationElement({ duration }) {
   function formatDuration() {
     const parts = duration.split(":");
@@ -26,7 +24,11 @@ function DurationElement({ duration }) {
 
   return (
     <section className="duration-container">
-      <img id="duration-img" src={iconD} alt="" />
+      <img
+        id="duration-img"
+        src={`${import.meta.env.VITE_API_URL}/logo_card/icon-duration.svg`}
+        alt=""
+      />
       <h3>{formatDuration()}</h3>
     </section>
   );

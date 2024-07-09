@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
-import iconPNB from "../assets/logo_card/icon-peopleNb.svg";
 
 function NbPeopleElement({ peopleNb }) {
   return (
     <section className="nb-people-container">
-      <img id="nb-people-img" src={iconPNB} alt="" />
+      <img
+        id="nb-people-img"
+        src={`${import.meta.env.VITE_API_URL}/logo_card/icon-peopleNb.svg`}
+        alt=""
+      />
       <h3>{peopleNb}</h3>
     </section>
   );
