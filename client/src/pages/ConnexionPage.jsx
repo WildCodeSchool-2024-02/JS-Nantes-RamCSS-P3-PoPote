@@ -23,7 +23,7 @@ function ConnexionPage() {
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
-      navigate('/popote')
+      navigate("/popote");
       console.info("Logged", res);
     }
   };
@@ -31,7 +31,7 @@ function ConnexionPage() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      
+
       const email = event.target.email.value;
       const isEmailValid = emailValidation(email);
 
@@ -54,12 +54,12 @@ function ConnexionPage() {
       <div className="desktop-frame-connexion mobile-frame-connexion">
         <div>
           <img
-            src="./src/assets/logo/logo_popote_blanc.svg"
+            src={`${import.meta.env.VITE_API_URL}/logo/logo_popote_blanc.svg`}
             alt="logo Popote"
             className="logo-blanc"
           />
           <img
-            src="./src/assets/logo/logo_popote_orange.svg"
+            src={`${import.meta.env.VITE_API_URL}/logo/logo_popote_orange.svg`}
             alt="logo Popote"
             className="logo-orange"
           />
@@ -69,7 +69,7 @@ function ConnexionPage() {
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="logo-input">
               <img
-                src="./src/assets/logo_form/icon-mail.svg"
+                src={`${import.meta.env.VITE_API_URL}/logo_form/icon-mail.svg`}
                 alt="icon email"
                 className="icon-form"
               />
@@ -85,7 +85,7 @@ function ConnexionPage() {
             </div>
             <div className="logo-input">
               <img
-                src="./src/assets/logo_form/icon-lock.svg"
+                src={`${import.meta.env.VITE_API_URL}/logo_form/icon-lock.svg`}
                 alt="icon lock"
                 className="icon-form"
               />
