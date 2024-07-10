@@ -6,6 +6,7 @@ function ConnexionPage() {
   const [isEmail, setIsEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
   const navigate = useNavigate();
+  // const [isLogged, setIsLogged] = useState(false);
 
   const handleFetch = async (data) => {
     const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
@@ -23,10 +24,13 @@ function ConnexionPage() {
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
+      localStorage.setItem("user", res.user.firstname);
       navigate("/popote");
       console.info("Logged", res);
+      // setIsLogged(true)
     }
   };
+
 
   const handleSubmit = async (event) => {
     try {
