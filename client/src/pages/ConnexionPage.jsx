@@ -6,8 +6,8 @@ function ConnexionPage() {
   const [isEmail, setIsEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
   const navigate = useNavigate();
-  const [ErrorForm, setErrorForm] = useState("");
-  const [ErrorFormNone, setErrorFormNone] = useState(
+  const [errorForm, setErrorForm] = useState("");
+  const [errorFormNone, setErrorFormNone] = useState(
     "error-form-register-none"
   );
 
@@ -49,11 +49,15 @@ function ConnexionPage() {
       setIsEmail(() => isEmailValid);
       setIsPassword(() => isPasswordValid);
 
-      if (isEmailValid && isPasswordValid) {
-        await handleFetch({ email, password });
+      if (!isEmailValid || !isPasswordValid) {
+        setErrorFormNone("error-form-register");
+        setErrorForm("Identifiant ou mot de passe incorrect")
+      } else {
+        await handleFetch({ email, password})
       }
     } catch (error) {
       console.error(error.message);
+      
     }
   };
 
@@ -109,7 +113,7 @@ function ConnexionPage() {
                 required
               />
             </div>
-            <p className={ErrorFormNone}>{ErrorForm}</p>
+            <p className={errorFormNone}>{errorForm}</p>
             <button type="submit" value="Connexion" className="submit-button">Connexion</button>
           </form>
           <p>
