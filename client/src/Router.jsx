@@ -18,6 +18,22 @@ import RecipePage from "./pages/RecipePage";
 import AdminPage from "./pages/AdminPage";
 import AboutPage from "./pages/AboutPage";
 
+const recipeLoader = async ({ params }) => {
+  const [recipe, ingredientOfRecipe, toolOfRecipe] = await Promise.all([
+    fetch(`http://localhost:3310/api/recipe/${params.id}`).then((res) =>
+      res.json()
+    ),
+    fetch(`http://localhost:3310/api/ingredient/IofR/${params.id}`).then(
+      (res) => res.json()
+    ),
+    fetch(`http://localhost:3310/api/tool/TofR/${params.id}`).then((res) =>
+      res.json()
+    ),
+  ]);
+
+  return [recipe, ingredientOfRecipe, toolOfRecipe];
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -81,8 +97,7 @@ const router = createBrowserRouter([
       {
         path: "recipe/:id",
         element: <RecipePage />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3310/api/recipe/${params.id}`),
+        loader: recipeLoader,
       },
       {
         path: "admin",

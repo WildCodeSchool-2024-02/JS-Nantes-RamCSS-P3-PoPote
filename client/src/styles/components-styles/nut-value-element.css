@@ -1,7 +1,7 @@
 .nutvalue-container {
   display: flex;
   gap: 5px;
-  width: 45%;
+
   margin-left: 10px;
   align-items: center;
 
@@ -12,4 +12,8 @@
     background-color: var(--darkgray-bg-color);
     border-radius: 5px;
   }
+}
+
+.nutvalue-container > h3 > strong {
+  font-size: 10px;
 }

@@ -11,8 +11,9 @@
 @import "./components-styles/search-bar.css";
 @import "./components-styles/tools-list.css";
 @import "./components-styles/user-form.css";
-@import "./components-styles/about.css";
+@import "./components-styles//nb-people-element.css";
 
+@import "./pages-styles/about.css";
 @import "./pages-styles/admin-page.css";
 @import "./pages-styles/cgu-page.css";
 @import "./pages-styles/connexion-page.css";
@@ -79,4 +80,8 @@ h3 {
 
 p {
   font-size: 0.875rem;
+}
+
+a {
+  text-decoration: none;
 }

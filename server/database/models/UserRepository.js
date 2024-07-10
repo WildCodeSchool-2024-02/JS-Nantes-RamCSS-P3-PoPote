@@ -41,6 +41,12 @@ class UserRepository extends AbstractRepository {
     return rows;
   }
 
+  async readByEmail(email){
+    const [rows] = await this.database.query(`select * from ${this.table} where email= ?`, [email]);
+
+    return rows[0];
+  }
+
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing User
 
