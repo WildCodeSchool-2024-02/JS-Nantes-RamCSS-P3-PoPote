@@ -19,3 +19,49 @@
   color: var(--light-font-color);
   margin: 15px;
 }
+
+.drop-zone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 360px;
+  border: 4px dashed black;
+  padding: 1.5rem 2.8rem;
+  border-radius: 1rem;
+  transition: padding 0.2s;
+  height: 30vh;
+  width: 35vw;
+
+  &:hover {
+    padding: 1.7rem 2.5rem;
+    cursor: grab;
+  }
+
+  p:first-of-type {
+    font-size: 1.2rem;
+  }
+}
+
+.uploads {
+  & ul {
+    list-style-type: none;
+    padding: 0;
+
+    & li {
+      padding: 12px 0;
+      border-radius: 0.5rem;
+      margin: 12px 0;
+    }
+  }
+
+  & .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+    & button:first-of-type {
+      color: rgb(255, 40, 40);
+    }
+  }
+}
