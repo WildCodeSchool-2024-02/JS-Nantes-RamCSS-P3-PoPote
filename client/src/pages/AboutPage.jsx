@@ -7,6 +7,7 @@ function AboutPage() {
         className="img-team"
         alt="Florine, Michael, Mickael et Théo, tous souriant, entrain de manger une glace"
       />
+      <p>Troll de troy</p>
     </div>
   );
 }
