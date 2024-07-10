@@ -18,7 +18,7 @@ function DragAndDrop() {
     // * Ma première requête fetch va tenter d'ajouter le fichier dans le serveur.
     try {
       const addFileFetch = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/recipe/add`,
+        `${import.meta.env.VITE_API_URL}/api/upload`,
         {
           method: "POST",
           body: data,
@@ -34,7 +34,7 @@ function DragAndDrop() {
       if (fileResponse) {
         const { filename } = fileResponse;
         const fetchResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/recipe/img_courgette/2`,
+          `${import.meta.env.VITE_API_URL}/api/upload`,
           {
             method: "POST",
             headers: {

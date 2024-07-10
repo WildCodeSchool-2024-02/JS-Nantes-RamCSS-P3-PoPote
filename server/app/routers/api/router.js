@@ -28,10 +28,16 @@ router.use("/category", categoryRouter);
 
 const userRouter = require("./user/router");
 const { login } = require("../../controllers/authActions");
-const { credentialsValidation } = require("../../services/credentialValidation");
+const {
+  credentialsValidation,
+} = require("../../services/credentialValidation");
 
 router.use("/user", userRouter);
-router.post("/login", credentialsValidation, login)
+router.post("/login", credentialsValidation, login);
+
+const uploadRouter = require("./uploads/router");
+
+router.use("/upload", uploadRouter);
 
 /* ************************************************************************* */
 
