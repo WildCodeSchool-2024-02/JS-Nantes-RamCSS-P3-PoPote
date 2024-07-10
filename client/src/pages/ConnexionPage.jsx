@@ -23,7 +23,7 @@ function ConnexionPage() {
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
-      navigate('/popote')
+      navigate("/popote");
       console.info("Logged", res);
     }
   };
@@ -31,7 +31,7 @@ function ConnexionPage() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      
+
       const email = event.target.email.value;
       const isEmailValid = emailValidation(email);
 

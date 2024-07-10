@@ -34,6 +34,15 @@ const recipeLoader = async ({ params }) => {
   return [recipe, ingredientOfRecipe, toolOfRecipe];
 };
 
+const IngToolLoader = async () => {
+  const [recipeIngCreate, recipeToolCreate] = await Promise.all([
+    fetch(`http://localhost:3310/api/ingredient/`).then((res) => res.json()),
+    fetch(`http://localhost:3310/api/tool/`).then((res) => res.json()),
+  ]);
+
+  return [recipeIngCreate, recipeToolCreate];
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -84,7 +93,7 @@ const router = createBrowserRouter([
       {
         path: "creation-recipe",
         element: <RecipeCreationPage />,
-        loader: () => fetch("http://localhost:3310/api/recipe/"),
+        loader: IngToolLoader,
       },
       {
         path: "profile",
