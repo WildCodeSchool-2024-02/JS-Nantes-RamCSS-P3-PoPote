@@ -1,79 +1,79 @@
 import { NavLink, useLocation } from "react-router-dom";
-import LogoPopote from "../assets/logo/logo_popote_last.png";
-
-import home from "../assets/home_icone.svg";
-import homegreen from "../assets/home_green_icone.svg";
-
-import search from "../assets/search_icone.svg";
-import searchgreen from "../assets/search_green_icone.svg";
-
-import add from "../assets/add_icone.svg";
-import addgreen from "../assets/add_green_icone.svg";
-
-import favorite from "../assets/favorite_icone.svg";
-import favoritegreen from "../assets/favorite_green_icone.svg";
-
-import profile from "../assets/profile_icone.svg";
-import profilegreen from "../assets/profile_green_icone.svg";
-
-import navBg from "../assets/navbar_bg.svg";
 
 function NavBar() {
   const location = useLocation();
 
   return (
     <nav className="navbar">
-      <img src={navBg} className="mobile-link nav-bg" alt="" />
+      <img
+        src={`${import.meta.env.VITE_API_URL}/navbar_bg.svg`}
+        className="mobile-link nav-bg"
+        alt=""
+      />
       <NavLink className="nav-link" to="/popote/" aria-label="Page d'acceuil">
         <img
           className="desktop-link"
           id="popote-logo"
-          src={LogoPopote}
+          src={`${import.meta.env.VITE_API_URL}/logo/logo_popote_last.png`}
           alt="logo Popote"
         />
         <img
           className="mobile-link"
-          src={location.pathname === "/popote/" ? homegreen : home}
-          alt=""
+          src={
+            location.pathname === "/popote/"
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/home_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/home_icone.svg`
+          }
+          alt="icone de maison pour la page acceuil"
         />
       </NavLink>
       <NavLink
         className="nav-link"
         id="search-link"
         to="/popote/search"
-        aria-label="Page Recherche"
+        aria-label="Lien page Recherche"
       >
         <h1 className="desktop-link">Rechercher</h1>
         <img
           className="mobile-link"
-          src={location.pathname === "/popote/search" ? searchgreen : search}
-          alt=""
+          src={
+            location.pathname === "/popote/search"
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/search_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/search_icone.svg`
+          }
+          alt="icone popote pour la page recherche"
         />
       </NavLink>
       <NavLink
         className="nav-link"
         to="/popote/favorites"
-        aria-label="Page Mes favoris"
+        aria-label="Lien page Mes favoris"
       >
         <h1 className="desktop-link">Mes Favoris</h1>
         <img
           className="mobile-link"
           src={
-            location.pathname === "/popote/favorites" ? favoritegreen : favorite
+            location.pathname === "/popote/favorites"
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/favorite_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/favorite_icone.svg`
           }
-          alt=""
+          alt="icone coeur pour la page favoris"
         />
       </NavLink>
       <NavLink
         className="nav-link"
         to="/popote/creation-recipe"
-        aria-label="Page Creation de recette"
+        aria-label="Lien page Creation de recette"
       >
         <h1 className="desktop-link">Créer une recette</h1>
         <img
           className="mobile-link"
-          src={location.pathname === "/popote/creation-recipe" ? addgreen : add}
-          alt=""
+          src={
+            location.pathname === "/popote/creation-recipe"
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/add_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/add_icone.svg`
+          }
+          alt="icone de signe plus pour la page creation de recette"
         />
       </NavLink>
       <NavLink
@@ -84,8 +84,12 @@ function NavBar() {
         <h1 className="desktop-link">Mon Profil</h1>
         <img
           className="mobile-link"
-          src={location.pathname === "/popote/profile" ? profilegreen : profile}
-          alt=""
+          src={
+            location.pathname === "/popote/profile"
+              ? `${import.meta.env.VITE_API_URL}/profile_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/profile_icone.svg`
+          }
+          alt="icone de personnage pour la page profile"
         />
       </NavLink>
     </nav>

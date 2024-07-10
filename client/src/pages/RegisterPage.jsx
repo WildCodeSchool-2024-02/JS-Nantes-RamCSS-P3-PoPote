@@ -6,12 +6,12 @@ function RegisterPage() {
       <div className="desktop-frame">
         <h2 className="register-title">Bienvenue chez</h2>
         <img
-          src="./src/assets/logo/logo_popote_blanc.svg"
+          src={`${import.meta.env.VITE_API_URL}/logo/logo_popote_blanc.svg`}
           alt="logo Popote"
           className="logo-blanc"
         />
         <img
-          src="./src/assets/logo/logo_popote_orange.svg"
+          src={`${import.meta.env.VITE_API_URL}/logo/logo_popote_orange.svg`}
           alt="logo Popote"
           className="logo-orange"
         />
