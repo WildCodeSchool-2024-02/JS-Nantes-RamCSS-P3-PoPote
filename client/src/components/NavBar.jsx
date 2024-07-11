@@ -2,15 +2,13 @@ import { NavLink, useLocation } from "react-router-dom";
 
 function NavBar() {
   const location = useLocation();
-  localStorage.getItem("token");
 
-  const token = "qrgeqtrg";
+  const token = localStorage.getItem("token");
   let isLogged = "false";
-
   if (token) {
-    isLogged = "true";
+    isLogged = true;
   } else {
-    isLogged = "false";
+    isLogged = false;
   }
 
   return (
