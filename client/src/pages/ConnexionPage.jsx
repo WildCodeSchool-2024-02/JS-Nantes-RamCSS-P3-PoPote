@@ -31,10 +31,12 @@ function ConnexionPage() {
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
+      localStorage.setItem("user", res.user.firstname);
       navigate("/popote");
       console.info("Logged", res);
     }
   };
+
 
   const handleSubmit = async (event) => {
     try {
