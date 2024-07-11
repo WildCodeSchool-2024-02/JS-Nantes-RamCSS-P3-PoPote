@@ -1,7 +1,3 @@
-// Va servir pour :
-// - les boutons catégories de la page Search
-// - la liste de catégories de la page Recipe Creation
-
 import { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -29,9 +25,12 @@ function CreationIngredients({ recipeIngLoad }) {
     }
   };
 
-  const handleDeleteRow = (el) => {
-    ingredients.shift(el.id);
-    console.info("delete", ingredients);
+  const handleDeleteRow = (name) => {
+    console.info("ingredientfilterId", name);
+    const newingredient = ingredients.filter(
+      (ingredient) => ingredient.name !== name
+    );
+    setIngredients(newingredient);
   };
 
   console.info("ceci est ingredients", ingredients);
@@ -73,16 +72,19 @@ function CreationIngredients({ recipeIngLoad }) {
           Ajouter
         </button>
       </div>
-      {ingredients.map((ingredient) => (
-        <ul key={ingredient.id}>
-          <li>
+      <ul>
+        {ingredients.map((ingredient) => (
+          <li key={ingredient.id}>
             {ingredient.quantity} {ingredient.unity} {ingredient.name}
+            <button
+              type="button"
+              onClick={() => handleDeleteRow(ingredient.name)}
+            >
+              X
+            </button>
           </li>
-          <button type="button" onClick={handleDeleteRow}>
-            X
-          </button>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </>
   );
 }
@@ -90,4 +92,5 @@ function CreationIngredients({ recipeIngLoad }) {
 CreationIngredients.propTypes = {
   recipeIngLoad: PropTypes.string.isRequired,
 };
+
 export default CreationIngredients;
