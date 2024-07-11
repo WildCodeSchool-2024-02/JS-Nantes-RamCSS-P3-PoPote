@@ -20,6 +20,7 @@
   margin: 15px;
 }
 
+/* ----------------Drag and drop area-------------- */
 .drop-zone {
   display: flex;
   flex-direction: column;

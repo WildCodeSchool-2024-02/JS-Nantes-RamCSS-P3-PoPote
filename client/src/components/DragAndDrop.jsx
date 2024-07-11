@@ -2,11 +2,14 @@ import { useState, useRef } from "react";
 
 function DragAndDrop() {
   const [files, setFiles] = useState([]);
+  const [imagePreview, setImagePreview] = useState(null);
   const inputRef = useRef();
 
   const handleDrop = (e) => {
     e.preventDefault();
-    setFiles(Array.from(e.dataTransfer.files));
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    setFiles(droppedFiles);
+    setImagePreview(URL.createObjectURL(droppedFiles[0]));
   };
 
   const handleUpload = async (e) => {
@@ -52,22 +55,22 @@ function DragAndDrop() {
     return null;
   };
 
-  if (files.length)
-    return (
-      <section className="uploads">
-        <ul>
-          <li>{files[0].name}</li>
-        </ul>
-        <div className="actions">
-          <button type="button" onClick={() => setFiles([])}>
-            Cancel
-          </button>
-          <button type="button" onClick={(e) => handleUpload(e)}>
-            Submit !
-          </button>
-        </div>
-      </section>
-    );
+  // if (files.length)
+  //   return (
+  //     <section className="uploads">
+  //       <ul>
+  //         <li>{files[0].name}</li>
+  //       </ul>
+  //       <div className="actions">
+  //         <button type="button" onClick={() => setFiles([])}>
+  //           Cancel
+  //         </button>
+  //         <button type="button" onClick={(e) => handleUpload(e)}>
+  //           Submit !
+  //         </button>
+  //       </div>
+  //     </section>
+  //   );
 
   return (
     <section>
@@ -80,14 +83,47 @@ function DragAndDrop() {
         <p>Or</p>
         <input
           type="file"
-          onChange={(e) => setFiles(Array.from(e.target.files))}
+          onChange={(e) => {
+            const file = e.target.files[0];
+            setFiles([file]);
+            setImagePreview(URL.createObjectURL(file)); // Crée une URL locale pour l'image
+          }}
           hidden
           ref={inputRef}
         />
         <button type="button" onClick={() => inputRef.current.click()}>
           Select a file
         </button>
+        {imagePreview && (
+          <img
+            className="image-preview"
+            src={imagePreview}
+            alt="Preview"
+            style={{ maxWidth: "100%", height: "15vh", marginTop: "10px" }}
+          />
+        )}
       </div>
+      {files.length > 0 && (
+        <section className="uploads">
+          <ul>
+            <li>{files[0].name}</li>
+          </ul>
+          <div className="actions">
+            <button
+              type="button"
+              onClick={() => {
+                setFiles([]);
+                setImagePreview(null);
+              }}
+            >
+              Cancel
+            </button>
+            <button type="button" onClick={handleUpload}>
+              Submit!
+            </button>
+          </div>
+        </section>
+      )}
     </section>
   );
 }
