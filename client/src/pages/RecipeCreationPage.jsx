@@ -1,7 +1,13 @@
 import { useRef, useState } from "react";
+import { useLoaderData } from "react-router-dom";
+
 import DragAndDrop from "../components/DragAndDrop";
+import CreationIngredients from "../components/CreationIngredients";
+import CreationTools from "../components/CreationTools";
 
 function RecipeCreationPage() {
+  const IngToolLoader = useLoaderData();
+
   const [title, setTitle] = useState("");
   const [files, setFiles] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
@@ -97,6 +103,9 @@ function RecipeCreationPage() {
           <div className="recipe-ingredients" />
           <div className="recipe-tools" />
         </div>
+
+        <CreationIngredients recipeIngLoad={IngToolLoader[0]} />
+        <CreationTools recipeToolLoad={IngToolLoader[1]} />
 
         <div className="recipe-description">
           <h3>Décrire les étapes</h3>

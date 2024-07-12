@@ -2,13 +2,14 @@
 // - la page d'inscription
 // - la page de modification de profil
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 
 function UserForm() {
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
   const [cguChecked, setCguChecked] = useState(false);
+  const navigate = useNavigate();
   const [ErrorForm, setErrorForm] = useState("");
   const [ErrorFormNone, setErrorFormNone] = useState(
     "error-form-register-none"
@@ -32,6 +33,7 @@ function UserForm() {
       }).then((res) => {
         if (res.ok) {
           console.warn("Victoire !");
+          navigate("/popote");
         }
       });
     } else {
