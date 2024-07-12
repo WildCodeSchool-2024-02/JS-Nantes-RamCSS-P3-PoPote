@@ -8,20 +8,16 @@ import ToolList from "../components/ToolsList";
 
 function RecipePage() {
   const recipeDetailData = useLoaderData();
-  console.info("coucou", recipeDetailData);
+
+  console.info("first loader", recipeDetailData[0]);
 
   const [inputChecked, setInputChecked] = useState("ingredients");
-
   const handleRadioChange = (event) => {
     setInputChecked(event.target.value);
-    console.info(setInputChecked);
   };
 
   const ingredientArray = recipeDetailData[1].ingredientList.split(", ");
-  console.info("ceci est", ingredientArray);
-
   const toolArray = recipeDetailData[2].toolList.split(", ");
-  console.info("ceci est", toolArray);
 
   return (
     <section className="recipe-page-container">
@@ -82,7 +78,9 @@ function RecipePage() {
       ) : (
         <div className="recipe-page-instructions-container">
           <h1>Instructions : </h1>
-          <p>{recipeDetailData[0].step_description}</p>
+          <p id="recipe-page-instructions-description">
+            {recipeDetailData[0].step_description}
+          </p>
         </div>
       )}
     </section>

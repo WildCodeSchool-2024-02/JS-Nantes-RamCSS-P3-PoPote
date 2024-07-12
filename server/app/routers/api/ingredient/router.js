@@ -18,7 +18,7 @@ router.get("/IofR/:id", browseSpec);
 // Route to get a specific ingredient by ID
 router.get("/:id", read);
 
-// Route to add a new ingredient
+// Route to add a new ingredient by an admin
 router.post("/", add);
 
 /* ************************************************************************* */
