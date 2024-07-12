@@ -3,7 +3,7 @@ import MaxiRecipeCard from "../components/MaxiRecipeCard";
 
 function HomePage() {
   const recipeData = useLoaderData();
-  const firstname = localStorage.getItem("user");
+  const firstname = localStorage.getItem("userfirstname");
   console.info(recipeData);
 
   return (

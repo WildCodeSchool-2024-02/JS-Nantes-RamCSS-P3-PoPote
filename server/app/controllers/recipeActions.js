@@ -15,7 +15,6 @@ const browse = async (req, res, next) => {
   }
 };
 
-
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
@@ -45,7 +44,7 @@ const add = async (req, res, next) => {
 
   try {
     // Insert the item into the database
-    const insertId = await tables.item.create(recipe);
+    const insertId = await tables.recipe.create(recipe);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });

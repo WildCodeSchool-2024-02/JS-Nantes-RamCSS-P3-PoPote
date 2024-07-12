@@ -25,18 +25,22 @@ function ConnexionPage() {
       setIsEmail(() => false);
       setIsPassword(() => false);
       setErrorFormNone("error-form-register");
-      setErrorForm(
-        "Identifiant ou mot de passe incorrect"
-      );
+      setErrorForm("Identifiant ou mot de passe incorrect");
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
-      localStorage.setItem("user", res.user.firstname);
+      localStorage.setItem("userall", res.user);
+      localStorage.setItem("userid", res.user.id);
+      localStorage.setItem("userfirstname", res.user.firstname);
       navigate("/popote");
       console.info("Logged", res);
+      // console.log(res.user.firstname);
+      // console.log(res.user.id);
+      // console.log(localStorage.userid);
+      // console.log(localStorage.getItem("userid"));
+      // console.log(localStorage.getItem(res.user.id));
     }
   };
-
 
   const handleSubmit = async (event) => {
     try {
@@ -53,13 +57,12 @@ function ConnexionPage() {
 
       if (!isEmailValid || !isPasswordValid) {
         setErrorFormNone("error-form-register");
-        setErrorForm("Identifiant ou mot de passe incorrect")
+        setErrorForm("Identifiant ou mot de passe incorrect");
       } else {
-        await handleFetch({ email, password})
+        await handleFetch({ email, password });
       }
     } catch (error) {
       console.error(error.message);
-      
     }
   };
 
@@ -116,7 +119,9 @@ function ConnexionPage() {
               />
             </div>
             <p className={errorFormNone}>{errorForm}</p>
-            <button type="submit" value="Connexion" className="submit-button">Connexion</button>
+            <button type="submit" value="Connexion" className="submit-button">
+              Connexion
+            </button>
           </form>
           <p>
             Tu n’as pas de compte ?{" "}

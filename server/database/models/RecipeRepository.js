@@ -12,8 +12,15 @@ class RecipeRepository extends AbstractRepository {
   async create(recipe) {
     // Execute the SQL INSERT query to add a new Recipe to the "Recipe" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (title, url_photo) values (?, ?)`,
-      [recipe.title, recipe.url_photo]
+      `insert into ${this.table} (title, url_photo, duration, people_number ,step_description ,user_id) values (?, ?, ?, ?, ?)`,
+      [
+        recipe.title,
+        recipe.url_photo,
+        recipe.duration,
+        recipe.people_number,
+        recipe.step_description,
+        recipe.user_id,
+      ]
     );
 
     // Return the ID of the newly inserted Recipe
@@ -78,7 +85,6 @@ GROUP BY
     r.duration, 
     r.people_number, 
     r.step_description;`);
-
 
     // Return the array of Recipes
     return rows;

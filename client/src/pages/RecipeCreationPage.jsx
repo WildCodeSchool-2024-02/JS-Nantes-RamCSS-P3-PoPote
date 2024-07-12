@@ -13,7 +13,11 @@ function RecipeCreationPage() {
   const [imagePreview, setImagePreview] = useState(null);
 
   // Refs
+  const titleRef = useRef();
   const durationRef = useRef();
+  const nbPeopleRef = useRef();
+  const descriptionRef = useRef();
+  const userIdRef = useRef(localStorage.getItem("userid"));
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,6 +37,7 @@ function RecipeCreationPage() {
 
       const fileResponse = await addFileFetch.json();
       console.info("Fetch1 validé");
+      console.info("user ref user id", userIdRef);
 
       // fetch 2 : récupération des input titre, Nombre de personnes, durée,
 
@@ -41,29 +46,60 @@ function RecipeCreationPage() {
         console.info(filename);
 
         const body = {
-          titre: title,
-          duration: durationRef.current.value,
+          title: titleRef,
           url_photo: `/assets/recipe/${filename}`,
+          duration: durationRef.current.value,
+          people_number: nbPeopleRef.current.value,
+          step_description: descriptionRef.current.value,
+          user_id: userIdRef.current.value,
         };
-        console.info("coucou1", durationRef.current);
-        console.info("coucou2", durationRef.current.value);
-        console.info(body);
-
-        const fetchResponse = await fetch(
+        console.info("user ref title", titleRef);
+        const fetchResponseRecipe = await fetch(
           `${import.meta.env.VITE_API_URL}/api/recipe`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body:
-              // ajouter
-              JSON.stringify({ filename }),
+            body: JSON.stringify({ body }),
           }
         );
+
         console.info("Fetch2 validé");
-        console.warn(fetchResponse);
+
         // à la place ajouter la route
+
+        if (fetchResponseRecipe) {
+          const fetchResponseIngredient = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/ingredient`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body:
+                // ajouter les ref des inputs a récuperer
+                JSON.stringify({ filename }),
+            }
+          );
+          console.info(fetchResponseIngredient);
+
+          if (fetchResponseIngredient) {
+            const fetchResponseTool = await fetch(
+              `${import.meta.env.VITE_API_URL}/api/tool`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body:
+                  // ajouter les ref des inputs a récuperer
+                  JSON.stringify({ filename }),
+              }
+            );
+            console.info(fetchResponseTool);
+          }
+        }
         return null;
       }
 
@@ -87,14 +123,14 @@ function RecipeCreationPage() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            // ref={titleRef}
+            ref={titleRef}
           />
           <img src="" alt="" />
         </div>
 
         <div className="nb-people-duration">
           <h3>Nombre de personnes</h3>
-          <input type="number" />
+          <input type="number" ref={nbPeopleRef} />
           <h3>Durée</h3>
           <input type="time" ref={durationRef} />
         </div>
