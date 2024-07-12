@@ -31,7 +31,8 @@ function ConnexionPage() {
     } else {
       const res = await response.json();
       localStorage.setItem("token", res.token);
-      localStorage.setItem("user", res.user.firstname);
+      localStorage.setItem("user-firstname", res.user.firstname);
+      localStorage.setItem("user-lastname", res.user.lastname);
       navigate("/popote");
       console.info("Logged", res);
     }
