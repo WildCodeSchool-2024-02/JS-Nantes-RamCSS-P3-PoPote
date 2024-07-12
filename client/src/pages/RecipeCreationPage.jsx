@@ -1,11 +1,73 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DragAndDrop from "../components/DragAndDrop";
 
 function RecipeCreationPage() {
   const [title, setTitle] = useState("");
+  const [files, setFiles] = useState([]);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  // Refs
+  const durationRef = useRef();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // fetch 1 : Post du fichier image dans upload;
+    const data = new FormData();
+    data.append("file", files[0]);
+
+    try {
+      const addFileFetch = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/upload`,
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      const fileResponse = await addFileFetch.json();
+      console.info("Fetch1 validé");
+
+      // fetch 2 : récupération des input titre, Nombre de personnes, durée,
+
+      if (fileResponse) {
+        const { filename } = fileResponse;
+        console.info(filename);
+
+        const body = {
+          titre: title,
+          duration: durationRef.current.value,
+          url_photo: `/assets/recipe/${filename}`,
+        };
+        console.info("coucou1", durationRef.current);
+        console.info("coucou2", durationRef.current.value);
+        console.info(body);
+
+        const fetchResponse = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/recipe`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body:
+              // ajouter
+              JSON.stringify({ filename }),
+          }
+        );
+        console.info("Fetch2 validé");
+        console.warn(fetchResponse);
+        // à la place ajouter la route
+        return null;
+      }
+
+      // * Si tout s'est bien passé, on exécute une deuxième requête fetch, pour
+      // * pouvoir ajouter le chemin de l'image dans la base de données.
+      // * (je choisis arbitrairement le deuxième utilisateur, pour l'exemple).
+    } catch (err) {
+      return err;
+    }
+    return null;
   };
 
   return (
@@ -19,6 +81,7 @@ function RecipeCreationPage() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            // ref={titleRef}
           />
           <img src="" alt="" />
         </div>
@@ -27,7 +90,7 @@ function RecipeCreationPage() {
           <h3>Nombre de personnes</h3>
           <input type="number" />
           <h3>Durée</h3>
-          <input type="time" />
+          <input type="time" ref={durationRef} />
         </div>
 
         <div className="futur-component">
@@ -46,12 +109,19 @@ function RecipeCreationPage() {
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam id cumque exercitationem ratione voluptatibus nobis necessitatibus autem at, rerum corrupti in assumenda sunt harum voluptatum! Cupiditate ducimus quasi debitis molestiae?"
           />
         </div>
-        <DragAndDrop />
-        <input
-          type="submit"
-          value="Valider"
-          className="submit-recipe-creation-button"
+        <DragAndDrop
+          files={files}
+          setFiles={setFiles}
+          imagePreview={imagePreview}
+          setImagePreview={setImagePreview}
         />
+        <button
+          onClick={handleSubmit}
+          type="button"
+          className="submit-recipe-creation-button"
+        >
+          Valider
+        </button>
       </form>
     </section>
   );

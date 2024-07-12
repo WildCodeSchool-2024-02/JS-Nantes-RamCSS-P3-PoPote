@@ -1,8 +1,7 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
+import PropTypes from "prop-types";
 
-function DragAndDrop() {
-  const [files, setFiles] = useState([]);
-  const [imagePreview, setImagePreview] = useState(null);
+function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
   const inputRef = useRef();
 
   const handleDrop = (e) => {
@@ -11,66 +10,6 @@ function DragAndDrop() {
     setFiles(droppedFiles);
     setImagePreview(URL.createObjectURL(droppedFiles[0]));
   };
-
-  const handleUpload = async (e) => {
-    e.preventDefault();
-
-    const data = new FormData();
-    data.append("file", files[0]);
-
-    // * Ma première requête fetch va tenter d'ajouter le fichier dans le serveur.
-    try {
-      const addFileFetch = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/upload`,
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-
-      const fileResponse = await addFileFetch.json();
-
-      // * Si tout s'est bien passé, on exécute une deuxième requête fetch, pour
-      // * pouvoir ajouter le chemin de l'image dans la base de données.
-      // * (je choisis arbitrairement le deuxième utilisateur, pour l'exemple).
-
-      if (fileResponse) {
-        const { filename } = fileResponse;
-        const fetchResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/upload`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ filename }),
-          }
-        );
-        console.warn(fetchResponse);
-        return null;
-      }
-    } catch (err) {
-      return err;
-    }
-    return null;
-  };
-
-  // if (files.length)
-  //   return (
-  //     <section className="uploads">
-  //       <ul>
-  //         <li>{files[0].name}</li>
-  //       </ul>
-  //       <div className="actions">
-  //         <button type="button" onClick={() => setFiles([])}>
-  //           Cancel
-  //         </button>
-  //         <button type="button" onClick={(e) => handleUpload(e)}>
-  //           Submit !
-  //         </button>
-  //       </div>
-  //     </section>
-  //   );
 
   return (
     <section>
@@ -94,6 +33,24 @@ function DragAndDrop() {
         <button type="button" onClick={() => inputRef.current.click()}>
           Select a file
         </button>
+        {files.length > 0 && (
+          <section className="uploads">
+            <ul>
+              <li>{files[0].name}</li>
+            </ul>
+            <div className="actions">
+              <button
+                type="button"
+                onClick={() => {
+                  setFiles([]);
+                  setImagePreview(null);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </section>
+        )}
         {imagePreview && (
           <img
             className="image-preview"
@@ -103,29 +60,17 @@ function DragAndDrop() {
           />
         )}
       </div>
-      {files.length > 0 && (
-        <section className="uploads">
-          <ul>
-            <li>{files[0].name}</li>
-          </ul>
-          <div className="actions">
-            <button
-              type="button"
-              onClick={() => {
-                setFiles([]);
-                setImagePreview(null);
-              }}
-            >
-              Cancel
-            </button>
-            <button type="button" onClick={handleUpload}>
-              Submit!
-            </button>
-          </div>
-        </section>
-      )}
     </section>
   );
 }
+
+DragAndDrop.propTypes = {
+  files: PropTypes.string.isRequired,
+  setFiles: PropTypes.string.isRequired,
+  imagePreview: PropTypes.string.isRequired,
+  setImagePreview: PropTypes.string.isRequired,
+  length: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default DragAndDrop;

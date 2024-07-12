@@ -9,6 +9,7 @@ const router = express.Router();
 const recipeRouter = require("./recipe/router");
 
 router.use("/recipe", recipeRouter);
+router.post("/recipe", recipeRouter);
 
 const toolRouter = require("./tool/router");
 
