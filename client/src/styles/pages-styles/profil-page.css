@@ -1,0 +1,41 @@
+.my-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 10px;
+}
+
+.bloc-name {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  gap: 1rem;
+  border: solid grey;
+  border-radius: 5px;
+  padding: 3%;
+  width: 87%;
+  height: 10%;
+
+  #profile-picture-img {
+    width: 80px;
+  }
+}
+
+.profile-picto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.deconnexion-button {
+  background-color: var(--orange-bg-color);
+  border: none;
+  border-radius: 16px;
+  width: 35vw;
+  padding: 8px;
+  font-family: var(--poppins-font);
+  color: var(--light-font-color);
+  /* margin: 15px; */
+  cursor: pointer;
+}
