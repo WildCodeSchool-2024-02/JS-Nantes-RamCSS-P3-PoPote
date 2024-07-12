@@ -21,7 +21,7 @@ function NavBar() {
       <NavLink
         className="nav-link"
         to={isLogged ? "/popote/" : "/connexion"}
-        aria-label="Page d'acceuil"
+        aria-label="Page d'accueil"
       >
         <img
           className="desktop-link"
@@ -36,7 +36,7 @@ function NavBar() {
               ? `${import.meta.env.VITE_API_URL}/logo_navigation/home_green_icone.svg`
               : `${import.meta.env.VITE_API_URL}/logo_navigation/home_icone.svg`
           }
-          alt="icone de maison pour la page acceuil"
+          alt="icone de maison pour la page accueil"
         />
       </NavLink>
       <NavLink
