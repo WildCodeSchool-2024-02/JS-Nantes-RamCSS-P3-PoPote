@@ -3,6 +3,14 @@ import { NavLink, useLocation } from "react-router-dom";
 function NavBar() {
   const location = useLocation();
 
+  const token = localStorage.getItem("token");
+  let isLogged = "false";
+  if (token) {
+    isLogged = true;
+  } else {
+    isLogged = false;
+  }
+
   return (
     <nav className="navbar">
       <img
@@ -10,7 +18,11 @@ function NavBar() {
         className="mobile-link nav-bg"
         alt=""
       />
-      <NavLink className="nav-link" to="/popote/" aria-label="Page d'acceuil">
+      <NavLink
+        className="nav-link"
+        to={isLogged ? "/popote/" : "/connexion"}
+        aria-label="Page d'accueil"
+      >
         <img
           className="desktop-link"
           id="popote-logo"
@@ -24,7 +36,7 @@ function NavBar() {
               ? `${import.meta.env.VITE_API_URL}/logo_navigation/home_green_icone.svg`
               : `${import.meta.env.VITE_API_URL}/logo_navigation/home_icone.svg`
           }
-          alt="icone de maison pour la page acceuil"
+          alt="icone de maison pour la page accueil"
         />
       </NavLink>
       <NavLink
@@ -46,7 +58,7 @@ function NavBar() {
       </NavLink>
       <NavLink
         className="nav-link"
-        to="/popote/favorites"
+        to={isLogged ? "/popote/favorites" : "/connexion"}
         aria-label="Lien page Mes favoris"
       >
         <h1 className="desktop-link">Mes Favoris</h1>
@@ -62,7 +74,7 @@ function NavBar() {
       </NavLink>
       <NavLink
         className="nav-link"
-        to="/popote/creation-recipe"
+        to={isLogged ? "/popote/creation-recipe" : "/connexion"}
         aria-label="Lien page Creation de recette"
       >
         <h1 className="desktop-link">Créer une recette</h1>
@@ -78,7 +90,7 @@ function NavBar() {
       </NavLink>
       <NavLink
         className="nav-link"
-        to="/popote/profile"
+        to={isLogged ? "/popote/profile" : "/connexion"}
         aria-label="Page Mon Profil"
       >
         <h1 className="desktop-link">Mon Profil</h1>
