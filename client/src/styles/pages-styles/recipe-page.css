@@ -25,6 +25,10 @@
   border-radius: 20px;
   width: 60dvw;
 }
+
+#recipe-page-instructions-description {
+  white-space: pre-line;
+}
 /* ------- radio ------- */
 
 .recipe-page-radio-group {
