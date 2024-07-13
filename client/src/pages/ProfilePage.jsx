@@ -1,6 +1,12 @@
+import { useLoaderData } from "react-router-dom";
+import MaxiRecipeCard from "../components/MaxiRecipeCard";
+
 function ProfilePage() {
   const firstname = localStorage.getItem("user-firstname");
   const lastname = localStorage.getItem("user-lastname");
+  const recipeData = useLoaderData();
+
+  console.info('Received recipeData:', recipeData);
 
   return (
     <section className="my-profile">
@@ -31,6 +37,22 @@ function ProfilePage() {
         DECONNEXION
       </button>
       <h2>Mes recettes créées</h2>
+      <article className="recipe-card-list">
+        {recipeData.length > 0 ? (
+          recipeData.map((el) => (
+            <MaxiRecipeCard
+              key={el.id}
+              id={el.id}
+              title={el.title}
+              photo={el.url_photo}
+              duration={el.duration}
+              nutValue={el.nutValue}
+            />
+          ))
+        ) : (
+          <p>No recipes found.</p>
+        )}
+      </article>
     </section>
   );
 }
