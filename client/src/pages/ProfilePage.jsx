@@ -22,7 +22,7 @@ function ProfilePage() {
           />
           <img
             id="pen-modification-img"
-            src={`${import.meta.env.VITE_API_URL}/profile/pen-modification.svg`}
+            src={`${import.meta.env.VITE_API_URL}/profile/pen-modification.png`}
             alt="pen to modify profile"
           />
         </div>
