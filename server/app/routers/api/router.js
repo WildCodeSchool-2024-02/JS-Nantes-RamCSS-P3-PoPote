@@ -27,11 +27,12 @@ const categoryRouter = require("./category/router");
 router.use("/category", categoryRouter);
 
 const userRouter = require("./user/router");
-const { login } = require("../../controllers/authActions");
+const { login, authorizeAdmin } = require("../../controllers/authActions");
 const { credentialsValidation } = require("../../services/credentialValidation");
 
 router.use("/user", userRouter);
 router.post("/login", credentialsValidation, login)
+router.use("/popote/admin", authorizeAdmin)
 
 /* ************************************************************************* */
 
