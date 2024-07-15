@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function CreationIngredients({ recipeIngLoad,  }) {
+function CreationIngredients({ recipeIngLoad, setIngredientArray, quantityRef, unitRef }) {
   const [ingredients, setIngredients] = useState([]);
   const [currentIngredient, setCurrentIngredient] = useState("");
   const [currentIngredientQuantity, setCurrentIngredientQuantity] =
@@ -22,8 +22,8 @@ function CreationIngredients({ recipeIngLoad,  }) {
       setCurrentIngredient("");
       setCurrentIngredientUnity("");
       setCurrentIngredientQuantity("");
-      // setIngredientArray(newIngredient);
-      console.info("%c%s", "color: #00a3cc", ingredients);
+      setIngredientArray(ingredients);
+      console.info("ceci est ingredients", ingredients);
     }
   };
 
@@ -44,6 +44,7 @@ function CreationIngredients({ recipeIngLoad,  }) {
           value={currentIngredientQuantity}
           onChange={(e) => setCurrentIngredientQuantity(e.target.value)}
           placeholder="Quantité de l'ingrédient"
+          ref={quantityRef}
         />
         <input
           type="text"
@@ -51,6 +52,7 @@ function CreationIngredients({ recipeIngLoad,  }) {
           value={currentIngredientUnity}
           onChange={(e) => setCurrentIngredientUnity(e.target.value)}
           placeholder="g, unité, kg"
+          ref={unitRef}
         />
         <input
           type="text"
@@ -90,6 +92,9 @@ function CreationIngredients({ recipeIngLoad,  }) {
 
 CreationIngredients.propTypes = {
   recipeIngLoad: PropTypes.string.isRequired,
+  setIngredientArray: PropTypes.string.isRequired,
+  quantityRef:PropTypes.string.isRequired,
+  unitRef:PropTypes.string.isRequired
 };
 
 export default CreationIngredients;

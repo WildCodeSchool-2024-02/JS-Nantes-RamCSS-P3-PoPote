@@ -9,7 +9,6 @@ import DragAndDrop from "../components/DragAndDrop";
 import CreationIngredients from "../components/CreationIngredients";
 import CreationTools from "../components/CreationTools";
 
-
 function RecipeCreationPage() {
   const IngToolLoader = useLoaderData();
 
@@ -28,12 +27,13 @@ function RecipeCreationPage() {
 
   // Refs of add_ingredient
   const addIngredientRef = useRef(ingredientArray);
-  console.info("ceci est le tableau d'ingredient", addIngredientRef);
+  const quantityRef = useRef();
+  const unitRef = useRef();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-//*  ------------ fetch 1 : Post du fichier image dans upload ------------
+    //*  ------------ fetch 1 : Post du fichier image dans upload ------------
     // passage du fichier image du coté serveur dans le dossier upload
     const data = new FormData();
     data.append("file", files[0]);
@@ -53,11 +53,12 @@ function RecipeCreationPage() {
       }
 
       const fileResponse = await addFileFetch.json();
+
       console.info("Fetch1 validé");
 
-//* ------------ fetch 2 : récupération des input titre, Nombre de personnes, durée ---------
+      //* ------------ fetch 2 : récupération des input titre, Nombre de personnes, durée ---------
 
-        // objet contenant les ref des inputs à injecter dans le body
+      // objet contenant les ref des inputs à injecter dans le body
       const recipeBody = {
         title: titleRef.current.value,
         url_photo: `/uploads/${fileResponse.filename}`,
@@ -67,46 +68,45 @@ function RecipeCreationPage() {
         user_id: userIdRef.current,
       };
 
-
       const fetchResponseRecipe = await fetch(
         `${import.meta.env.VITE_API_URL}/api/recipe`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(recipeBody),
         }
       );
+
+      // conserve l'id de la recette de la réponse
       const recipeIdResponse = await fetchResponseRecipe.json();
-      // à la place ajouter la route
+
+      if (!recipeIdResponse) {
+        const errorText = await recipeIdResponse.text();
+        throw new Error(`Error ${recipeIdResponse.status}: ${errorText}`);
+      }
 
       if (recipeIdResponse) {
         const recipeIdNumber = recipeIdResponse.insertId;
-        console.info("recipe_id", recipeIdNumber);
+
         console.info("Fetch2 validé");
 
-// * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
+        // * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
 
         const addIngredientBody = {
           recipe_id: recipeIdNumber,
           ingredient_id: addIngredientRef,
+          quantity: quantityRef,
+          unit: unitRef,
         };
-
-        console.info(addIngredientBody);
-        // console.info("addingredientRef", addIngredientRef);
 
         const fetchResponseIngredient = await fetch(
           `${import.meta.env.VITE_API_URL}/api/recipe/add_ingredient`,
           {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ addIngredientBody }),
           }
         );
-        console.info(fetchResponseIngredient);
 
         if (fetchResponseIngredient) {
           const fetchResponseTool = await fetch(
@@ -163,7 +163,8 @@ function RecipeCreationPage() {
         <CreationIngredients
           recipeIngLoad={IngToolLoader[0]}
           setIngredientArray={setIngredientArray}
-         
+          quantityRef={quantityRef}
+          unitRef={unitRef}
         />
         <CreationTools recipeToolLoad={IngToolLoader[1]} />
 
