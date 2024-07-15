@@ -33,12 +33,10 @@ function ConnexionPage() {
 
       Cookies.set("token", token, {
         expires: 1,
-        secure: true,
         sameSite: "strict",
       });
       Cookies.set("user", JSON.stringify(user), {
         expires: 1,
-        secure: true,
         sameSite: "strict",
       });
 
