@@ -8,7 +8,7 @@ import { useLoaderData } from "react-router-dom";
 import DragAndDrop from "../components/DragAndDrop";
 import CreationIngredients from "../components/CreationIngredients";
 import CreationTools from "../components/CreationTools";
-// import { recipe } from "../../../server/database/tables";
+
 
 function RecipeCreationPage() {
   const IngToolLoader = useLoaderData();
@@ -33,7 +33,8 @@ function RecipeCreationPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // fetch 1 : Post du fichier image dans upload;
+//*  ------------ fetch 1 : Post du fichier image dans upload ------------
+    // passage du fichier image du coté serveur dans le dossier upload
     const data = new FormData();
     data.append("file", files[0]);
 
@@ -46,58 +47,70 @@ function RecipeCreationPage() {
         }
       );
 
+      if (!addFileFetch.ok) {
+        const errorText = await addFileFetch.text();
+        throw new Error(`Error ${addFileFetch.status}: ${errorText}`);
+      }
+
       const fileResponse = await addFileFetch.json();
       console.info("Fetch1 validé");
 
-      // fetch 2 : récupération des input titre, Nombre de personnes, durée,
+//* ------------ fetch 2 : récupération des input titre, Nombre de personnes, durée ---------
 
-      if (fileResponse) {
-        const { filename } = fileResponse;
-        console.info("nom du fichier", filename);
-        const recipeBody = {
-          title: titleRef.current.value,
-          url_photo: `/uploads/${filename}`,
-          duration: durationRef.current.value,
-          people_number: nbPeopleRef.current.value,
-          step_description: descriptionRef.current.value,
-          user_id: userIdRef.current,
+        // objet contenant les ref des inputs à injecter dans le body
+      const recipeBody = {
+        title: titleRef.current.value,
+        url_photo: `/uploads/${fileResponse.filename}`,
+        duration: durationRef.current.value,
+        people_number: nbPeopleRef.current.value,
+        step_description: descriptionRef.current.value,
+        user_id: userIdRef.current,
+      };
+
+
+      const fetchResponseRecipe = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/recipe`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(recipeBody),
+        }
+      );
+      const recipeIdResponse = await fetchResponseRecipe.json();
+      // à la place ajouter la route
+
+      if (recipeIdResponse) {
+        const recipeIdNumber = recipeIdResponse.insertId;
+        console.info("recipe_id", recipeIdNumber);
+        console.info("Fetch2 validé");
+
+// * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
+
+        const addIngredientBody = {
+          recipe_id: recipeIdNumber,
+          ingredient_id: addIngredientRef,
         };
 
-        console.info("user ref title", recipeBody.title);
-        console.info("url_photo", recipeBody.url_photo);
-        console.info("duration", recipeBody.duration);
-        console.info("people_number", recipeBody.people_number);
-        console.info("step", recipeBody.step_description);
-        console.info("User id", userIdRef.current);
-        console.info("User id", recipeBody.user_id);
+        console.info(addIngredientBody);
+        // console.info("addingredientRef", addIngredientRef);
 
-        const fetchResponseRecipe = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/recipe`,
+        const fetchResponseIngredient = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/recipe/add_ingredient`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(recipeBody),
+            body: JSON.stringify({ addIngredientBody }),
           }
         );
-        const recipeIdResponse = await fetchResponseRecipe.json();
-        // à la place ajouter la route
+        console.info(fetchResponseIngredient);
 
-        if (recipeIdResponse) {
-          const recipeIdNumber = recipeIdResponse.insertId;
-          console.info("recipe_id", recipeIdNumber);
-          console.info("Fetch2 validé");
-
-          const addIngredientBody = {
-            recipe_id: recipeIdNumber,
-            // ingredient_id: addIngredientRef,
-          };
-          console.info(addIngredientBody);
-          // console.info("addingredientRef", addIngredientRef);
-
-          const fetchResponseIngredient = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/recipe/add_ingredient`,
+        if (fetchResponseIngredient) {
+          const fetchResponseTool = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/tool`,
             {
               method: "POST",
               headers: {
@@ -105,27 +118,12 @@ function RecipeCreationPage() {
               },
               body:
                 // ajouter les ref des inputs a récuperer
-                JSON.stringify({ filename }),
+                JSON.stringify({}),
             }
           );
-          console.info(fetchResponseIngredient);
-
-          if (fetchResponseIngredient) {
-            const fetchResponseTool = await fetch(
-              `${import.meta.env.VITE_API_URL}/api/tool`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body:
-                  // ajouter les ref des inputs a récuperer
-                  JSON.stringify({ filename }),
-              }
-            );
-            console.info(fetchResponseTool);
-          }
+          console.info(fetchResponseTool);
         }
+
         return null;
       }
     } catch (err) {
@@ -165,7 +163,7 @@ function RecipeCreationPage() {
         <CreationIngredients
           recipeIngLoad={IngToolLoader[0]}
           setIngredientArray={setIngredientArray}
-          // addIngredientRef={addIngredientRef}
+         
         />
         <CreationTools recipeToolLoad={IngToolLoader[1]} />
 

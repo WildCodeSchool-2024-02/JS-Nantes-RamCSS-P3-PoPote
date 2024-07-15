@@ -54,6 +54,7 @@ const addIng = async (req, res, next) => {
   const recipeIng = req.body;
 
   try {
+    // ICI on gère le découpage du tableau d'ingredient avec les poids et tout
     const insertId = await tables.recipe.createAddIng(recipeIng);
     res.status(201).json({ insertId });
   } catch (err) {
