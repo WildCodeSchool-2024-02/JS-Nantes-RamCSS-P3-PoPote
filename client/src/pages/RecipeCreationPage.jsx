@@ -1,9 +1,14 @@
+// * Si tout s'est bien passé, on exécute une deuxième requête fetch, pour
+// * pouvoir ajouter le chemin de l'image dans la base de données.
+// * (je choisis arbitrairement le deuxième utilisateur, pour l'exemple).
+
 import { useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import DragAndDrop from "../components/DragAndDrop";
 import CreationIngredients from "../components/CreationIngredients";
 import CreationTools from "../components/CreationTools";
+// import { recipe } from "../../../server/database/tables";
 
 function RecipeCreationPage() {
   const IngToolLoader = useLoaderData();
@@ -12,12 +17,18 @@ function RecipeCreationPage() {
   const [files, setFiles] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
 
-  // Refs
+  const [ingredientArray, setIngredientArray] = useState([]);
+
+  // Refs of recipe
   const titleRef = useRef();
   const durationRef = useRef();
   const nbPeopleRef = useRef();
   const descriptionRef = useRef();
   const userIdRef = useRef(localStorage.getItem("userid"));
+
+  // Refs of add_ingredient
+  const addIngredientRef = useRef(ingredientArray);
+  console.info("ceci est le tableau d'ingredient", addIngredientRef);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,23 +48,29 @@ function RecipeCreationPage() {
 
       const fileResponse = await addFileFetch.json();
       console.info("Fetch1 validé");
-      console.info("user ref user id", userIdRef);
 
       // fetch 2 : récupération des input titre, Nombre de personnes, durée,
 
       if (fileResponse) {
         const { filename } = fileResponse;
-        console.info(filename);
-
-        const body = {
-          title: titleRef,
-          url_photo: `/assets/recipe/${filename}`,
+        console.info("nom du fichier", filename);
+        const recipeBody = {
+          title: titleRef.current.value,
+          url_photo: `/uploads/${filename}`,
           duration: durationRef.current.value,
           people_number: nbPeopleRef.current.value,
           step_description: descriptionRef.current.value,
-          user_id: userIdRef.current.value,
+          user_id: userIdRef.current,
         };
-        console.info("user ref title", titleRef);
+
+        console.info("user ref title", recipeBody.title);
+        console.info("url_photo", recipeBody.url_photo);
+        console.info("duration", recipeBody.duration);
+        console.info("people_number", recipeBody.people_number);
+        console.info("step", recipeBody.step_description);
+        console.info("User id", userIdRef.current);
+        console.info("User id", recipeBody.user_id);
+
         const fetchResponseRecipe = await fetch(
           `${import.meta.env.VITE_API_URL}/api/recipe`,
           {
@@ -61,17 +78,26 @@ function RecipeCreationPage() {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ body }),
+            body: JSON.stringify(recipeBody),
           }
         );
-
-        console.info("Fetch2 validé");
-
+        const recipeIdResponse = await fetchResponseRecipe.json();
         // à la place ajouter la route
 
-        if (fetchResponseRecipe) {
+        if (recipeIdResponse) {
+          const recipeIdNumber = recipeIdResponse.insertId;
+          console.info("recipe_id", recipeIdNumber);
+          console.info("Fetch2 validé");
+
+          const addIngredientBody = {
+            recipe_id: recipeIdNumber,
+            // ingredient_id: addIngredientRef,
+          };
+          console.info(addIngredientBody);
+          // console.info("addingredientRef", addIngredientRef);
+
           const fetchResponseIngredient = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/ingredient`,
+            `${import.meta.env.VITE_API_URL}/api/recipe/add_ingredient`,
             {
               method: "POST",
               headers: {
@@ -102,12 +128,8 @@ function RecipeCreationPage() {
         }
         return null;
       }
-
-      // * Si tout s'est bien passé, on exécute une deuxième requête fetch, pour
-      // * pouvoir ajouter le chemin de l'image dans la base de données.
-      // * (je choisis arbitrairement le deuxième utilisateur, pour l'exemple).
     } catch (err) {
-      return err;
+      return console.error("Error during fetching", err);
     }
     return null;
   };
@@ -140,7 +162,11 @@ function RecipeCreationPage() {
           <div className="recipe-tools" />
         </div>
 
-        <CreationIngredients recipeIngLoad={IngToolLoader[0]} />
+        <CreationIngredients
+          recipeIngLoad={IngToolLoader[0]}
+          setIngredientArray={setIngredientArray}
+          // addIngredientRef={addIngredientRef}
+        />
         <CreationTools recipeToolLoad={IngToolLoader[1]} />
 
         <div className="recipe-description">
@@ -152,6 +178,7 @@ function RecipeCreationPage() {
             cols="33"
             placeholder="Etape 1 :
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam id cumque exercitationem ratione voluptatibus nobis necessitatibus autem at, rerum corrupti in assumenda sunt harum voluptatum! Cupiditate ducimus quasi debitis molestiae?"
+            ref={descriptionRef}
           />
         </div>
         <DragAndDrop

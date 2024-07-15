@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function CreationIngredients({ recipeIngLoad }) {
+function CreationIngredients({ recipeIngLoad,  }) {
   const [ingredients, setIngredients] = useState([]);
   const [currentIngredient, setCurrentIngredient] = useState("");
   const [currentIngredientQuantity, setCurrentIngredientQuantity] =
@@ -22,18 +22,17 @@ function CreationIngredients({ recipeIngLoad }) {
       setCurrentIngredient("");
       setCurrentIngredientUnity("");
       setCurrentIngredientQuantity("");
+      // setIngredientArray(newIngredient);
+      console.info("%c%s", "color: #00a3cc", ingredients);
     }
   };
 
   const handleDeleteRow = (name) => {
-    console.info("ingredientfilterId", name);
-    const newingredient = ingredients.filter(
+    const renewIngredient = ingredients.filter(
       (ingredient) => ingredient.name !== name
     );
-    setIngredients(newingredient);
+    setIngredients(renewIngredient);
   };
-
-  console.info("ceci est ingredients", ingredients);
 
   return (
     <>
