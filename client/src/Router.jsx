@@ -21,13 +21,13 @@ import AboutPage from "./pages/AboutPage";
 
 const recipeLoader = async ({ params }) => {
   const [recipe, ingredientOfRecipe, toolOfRecipe] = await Promise.all([
-    fetch(`http://localhost:3310/api/recipe/${params.id}`).then((res) =>
-      res.json()
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipe/${params.id}`).then((res) =>
+        res.json()
     ),
-    fetch(`http://localhost:3310/api/ingredient/IofR/${params.id}`).then(
+    fetch(`${import.meta.env.VITE_API_URL}/api/ingredient/IofR/${params.id}`).then(
       (res) => res.json()
     ),
-    fetch(`http://localhost:3310/api/tool/TofR/${params.id}`).then((res) =>
+    fetch(`${import.meta.env.VITE_API_URL}/api/tool/TofR/${params.id}`).then((res) =>
       res.json()
     ),
   ]);
@@ -37,8 +37,8 @@ const recipeLoader = async ({ params }) => {
 
 const IngToolLoader = async () => {
   const [recipeIngCreate, recipeToolCreate] = await Promise.all([
-    fetch(`http://localhost:3310/api/ingredient/`).then((res) => res.json()),
-    fetch(`http://localhost:3310/api/tool/`).then((res) => res.json()),
+    fetch(`${import.meta.env.VITE_API_URL}/api/ingredient/`).then((res) => res.json()),
+    fetch(`${import.meta.env.VITE_API_URL}/api/tool/`).then((res) => res.json()),
   ]);
 
   return [recipeIngCreate, recipeToolCreate];
@@ -80,12 +80,12 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <HomePage />,
-        loader: () => fetch(`http://localhost:3310/api/recipe/`),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe`),
       },
       {
         path: "search",
         element: <SearchPage />,
-        loader: () => fetch("http://localhost:3310/api/recipe/"),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe`),
       },
       {
         path: "favorites",
@@ -99,6 +99,7 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <ProfilePage />,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
       },
       {
         path: "set-profile",
