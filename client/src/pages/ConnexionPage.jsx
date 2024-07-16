@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { emailValidation, passwordValidation } from "../services/validation";
@@ -25,18 +26,23 @@ function ConnexionPage() {
       setIsEmail(() => false);
       setIsPassword(() => false);
       setErrorFormNone("error-form-register");
-      setErrorForm(
-        "Identifiant ou mot de passe incorrect"
-      );
+      setErrorForm("Identifiant ou mot de passe incorrect");
     } else {
       const res = await response.json();
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("user", res.user.firstname);
+      const { token, user } = res;
+
+      Cookies.set("token", token, {
+        expires: 1,
+        sameSite: "strict",
+      });
+      Cookies.set("user", JSON.stringify(user), {
+        expires: 1,
+        sameSite: "strict",
+      });
+
       navigate("/popote");
-      console.info("Logged", res);
     }
   };
-
 
   const handleSubmit = async (event) => {
     try {
@@ -53,13 +59,12 @@ function ConnexionPage() {
 
       if (!isEmailValid || !isPasswordValid) {
         setErrorFormNone("error-form-register");
-        setErrorForm("Identifiant ou mot de passe incorrect")
+        setErrorForm("Identifiant ou mot de passe incorrect");
       } else {
-        await handleFetch({ email, password})
+        await handleFetch({ email, password });
       }
     } catch (error) {
       console.error(error.message);
-      
     }
   };
 
@@ -116,7 +121,9 @@ function ConnexionPage() {
               />
             </div>
             <p className={errorFormNone}>{errorForm}</p>
-            <button type="submit" value="Connexion" className="submit-button">Connexion</button>
+            <button type="submit" value="Connexion" className="submit-button">
+              Connexion
+            </button>
           </form>
           <p>
             Tu n’as pas de compte ?{" "}
