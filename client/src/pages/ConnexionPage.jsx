@@ -1,9 +1,12 @@
 import Cookies from "js-cookie";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { emailValidation, passwordValidation } from "../services/validation";
+import { AuthContext } from "../context/AuthContext";
 
 function ConnexionPage() {
+  const { setUser } = useContext(AuthContext);
+
   const [isEmail, setIsEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
   const navigate = useNavigate();
@@ -22,6 +25,8 @@ function ConnexionPage() {
       body: JSON.stringify(data),
     });
 
+    console.warn("C'est quoi ma réponse ? ", response);
+
     if (!response.ok) {
       setIsEmail(() => false);
       setIsPassword(() => false);
@@ -31,11 +36,12 @@ function ConnexionPage() {
       const res = await response.json();
       const { token, user } = res;
 
+      localStorage.setItem("firstname", user.firstname);
+      localStorage.setItem("isAdmin", user.is_admin);
+
+      setUser(user);
+
       Cookies.set("token", token, {
-        expires: 1,
-        sameSite: "strict",
-      });
-      Cookies.set("user", JSON.stringify(user), {
         expires: 1,
         sameSite: "strict",
       });
