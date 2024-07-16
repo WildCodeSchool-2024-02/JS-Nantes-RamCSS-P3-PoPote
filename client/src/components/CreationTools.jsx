@@ -27,30 +27,38 @@ function CreationTools({ recipeToolLoad }) {
     <>
       <div>
         <h2>Ustensile :</h2>
-        <input
-          type="text"
-          list="tool-quantity-list"
-          value={currentToolsQuantity}
-          onChange={(e) => setCurrentToolsQuantity(e.target.value)}
-          placeholder="Quantité de l'ustensile"
-        />
+        <div className="input-ustensile">
+          <input
+            className="input-tool-quantity"
+            type="text"
+            list="tool-quantity-list"
+            value={currentToolsQuantity}
+            onChange={(e) => setCurrentToolsQuantity(e.target.value)}
+            placeholder="Quantité de l'ustensile"
+          />
 
-        <input
-          type="text"
-          value={currentTools}
-          onChange={(e) => setCurrentTools(e.target.value)}
-          list="tool-list"
-          placeholder="Sélectionnez un ustensile"
-        />
+          <input
+            className="input-tool-selection"
+            type="text"
+            value={currentTools}
+            onChange={(e) => setCurrentTools(e.target.value)}
+            list="tool-list"
+            placeholder="Sélectionnez un ustensile"
+          />
 
-        <datalist id="tool-list">
-          {recipeToolLoad.map((el) => (
-            <option key={el.id} value={el.name}>
-              {el.name}
-            </option>
-          ))}
-        </datalist>
-        <button type="button" onClick={handleAddTools}>
+          <datalist id="tool-list">
+            {recipeToolLoad.map((el) => (
+              <option key={el.id} value={el.name}>
+                {el.name}
+              </option>
+            ))}
+          </datalist>
+        </div>
+        <button
+          className="ajouter-bouton"
+          type="button"
+          onClick={handleAddTools}
+        >
           Ajouter
         </button>
       </div>

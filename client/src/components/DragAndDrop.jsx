@@ -12,7 +12,7 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
   };
 
   return (
-    <section>
+    <section className="drop-zone-section">
       <div
         className="drop-zone"
         onDrop={handleDrop}
@@ -30,8 +30,12 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
           hidden
           ref={inputRef}
         />
-        <button type="button" onClick={() => inputRef.current.click()}>
-          Select a file
+        <button
+          className="bouton-ajouter-fichier"
+          type="button"
+          onClick={() => inputRef.current.click()}
+        >
+          choisir un fichier
         </button>
         {files.length > 0 && (
           <section className="uploads">

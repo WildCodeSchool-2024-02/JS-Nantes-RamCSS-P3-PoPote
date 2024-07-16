@@ -115,11 +115,12 @@ function RecipeCreationPage() {
   return (
     <section className="recipe-creation-page">
       <h1>Ajout recette</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form-creation-page" onSubmit={handleSubmit}>
         <div className="recipe-name">
           <h2>Titre</h2>
           <p>Maximum 50 caractères</p>
           <input
+            className="input-title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -130,9 +131,9 @@ function RecipeCreationPage() {
 
         <div className="nb-people-duration">
           <h3>Nombre de personnes</h3>
-          <input type="number" ref={nbPeopleRef} />
+          <input className="input-nb-people" type="number" ref={nbPeopleRef} />
           <h3>Durée</h3>
-          <input type="time" ref={durationRef} />
+          <input className="input-time" type="time" ref={durationRef} />
         </div>
 
         <div className="futur-component">

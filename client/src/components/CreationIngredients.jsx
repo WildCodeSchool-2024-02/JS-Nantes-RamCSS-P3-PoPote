@@ -39,28 +39,32 @@ function CreationIngredients({ recipeIngLoad }) {
     <>
       <div>
         <h2>Ingredients :</h2>
-        <input
-          type="text"
-          list="ingredient-quantity-list"
-          value={currentIngredientQuantity}
-          onChange={(e) => setCurrentIngredientQuantity(e.target.value)}
-          placeholder="Quantité de l'ingrédient"
-        />
-        <input
-          type="text"
-          list="ingredient-unity-list"
-          value={currentIngredientUnity}
-          onChange={(e) => setCurrentIngredientUnity(e.target.value)}
-          placeholder="g, unité, kg"
-        />
-        <input
-          type="text"
-          value={currentIngredient}
-          onChange={(e) => setCurrentIngredient(e.target.value)}
-          list="ingredient-list"
-          placeholder="Sélectionnez un ingrédient"
-        />
-
+        <div className="input-ingredients">
+          <input
+            className="ingredient-quantity"
+            type="text"
+            list="ingredient-quantity-list"
+            value={currentIngredientQuantity}
+            onChange={(e) => setCurrentIngredientQuantity(e.target.value)}
+            placeholder="Quantité de l'ingrédient"
+          />
+          <input
+            className="ingredient-unity"
+            type="text"
+            list="ingredient-unity-list"
+            value={currentIngredientUnity}
+            onChange={(e) => setCurrentIngredientUnity(e.target.value)}
+            placeholder="g, unité, kg"
+          />
+          <input
+            className="ingredient-selection"
+            type="text"
+            value={currentIngredient}
+            onChange={(e) => setCurrentIngredient(e.target.value)}
+            list="ingredient-list"
+            placeholder="Sélectionnez un ingrédient"
+          />
+        </div>
         <datalist id="ingredient-list">
           {recipeIngLoad.map((el) => (
             <option key={el.id} value={el.name}>
@@ -68,7 +72,11 @@ function CreationIngredients({ recipeIngLoad }) {
             </option>
           ))}
         </datalist>
-        <button type="button" onClick={handleAddIngredient}>
+        <button
+          className="ajouter-bouton"
+          type="button"
+          onClick={handleAddIngredient}
+        >
           Ajouter
         </button>
       </div>
