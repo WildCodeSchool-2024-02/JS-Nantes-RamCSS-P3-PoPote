@@ -7,7 +7,7 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import recipe-related actions
-const { browse, read, add, addIng } = require("../../../controllers/recipeActions");
+const { browse, read, add } = require("../../../controllers/recipeActions");
 
 // Route to get a list of recipes
 router.get("/", browse);
@@ -17,7 +17,7 @@ router.get("/:id", read);
 
 // Route to add a new recipe
 router.post("/", add);
-router.post("/add_ingredient", addIng)
+
 
 /* ************************************************************************* */
 

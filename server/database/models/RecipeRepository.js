@@ -27,18 +27,7 @@ class RecipeRepository extends AbstractRepository {
     return result.insertId;
   }
 
-  async createAddIng(recipeIng) {
-    const [result] = await this.database.query(
-      `insert into add_ingredient (recipe_id, ingredient_id, quantity, unit) values (?, ?, ?, ?)`,
-      [
-        recipeIng.recipe_id,
-        recipeIng.ingredient_id,
-        recipeIng.quantity,
-        recipeIng.unit,
-      ]
-    );
-    return result.insertId;
-  }
+  
 
   // The Rs of CRUD - Read operations
 

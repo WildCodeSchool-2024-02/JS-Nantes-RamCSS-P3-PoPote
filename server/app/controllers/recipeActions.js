@@ -49,18 +49,7 @@ const add = async (req, res, next) => {
   }
 };
 
-// Create an row in add_ingredient and link ingredient and recipe
-const addIng = async (req, res, next) => {
-  const recipeIng = req.body;
 
-  try {
-    // ICI on gère le découpage du tableau d'ingredient avec les poids et tout
-    const insertId = await tables.recipe.createAddIng(recipeIng);
-    res.status(201).json({ insertId });
-  } catch (err) {
-    next(err);
-  }
-};
 
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
@@ -71,6 +60,6 @@ module.exports = {
   read,
   // edit,
   add,
-  addIng,
+  
   // destroy,
 };

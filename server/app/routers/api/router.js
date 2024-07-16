@@ -9,7 +9,8 @@ const router = express.Router();
 const recipeRouter = require("./recipe/router");
 
 router.use("/recipe", recipeRouter);
-router.post("/recipe", recipeRouter);
+// router.post("/recipe", recipeRouter); 
+// Verifier l'utilité de la route post
 
 const toolRouter = require("./tool/router");
 
@@ -39,6 +40,10 @@ router.post("/login", credentialsValidation, login);
 const uploadRouter = require("./uploads/router");
 
 router.use("/upload", uploadRouter);
+
+const addIngRouter = require("./addIngredient/router");
+
+router.use("/addIngredient", addIngRouter);
 
 /* ************************************************************************* */
 

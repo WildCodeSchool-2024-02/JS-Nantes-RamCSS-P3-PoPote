@@ -1,7 +1,3 @@
-// * Si tout s'est bien passé, on exécute une deuxième requête fetch, pour
-// * pouvoir ajouter le chemin de l'image dans la base de données.
-// * (je choisis arbitrairement le deuxième utilisateur, pour l'exemple).
-
 import { useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
@@ -25,15 +21,11 @@ function RecipeCreationPage() {
   const descriptionRef = useRef();
   const userIdRef = useRef(localStorage.getItem("userid"));
 
-  // Refs of add_ingredient
-  const addIngredientRef = useRef(ingredientArray);
-  const quantityRef = useRef();
-  const unitRef = useRef();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     //*  ------------ fetch 1 : Post du fichier image dans upload ------------
+
     // passage du fichier image du coté serveur dans le dossier upload
     const data = new FormData();
     data.append("file", files[0]);
@@ -46,12 +38,12 @@ function RecipeCreationPage() {
           body: data,
         }
       );
-
+      // si erreur => message d'erreur
       if (!addFileFetch.ok) {
         const errorText = await addFileFetch.text();
         throw new Error(`Error ${addFileFetch.status}: ${errorText}`);
       }
-
+      // si ok => passage du nom du fichier dans la réponse.
       const fileResponse = await addFileFetch.json();
 
       console.info("Fetch1 validé");
@@ -91,22 +83,34 @@ function RecipeCreationPage() {
         console.info("Fetch2 validé");
 
         // * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
-
         const addIngredientBody = {
-          recipe_id: recipeIdNumber,
-          ingredient_id: addIngredientRef,
-          quantity: quantityRef,
-          unit: unitRef,
+          recipeId: recipeIdNumber,
+          ingredientArray,
         };
-
+        
         const fetchResponseIngredient = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/recipe/add_ingredient`,
+          `${import.meta.env.VITE_API_URL}/api/addIngredient`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ addIngredientBody }),
+            body: JSON.stringify(addIngredientBody),
           }
         );
+
+        if (!fetchResponseIngredient) {
+          const errorText = await fetchResponseIngredient.text();
+          throw new Error(`Error ${fetchResponseIngredient.status}: ${errorText}`);
+        }
+    
+          console.info("Fetch3 validé");
+
+        // * -------------- Fetch 4 : récupération d'un tableau de donnée pour l'input tool -----------------
+
+        // const addToolBody = {
+        //   id:,
+        //   quantity:,
+        //   tool:,
+        // }
 
         if (fetchResponseIngredient) {
           const fetchResponseTool = await fetch(
@@ -116,9 +120,7 @@ function RecipeCreationPage() {
               headers: {
                 "Content-Type": "application/json",
               },
-              body:
-                // ajouter les ref des inputs a récuperer
-                JSON.stringify({}),
+              body: JSON.stringify({}),
             }
           );
           console.info(fetchResponseTool);
@@ -163,8 +165,7 @@ function RecipeCreationPage() {
         <CreationIngredients
           recipeIngLoad={IngToolLoader[0]}
           setIngredientArray={setIngredientArray}
-          quantityRef={quantityRef}
-          unitRef={unitRef}
+
         />
         <CreationTools recipeToolLoad={IngToolLoader[1]} />
 
