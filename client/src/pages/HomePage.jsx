@@ -1,5 +1,5 @@
-import Cookies from "js-cookie";
 import { useLoaderData } from "react-router-dom";
+import { Cookies } from "js-cookie";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
 
 function HomePage() {
