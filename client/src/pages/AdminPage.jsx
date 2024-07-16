@@ -7,7 +7,7 @@ function AdminPage() {
         eveniet ducimus dignissimos possimus odio perferendis veritatis atque
         sit fuga omnis.
       </p>
-   
+   </section>
   );
 }
 
