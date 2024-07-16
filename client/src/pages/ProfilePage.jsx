@@ -6,8 +6,6 @@ function ProfilePage() {
   const lastname = localStorage.getItem("user-lastname");
   const recipeData = useLoaderData();
 
-  console.info('Received recipeData:', recipeData);
-
   return (
     <section className="my-profile">
       <h1>Mon compte</h1>
