@@ -84,6 +84,35 @@ GROUP BY
     return rows;
   }
 
+  async readByUser(userId) {
+    // Execute the SQL SELECT query to retrieve specific Recipes by its userID
+    const [rows] = await this.database.query(
+      `SELECT 
+    r.title, 
+    r.url_photo, 
+    r.user_id, 
+    r.duration, 
+    r.people_number, 
+    r.step_description, 
+    SUM(i.nutritional_value * ai.quantity / 1000) AS nutValue
+FROM 
+    recipe r
+JOIN 
+    add_ingredient ai ON r.id = ai.recipe_id
+JOIN 
+    ingredient i ON i.id = ai.ingredient_id
+WHERE 
+    r.user_id = ?
+GROUP BY 
+    r.id, r.title, r.url_photo, r.user_id, r.duration, r.people_number, r.step_description;
+`,
+      [userId]
+    );
+
+    // Return the array of Recipes
+    return rows;
+  }
+
   // requete qui calcul les valeur nutritionnelle des recettes.
 
   //   async readNutValue() {

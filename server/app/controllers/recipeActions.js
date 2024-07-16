@@ -55,6 +55,26 @@ const add = async (req, res, next) => {
   }
 };
 
+// read recipes specific to user
+const readByUser = async (req, res, next) => {
+  try {
+    // Fetch specific recipes from the database based on the provided userID
+    const userId = await tables.recipe.read(req.params.user_id);
+    const recipes = await tables.recipe.readByUser(userId);
+    
+    // If no recipes are found for the user, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the recipes in JSON format
+    if (recipes.length === 0) {
+      res.sendStatus(404);
+    } else {
+      res.json(recipes);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -62,6 +82,7 @@ const add = async (req, res, next) => {
 module.exports = {
   browse,
   read,
+  readByUser,
   // edit,
   add,
   // destroy,
