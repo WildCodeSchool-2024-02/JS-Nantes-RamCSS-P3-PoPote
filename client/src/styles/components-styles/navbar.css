@@ -65,9 +65,11 @@
       height: auto;
       z-index: 1;
     }
+
     & .nav-link {
       z-index: 2;
     }
+
     & .mobile-link {
       display: flex;
       gap: 0px;
@@ -93,6 +95,7 @@
         width: 18dvw;
       }
     }
+
     & #search-link.active {
       background-color: #97bf0d;
     }
