@@ -110,13 +110,12 @@ const router = createBrowserRouter([
         loader: recipeLoader,
       },
       {
-        element: <ProtectedRoute />,
-        children: [
-          {
-            path: "admin",
-            element: <AdminPage />,
-          },
-        ],
+        path: "admin",
+        element: (
+          <ProtectedRoute>
+            <AdminPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
