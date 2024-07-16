@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
+import ProtectedRoute from "./services/ProtectedRoute";
 
 import App from "./App";
 import WelcomePage from "./pages/WelcomePage";
@@ -111,7 +112,11 @@ const router = createBrowserRouter([
       },
       {
         path: "admin",
-        element: <AdminPage />,
+        element: (
+          <ProtectedRoute>
+            <AdminPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
