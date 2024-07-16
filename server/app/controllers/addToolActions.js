@@ -1,28 +1,27 @@
 const tables = require("../../database/tables");
 
 // Create an row in add_ingredient and link ingredient and recipe
-const addIng = async (req, res, next) => {
-    const { recipeId, ingredientArray } = req.body;
+const addTool = async (req, res, next) => {
+    const { recipeId, toolArray } = req.body;
        
     try {
       // Utilisation de map pour itérer sur ingredientArray et créer des entrées pour chaque ingrédient
-       await ingredientArray.map( (el) => {
-        const ingredientData = {
+       await toolArray.map( (el) => {
+        const toolData = {
           recipe_id: recipeId,
-          ingredient_id: el.id,
+          tool_id: el.id,
           quantity: el.quantity,
-          unit: el.unit,
         };
 
-     return tables.add_ingredient.createAddIng(ingredientData);
+     return tables.add_tool.createAddTool(toolData);
     });
  
-      res.status(201).json({ message: "Ingredients added successfully" });
+      res.status(201).json({ message: "Tools added successfully" });
     } catch (err) {
       next(err);
     }
   };
 
   module.exports = {
-    addIng,
+    addTool,
   };

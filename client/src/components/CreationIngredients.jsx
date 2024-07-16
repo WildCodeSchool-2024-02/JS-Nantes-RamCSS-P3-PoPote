@@ -1,20 +1,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function CreationIngredients({
-  recipeIngLoad,
-  setIngredientArray,
-  quantityRef,
-  unitRef,
-}) {
+function CreationIngredients({ recipeIngLoad, setIngredientArray }) {
   const [ingredients, setIngredients] = useState([]);
   const [currentIngredient, setCurrentIngredient] = useState("");
   const [currentIngredientQuantity, setCurrentIngredientQuantity] =
     useState("");
   const [currentIngredientUnit, setCurrentIngredientUnit] = useState("");
-
-  // const [quantityInput, setQuantityInput] = useState("");
-  // const [unitInput, setUnitInput] = useState("");
 
   const handleAddIngredient = () => {
     if (
@@ -38,11 +30,6 @@ function CreationIngredients({
       setCurrentIngredientQuantity("");
 
       setIngredientArray([...ingredients, newIngredient]);
-
-      console.info("ceci est id de l'ingredient", [
-        ...ingredients,
-        newIngredient,
-      ]);
     }
   };
 
@@ -61,7 +48,6 @@ function CreationIngredients({
           value={currentIngredientQuantity}
           onChange={(e) => setCurrentIngredientQuantity(e.target.value)}
           placeholder="Quantité de l'ingrédient"
-          ref={quantityRef}
         />
         <input
           type="text"
@@ -69,7 +55,6 @@ function CreationIngredients({
           value={currentIngredientUnit}
           onChange={(e) => setCurrentIngredientUnit(e.target.value)}
           placeholder="g, unité, kg"
-          ref={unitRef}
         />
         <input
           type="text"
@@ -107,8 +92,6 @@ function CreationIngredients({
 CreationIngredients.propTypes = {
   recipeIngLoad: PropTypes.string.isRequired,
   setIngredientArray: PropTypes.string.isRequired,
-  quantityRef: PropTypes.string.isRequired,
-  unitRef: PropTypes.string.isRequired,
 };
 
 export default CreationIngredients;

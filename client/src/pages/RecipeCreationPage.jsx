@@ -13,6 +13,7 @@ function RecipeCreationPage() {
   const [imagePreview, setImagePreview] = useState(null);
 
   const [ingredientArray, setIngredientArray] = useState([]);
+  const [toolArray, setToolArray] = useState([]);
 
   // Refs of recipe
   const titleRef = useRef();
@@ -20,6 +21,8 @@ function RecipeCreationPage() {
   const nbPeopleRef = useRef();
   const descriptionRef = useRef();
   const userIdRef = useRef(localStorage.getItem("userid"));
+
+  // ******** Fonction de validation du formulaire ********
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,7 +49,7 @@ function RecipeCreationPage() {
       // si ok => passage du nom du fichier dans la réponse.
       const fileResponse = await addFileFetch.json();
 
-      console.info("Fetch1 validé");
+      
 
       //* ------------ fetch 2 : récupération des input titre, Nombre de personnes, durée ---------
 
@@ -76,18 +79,18 @@ function RecipeCreationPage() {
         const errorText = await recipeIdResponse.text();
         throw new Error(`Error ${recipeIdResponse.status}: ${errorText}`);
       }
-
+      // renvoi l'id de la recette dans la réponse
       if (recipeIdResponse) {
         const recipeIdNumber = recipeIdResponse.insertId;
 
-        console.info("Fetch2 validé");
+       
 
         // * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
         const addIngredientBody = {
           recipeId: recipeIdNumber,
           ingredientArray,
         };
-        
+
         const fetchResponseIngredient = await fetch(
           `${import.meta.env.VITE_API_URL}/api/addIngredient`,
           {
@@ -99,33 +102,36 @@ function RecipeCreationPage() {
 
         if (!fetchResponseIngredient) {
           const errorText = await fetchResponseIngredient.text();
-          throw new Error(`Error ${fetchResponseIngredient.status}: ${errorText}`);
+          throw new Error(
+            `Error ${fetchResponseIngredient.status}: ${errorText}`
+          );
         }
-    
-          console.info("Fetch3 validé");
 
+       
         // * -------------- Fetch 4 : récupération d'un tableau de donnée pour l'input tool -----------------
-
-        // const addToolBody = {
-        //   id:,
-        //   quantity:,
-        //   tool:,
-        // }
+        const addToolBody = {
+          recipeId: recipeIdNumber,
+          toolArray,
+        };
 
         if (fetchResponseIngredient) {
           const fetchResponseTool = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/tool`,
+            `${import.meta.env.VITE_API_URL}/api/addTool`,
             {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({}),
+              body: JSON.stringify(addToolBody),
             }
           );
-          console.info(fetchResponseTool);
+          if (!fetchResponseTool) {
+            const errorText = await fetchResponseTool.text();
+            throw new Error(`Error ${fetchResponseTool.status}: ${errorText}`);
+          }
         }
 
+        // * -----------Echec des fetchs : si les fetchs ont échoué catch err -----------
         return null;
       }
     } catch (err) {
@@ -133,6 +139,8 @@ function RecipeCreationPage() {
     }
     return null;
   };
+
+  // ******** Fin de la validation de formulaire ************
 
   return (
     <section className="recipe-creation-page">
@@ -165,9 +173,11 @@ function RecipeCreationPage() {
         <CreationIngredients
           recipeIngLoad={IngToolLoader[0]}
           setIngredientArray={setIngredientArray}
-
         />
-        <CreationTools recipeToolLoad={IngToolLoader[1]} />
+        <CreationTools
+          recipeToolLoad={IngToolLoader[1]}
+          setToolArray={setToolArray}
+        />
 
         <div className="recipe-description">
           <h3>Décrire les étapes</h3>
