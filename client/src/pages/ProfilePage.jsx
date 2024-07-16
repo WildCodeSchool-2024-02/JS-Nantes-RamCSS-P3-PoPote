@@ -15,7 +15,7 @@ function ProfilePage() {
         <img
           id="profile-picture-img"
           src={`${import.meta.env.VITE_API_URL}/profile/sophie-nancier.jpg`}
-          alt="profil de l'utilisateur"
+          alt="user avatar"
         />
         <p>
           {firstname} {lastname}
