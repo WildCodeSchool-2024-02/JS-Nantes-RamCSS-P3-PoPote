@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Cookies } from "js-cookie";
+import Cookies from 'js-cookie';
 import { emailValidation, passwordValidation } from "../services/validation";
 
 function ConnexionPage() {
