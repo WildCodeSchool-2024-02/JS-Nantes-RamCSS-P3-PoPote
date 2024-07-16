@@ -76,17 +76,6 @@ const login = async (req, res, next) => {
           is_superadmin: user.is_superadmin,
         },
       });
-
-    // else throw new Error("Token not created");
-
-    // COOKIE credentials
-    // const cookie = new Cookies(req, res)
-    //    cookie.set('token', token, {
-    //    httpOnly: true,
-    //    secure: false,
-    //    expires: new Date(Date.now() + 4 * 60 * 60 * 1000),
-    //  })
-    //   res.status(200).send({ user });
   } catch (err) {
     next(err);
   }
