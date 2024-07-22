@@ -18,8 +18,8 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
       >
-        <p>Drag and Drop Area</p>
-        <p>Or</p>
+        <p className="drag-and-drop-txt">Drag and Drop Area</p>
+        {!imagePreview && <p>Ou</p>}
         <input
           type="file"
           onChange={(e) => {
@@ -30,18 +30,34 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
           hidden
           ref={inputRef}
         />
-        <button
-          className="bouton-ajouter-fichier"
-          type="button"
-          onClick={() => inputRef.current.click()}
-        >
-          choisir un fichier
-        </button>
+        {!imagePreview && (
+          <button
+            className="bouton-ajouter-fichier"
+            type="button"
+            onClick={() => inputRef.current.click()}
+          >
+            choisir un fichier
+          </button>
+        )}
         {files.length > 0 && (
           <section className="uploads">
             <ul>
               <li>{files[0].name}</li>
             </ul>
+          </section>
+        )}
+        {imagePreview && (
+          <div className="image-container">
+            <img
+              className="image-preview"
+              src={imagePreview}
+              alt="Preview"
+              style={{
+                maxWidth: "100%",
+                height: "20vh",
+                zIndex: 1,
+              }}
+            />
             <div className="actions">
               <button
                 type="button"
@@ -53,15 +69,7 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
                 Cancel
               </button>
             </div>
-          </section>
-        )}
-        {imagePreview && (
-          <img
-            className="image-preview"
-            src={imagePreview}
-            alt="Preview"
-            style={{ maxWidth: "100%", height: "15vh", marginTop: "10px" }}
-          />
+          </div>
         )}
       </div>
     </section>

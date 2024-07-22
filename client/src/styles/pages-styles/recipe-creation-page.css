@@ -80,6 +80,12 @@
 }
 
 /* ----------------Drag and drop area-------------- */
+.image-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
 .drop-zone-section {
   display: flex;
   justify-content: center;
@@ -90,12 +96,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 360px;
+  /* height: 360px; */
   border: 4px dashed black;
   padding: 1.5rem 2.8rem;
   border-radius: 1rem;
   transition: padding 0.2s;
-  height: 30vh;
+  height: 45vh;
   width: 35vw;
 
   &:hover {
