@@ -47,6 +47,19 @@
   cursor: pointer;
 }
 
+.recipe-card-list {
+  display: flex;
+  justify-content: center;
+  max-width: 90vw;
+  width: 100%;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.recipe-card {
+  max-width: 90vw;
+}
+
 @media screen and (min-width: 992px) {
   .bloc-name {
     max-width: 25%;
@@ -62,5 +75,16 @@
 
   .deconnexion-button {
     max-width: 15%;
+  }
+
+  .recipe-card-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .recipe-card {
+    max-width: calc(90vw / 3); /* 3 cartes par ligne */
+    margin: 1rem;
   }
 }
