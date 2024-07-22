@@ -38,6 +38,7 @@ function ConnexionPage() {
 
       localStorage.setItem("firstname", user.firstname);
       localStorage.setItem("lastname", user.lastname);
+      localStorage.setItem("userId", user.id);
       localStorage.setItem("isAdmin", user.is_admin);
 
       setUser(user);

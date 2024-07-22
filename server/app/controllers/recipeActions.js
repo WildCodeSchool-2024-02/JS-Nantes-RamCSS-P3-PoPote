@@ -59,8 +59,7 @@ const add = async (req, res, next) => {
 const readByUser = async (req, res, next) => {
   try {
     // Fetch specific recipes from the database based on the provided userID
-    const userId = await tables.recipe.read(req.params.user_id);
-    const recipes = await tables.recipe.readByUser(userId);
+    const recipes = await tables.recipe.readByUser(req.params.userId);
     
     // If no recipes are found for the user, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the recipes in JSON format

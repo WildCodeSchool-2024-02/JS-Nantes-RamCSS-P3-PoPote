@@ -16,7 +16,7 @@ router.get("/", browse);
 router.get("/:id", read);
 
 // Route to get user recipes in profile
-router.get("/:userId", readByUser);
+router.get("/user/:userId", readByUser);
 
 // Route to add a new recipe
 router.post("/", add);
