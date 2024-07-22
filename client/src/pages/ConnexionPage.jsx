@@ -1,8 +1,12 @@
+import Cookies from "js-cookie";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { emailValidation, passwordValidation } from "../services/validation";
+import { AuthContext } from "../context/AuthContext";
 
 function ConnexionPage() {
+  const { setUser } = useContext(AuthContext);
+
   const [isEmail, setIsEmail] = useState(true);
   const [isPassword, setIsPassword] = useState(true);
   const navigate = useNavigate();
@@ -21,22 +25,30 @@ function ConnexionPage() {
       body: JSON.stringify(data),
     });
 
+    console.warn("C'est quoi ma réponse ? ", response);
+
     if (!response.ok) {
       setIsEmail(() => false);
       setIsPassword(() => false);
       setErrorFormNone("error-form-register");
-      setErrorForm(
-        "Identifiant ou mot de passe incorrect"
-      );
+      setErrorForm("Identifiant ou mot de passe incorrect");
     } else {
       const res = await response.json();
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("user", res.user.firstname);
+      const { token, user } = res;
+
+      localStorage.setItem("firstname", user.firstname);
+      localStorage.setItem("isAdmin", user.is_admin);
+
+      setUser(user);
+
+      Cookies.set("token", token, {
+        expires: 1,
+        sameSite: "strict",
+      });
+
       navigate("/popote");
-      console.info("Logged", res);
     }
   };
-
 
   const handleSubmit = async (event) => {
     try {
@@ -53,13 +65,12 @@ function ConnexionPage() {
 
       if (!isEmailValid || !isPasswordValid) {
         setErrorFormNone("error-form-register");
-        setErrorForm("Identifiant ou mot de passe incorrect")
+        setErrorForm("Identifiant ou mot de passe incorrect");
       } else {
-        await handleFetch({ email, password})
+        await handleFetch({ email, password });
       }
     } catch (error) {
       console.error(error.message);
-      
     }
   };
 
@@ -116,7 +127,9 @@ function ConnexionPage() {
               />
             </div>
             <p className={errorFormNone}>{errorForm}</p>
-            <button type="submit" value="Connexion" className="submit-button">Connexion</button>
+            <button type="submit" value="Connexion" className="submit-button">
+              Connexion
+            </button>
           </form>
           <p>
             Tu n’as pas de compte ?{" "}

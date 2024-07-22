@@ -29,7 +29,7 @@ const verifyPassword = async (password, hashedPassword) => {
     console.error(err);
     return false;
   }
-}
+};
 
 const login = async (req, res, next) => {
   try {
@@ -40,21 +40,44 @@ const login = async (req, res, next) => {
       return;
     }
 
-    const isPasswordVerified = await verifyPassword(req.body.password, user.password);
+    const isPasswordVerified = await verifyPassword(
+      req.body.password,
+      user.password
+    );
     if (!isPasswordVerified) {
       res.sendStatus(401);
       return;
     }
 
-    const payload = { sub: user.id };
-    const token = jwt.sign(payload, process.env.APP_SECRET, {
-      expiresIn: "24h",
-    });
+    const token = jwt.sign(
+      {
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        is_admin: user.is_admin,
+        is_superadmin: user.is_superadmin,
+      },
+      process.env.APP_SECRET,
+      { expiresIn: "24h" }
+    );
 
     delete user.password;
 
-    if (token) res.status(200).send({ token, user });
-    else throw new Error("Token not created");
+    if (token)
+      res.status(200).send({
+        token,
+        user: {
+          id: user.id,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          is_admin: user.is_admin,
+          is_superadmin: user.is_superadmin,
+        },
+      });
+
+    // else throw new Error("Token not created");
 
     // COOKIE credentials
     // const cookie = new Cookies(req, res)
@@ -89,11 +112,18 @@ const authorize = (req, res, next) => {
       next();
     }
   });
-}
+};
 
+const authorizeAdmin = (req, res, next) => {
+  if (req.user.is_admin === true) {
+    return res.sendStatus(403); // Forbidden
+  }
+  return next();
+};
 
 module.exports = {
   login,
   hashPassword,
-  authorize
-}
+  authorize,
+  authorizeAdmin,
+};

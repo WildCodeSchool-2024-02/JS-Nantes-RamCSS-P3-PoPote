@@ -1,9 +1,10 @@
 import { NavLink, useLocation } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function NavBar() {
   const location = useLocation();
 
-  const token = localStorage.getItem("token");
+  const token = Cookies.get("token");
   let isLogged = "false";
   if (token) {
     isLogged = true;

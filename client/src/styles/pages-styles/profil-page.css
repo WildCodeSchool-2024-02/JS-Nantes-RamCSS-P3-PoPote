@@ -1,0 +1,66 @@
+.my-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 10px;
+  font-family: var(--poppins-font);
+
+  & p {
+    font-size: var(--font-size-h2);
+  }
+}
+
+.bloc-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  border-radius: 16px;
+  padding: 3%;
+  width: 87%;
+  height: 10%;
+  box-shadow: 0px 2px 16px 0px rgba(6, 51, 54, 0.1);
+
+  #profile-picture-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+}
+
+.profile-picto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.deconnexion-button {
+  background-color: var(--orange-bg-color);
+  border: none;
+  border-radius: 16px;
+  width: 35vw;
+  padding: 8px;
+  font-family: var(--poppins-font);
+  color: var(--light-font-color);
+  /* margin: 15px; */
+  cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  .bloc-name {
+    max-width: 25%;
+    max-height: 100px;
+    justify-content: space-between;
+
+    #profile-picture-img {
+      max-width: 100px;
+      max-height: 100px;
+      border-radius: 50%;
+    }
+  }
+
+  .deconnexion-button {
+    max-width: 15%;
+  }
+}
