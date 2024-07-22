@@ -12,17 +12,24 @@ function RecipeCreationPage() {
   const [files, setFiles] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
 
-  // Refs
+  const [ingredientArray, setIngredientArray] = useState([]);
+  const [toolArray, setToolArray] = useState([]);
+
+  // Refs of recipe
   const titleRef = useRef();
   const durationRef = useRef();
   const nbPeopleRef = useRef();
   const descriptionRef = useRef();
   const userIdRef = useRef(localStorage.getItem("userid"));
 
+  // ******** Fonction de validation du formulaire ********
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // fetch 1 : Post du fichier image dans upload;
+    //*  ------------ fetch 1 : Post du fichier image dans upload ------------
+
+    // passage du fichier image du coté serveur dans le dossier upload
     const data = new FormData();
     data.append("file", files[0]);
 
@@ -34,83 +41,106 @@ function RecipeCreationPage() {
           body: data,
         }
       );
-
+      // si erreur => message d'erreur
+      if (!addFileFetch.ok) {
+        const errorText = await addFileFetch.text();
+        throw new Error(`Error ${addFileFetch.status}: ${errorText}`);
+      }
+      // si ok => passage du nom du fichier dans la réponse.
       const fileResponse = await addFileFetch.json();
-      console.info("Fetch1 validé");
-      console.info("user ref user id", userIdRef);
 
-      // fetch 2 : récupération des input titre, Nombre de personnes, durée,
+      
 
-      if (fileResponse) {
-        const { filename } = fileResponse;
-        console.info(filename);
+      //* ------------ fetch 2 : récupération des input titre, Nombre de personnes, durée ---------
 
-        const body = {
-          title: titleRef,
-          url_photo: `/assets/recipe/${filename}`,
-          duration: durationRef.current.value,
-          people_number: nbPeopleRef.current.value,
-          step_description: descriptionRef.current.value,
-          user_id: userIdRef.current.value,
+      // objet contenant les ref des inputs à injecter dans le body
+      const recipeBody = {
+        title: titleRef.current.value,
+        url_photo: `/uploads/${fileResponse.filename}`,
+        duration: durationRef.current.value,
+        people_number: nbPeopleRef.current.value,
+        step_description: descriptionRef.current.value,
+        user_id: userIdRef.current,
+      };
+
+      const fetchResponseRecipe = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/recipe`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(recipeBody),
+        }
+      );
+
+      // conserve l'id de la recette de la réponse
+      const recipeIdResponse = await fetchResponseRecipe.json();
+
+      if (!recipeIdResponse) {
+        const errorText = await recipeIdResponse.text();
+        throw new Error(`Error ${recipeIdResponse.status}: ${errorText}`);
+      }
+      // renvoi l'id de la recette dans la réponse
+      if (recipeIdResponse) {
+        const recipeIdNumber = recipeIdResponse.insertId;
+
+       
+
+        // * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
+        const addIngredientBody = {
+          recipeId: recipeIdNumber,
+          ingredientArray,
         };
-        console.info("user ref title", titleRef);
-        const fetchResponseRecipe = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/recipe`,
+
+        const fetchResponseIngredient = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/addIngredient`,
           {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ body }),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(addIngredientBody),
           }
         );
 
-        console.info("Fetch2 validé");
+        if (!fetchResponseIngredient) {
+          const errorText = await fetchResponseIngredient.text();
+          throw new Error(
+            `Error ${fetchResponseIngredient.status}: ${errorText}`
+          );
+        }
 
-        // à la place ajouter la route
+       
+        // * -------------- Fetch 4 : récupération d'un tableau de donnée pour l'input tool -----------------
+        const addToolBody = {
+          recipeId: recipeIdNumber,
+          toolArray,
+        };
 
-        if (fetchResponseRecipe) {
-          const fetchResponseIngredient = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/ingredient`,
+        if (fetchResponseIngredient) {
+          const fetchResponseTool = await fetch(
+            `${import.meta.env.VITE_API_URL}/api/addTool`,
             {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body:
-                // ajouter les ref des inputs a récuperer
-                JSON.stringify({ filename }),
+              body: JSON.stringify(addToolBody),
             }
           );
-          console.info(fetchResponseIngredient);
-
-          if (fetchResponseIngredient) {
-            const fetchResponseTool = await fetch(
-              `${import.meta.env.VITE_API_URL}/api/tool`,
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body:
-                  // ajouter les ref des inputs a récuperer
-                  JSON.stringify({ filename }),
-              }
-            );
-            console.info(fetchResponseTool);
+          if (!fetchResponseTool) {
+            const errorText = await fetchResponseTool.text();
+            throw new Error(`Error ${fetchResponseTool.status}: ${errorText}`);
           }
         }
+
+        // * -----------Echec des fetchs : si les fetchs ont échoué catch err -----------
         return null;
       }
-
-      // * Si tout s'est bien passé, on exécute une deuxième requête fetch, pour
-      // * pouvoir ajouter le chemin de l'image dans la base de données.
-      // * (je choisis arbitrairement le deuxième utilisateur, pour l'exemple).
     } catch (err) {
-      return err;
+      return console.error("Error during fetching", err);
     }
     return null;
   };
+
+  // ******** Fin de la validation de formulaire ************
 
   return (
     <section className="recipe-creation-page">
@@ -141,8 +171,14 @@ function RecipeCreationPage() {
           <div className="recipe-tools" />
         </div>
 
-        <CreationIngredients recipeIngLoad={IngToolLoader[0]} />
-        <CreationTools recipeToolLoad={IngToolLoader[1]} />
+        <CreationIngredients
+          recipeIngLoad={IngToolLoader[0]}
+          setIngredientArray={setIngredientArray}
+        />
+        <CreationTools
+          recipeToolLoad={IngToolLoader[1]}
+          setToolArray={setToolArray}
+        />
 
         <div className="recipe-description">
           <h3>Décrire les étapes</h3>
@@ -153,6 +189,7 @@ function RecipeCreationPage() {
             cols="33"
             placeholder="Etape 1 :
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam id cumque exercitationem ratione voluptatibus nobis necessitatibus autem at, rerum corrupti in assumenda sunt harum voluptatum! Cupiditate ducimus quasi debitis molestiae?"
+            ref={descriptionRef}
           />
         </div>
         <DragAndDrop

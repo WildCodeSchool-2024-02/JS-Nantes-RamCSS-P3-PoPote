@@ -1,16 +1,17 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import AdminPage from "../pages/AdminPage";
 
 function ProtectedRoute() {
-    const token = Cookies.get("token");
-    const user = JSON.parse(Cookies.get("user"));
+  const token = Cookies.get("token");
+  const isAdminController = localStorage.getItem("isAdmin");
 
-    const hasRequiredRole = user && (user.is_admin === 1 || user.is_superadmin === 1);
+  const hasRequiredRole = isAdminController === "1";
 
-    if (!token || !hasRequiredRole) {
-        return <Navigate to="/connexion" />;
-    }
-    return <Outlet />;
+  if (!token || !hasRequiredRole) {
+    return <Navigate to="/connexion" />;
+  }
+  return <AdminPage />;
 }
 
 export default ProtectedRoute;

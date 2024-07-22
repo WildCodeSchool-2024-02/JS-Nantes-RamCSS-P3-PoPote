@@ -76,12 +76,14 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
 }
 
 DragAndDrop.propTypes = {
-  files: PropTypes.string.isRequired,
+  files: PropTypes.number.isRequired,
   setFiles: PropTypes.string.isRequired,
   imagePreview: PropTypes.string.isRequired,
   setImagePreview: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
+
+
 
 export default DragAndDrop;

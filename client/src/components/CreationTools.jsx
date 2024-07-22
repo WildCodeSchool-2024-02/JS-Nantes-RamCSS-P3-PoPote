@@ -1,20 +1,25 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function CreationTools({ recipeToolLoad }) {
+function CreationTools({ recipeToolLoad, setToolArray }) {
   const [tools, setTools] = useState([]);
   const [currentTools, setCurrentTools] = useState("");
   const [currentToolsQuantity, setCurrentToolsQuantity] = useState("");
 
   const handleAddTools = () => {
     if (currentTools && !tools.some((tool) => tool.name === currentTools)) {
+      const [idTool] = recipeToolLoad.filter((el) => el.name === currentTools);
+  
       const newTools = {
+        id: idTool.id,
         name: currentTools,
         quantity: currentToolsQuantity,
       };
       setTools([...tools, newTools]);
       setCurrentTools("");
       setCurrentToolsQuantity("");
+
+      setToolArray([...tools, newTools]);
     }
   };
 
@@ -78,6 +83,7 @@ function CreationTools({ recipeToolLoad }) {
 
 CreationTools.propTypes = {
   recipeToolLoad: PropTypes.string.isRequired,
+  setToolArray: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default CreationTools;
