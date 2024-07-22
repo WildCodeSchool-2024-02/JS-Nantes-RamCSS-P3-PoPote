@@ -2,9 +2,10 @@ import { useLoaderData } from "react-router-dom";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
 
 function ProfilePage() {
-  const firstname = localStorage.getItem("user-firstname");
-  const lastname = localStorage.getItem("user-lastname");
+  const firstname = localStorage.getItem("firstname");
+  const lastname = localStorage.getItem("lastname");
   const recipeData = useLoaderData();
+  console.warn("recipe", recipeData);
 
   return (
     <section className="my-profile">
@@ -49,6 +50,7 @@ function ProfilePage() {
               photo={el.url_photo}
               duration={el.duration}
               nutValue={el.nutValue}
+              className="recipe-card"
             />
           ))
         ) : (
