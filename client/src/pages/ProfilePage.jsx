@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
 
 function ProfilePage() {
-  const firstname = localStorage.getItem("user-firstname");
-  const lastname = localStorage.getItem("user-lastname");
+  const firstname = localStorage.getItem("firstname");
+  const lastname = localStorage.getItem("lastname");
   const recipeData = useLoaderData();
 
   return (

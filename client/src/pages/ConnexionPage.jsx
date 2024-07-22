@@ -37,6 +37,7 @@ function ConnexionPage() {
       const { token, user } = res;
 
       localStorage.setItem("firstname", user.firstname);
+      localStorage.setItem("lastname", user.lastname);
       localStorage.setItem("isAdmin", user.is_admin);
 
       setUser(user);
