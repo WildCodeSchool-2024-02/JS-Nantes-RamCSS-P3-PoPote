@@ -55,7 +55,6 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
               style={{
                 maxWidth: "100%",
                 height: "20vh",
-                zIndex: 1,
               }}
             />
             <div className="actions">
