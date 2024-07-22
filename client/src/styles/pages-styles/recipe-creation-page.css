@@ -101,7 +101,7 @@
   padding: 1.5rem 2.8rem;
   border-radius: 1rem;
   transition: padding 0.2s;
-  height: 45vh;
+  height: 35vh;
   width: 70vw;
 
   &:hover {
