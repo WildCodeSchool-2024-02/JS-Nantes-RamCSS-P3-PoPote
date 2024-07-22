@@ -1,39 +1,42 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function CreationIngredients({ recipeIngLoad }) {
+function CreationIngredients({ recipeIngLoad, setIngredientArray }) {
   const [ingredients, setIngredients] = useState([]);
   const [currentIngredient, setCurrentIngredient] = useState("");
   const [currentIngredientQuantity, setCurrentIngredientQuantity] =
     useState("");
-  const [currentIngredientUnity, setCurrentIngredientUnity] = useState("");
+  const [currentIngredientUnit, setCurrentIngredientUnit] = useState("");
 
   const handleAddIngredient = () => {
     if (
       currentIngredient &&
       !ingredients.some((ing) => ing.name === currentIngredient)
     ) {
+      const [idIngredient] = recipeIngLoad.filter(
+        (el) => el.name === currentIngredient
+      );
+
       const newIngredient = {
+        id: idIngredient.id,
         name: currentIngredient,
-        unity: currentIngredientUnity,
+        unit: currentIngredientUnit,
         quantity: currentIngredientQuantity,
       };
+
       setIngredients([...ingredients, newIngredient]);
       setCurrentIngredient("");
-      setCurrentIngredientUnity("");
+      setCurrentIngredientUnit("");
       setCurrentIngredientQuantity("");
+
+      setIngredientArray([...ingredients, newIngredient]);
     }
   };
 
   const handleDeleteRow = (name) => {
-    console.info("ingredientfilterId", name);
-    const newingredient = ingredients.filter(
-      (ingredient) => ingredient.name !== name
-    );
-    setIngredients(newingredient);
+    const renewIngredient = ingredients.filter((el) => el.name !== name);
+    setIngredients(renewIngredient);
   };
-
-  console.info("ceci est ingredients", ingredients);
 
   return (
     <>
@@ -48,9 +51,9 @@ function CreationIngredients({ recipeIngLoad }) {
         />
         <input
           type="text"
-          list="ingredient-unity-list"
-          value={currentIngredientUnity}
-          onChange={(e) => setCurrentIngredientUnity(e.target.value)}
+          list="ingredient-unit-list"
+          value={currentIngredientUnit}
+          onChange={(e) => setCurrentIngredientUnit(e.target.value)}
           placeholder="g, unité, kg"
         />
         <input
@@ -73,13 +76,10 @@ function CreationIngredients({ recipeIngLoad }) {
         </button>
       </div>
       <ul>
-        {ingredients.map((ingredient) => (
-          <li key={ingredient.id}>
-            {ingredient.quantity} {ingredient.unity} {ingredient.name}
-            <button
-              type="button"
-              onClick={() => handleDeleteRow(ingredient.name)}
-            >
+        {ingredients.map((el) => (
+          <li key={el.id}>
+            {el.quantity} {el.unit} {el.name}
+            <button type="button" onClick={() => handleDeleteRow(el.name)}>
               X
             </button>
           </li>
@@ -91,6 +91,7 @@ function CreationIngredients({ recipeIngLoad }) {
 
 CreationIngredients.propTypes = {
   recipeIngLoad: PropTypes.string.isRequired,
+  setIngredientArray: PropTypes.string.isRequired,
 };
 
 export default CreationIngredients;
