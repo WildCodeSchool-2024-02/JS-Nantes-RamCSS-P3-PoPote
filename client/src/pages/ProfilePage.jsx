@@ -19,16 +19,20 @@ function ProfilePage() {
           {firstname} {lastname}
         </p>
         <div className="profile-picto">
+          {/* <button> */}
           <img
             id="dots-img"
             src={`${import.meta.env.VITE_API_URL}/profile/dots.svg`}
             alt="dots to go to parameters"
           />
+          {/* </button> */}
+          {/* <button> */}
           <img
             id="pen-modification-img"
             src={`${import.meta.env.VITE_API_URL}/profile/pen-modification.png`}
             alt="pen to modify profile"
           />
+          {/* </button> */}
         </div>
       </div>
       <button type="submit" className="deconnexion-button">
