@@ -1,0 +1,26 @@
+.search-result {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resultats {
+  text-align: center;
+  margin: 2%;
+}
+
+/* desktop version */
+@media screen and (min-width: 480px) {
+  .admin-section {
+    border-radius: 16px;
+    background-color: var(--beige-bg-color);
+    margin: 5%;
+    padding: 3%;
+
+    & .search-result {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3vw;
+      justify-content: center;
+    }
+  }
+}
