@@ -71,7 +71,7 @@ const readByUser = async (req, res, next) => {
 // The D of BREAD - Destroy (Delete) operation
 const destroy = async (req, res) => {
   try  {
-    const {id} = req.body;
+     const {id} = req.params;
 const deleteRecipe = await tables.recipe.delete(id);
 
     if(deleteRecipe === 1 ){ res.sendStatus(200);

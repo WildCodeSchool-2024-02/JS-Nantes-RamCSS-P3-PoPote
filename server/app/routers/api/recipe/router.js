@@ -22,7 +22,7 @@ router.get("/user/:userId", readByUser);
 router.post("/", add);
 
 // Route to delete a specific recipe by ID
-router.delete("/id", destroy)
+router.delete("/:id", destroy)
 
 /* ************************************************************************* */
 
