@@ -34,7 +34,25 @@ const read = async (req, res, next) => {
 };
 
 // The E of BREAD - Edit (Update) operation
-// This operation is not yet implemented
+const edit = async (req, res) => {
+  try {
+    const body = {
+      id : req.params.id,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname
+    }
+
+    const updateUser = await tables.user.update(body);
+
+    if (updateUser === 1){
+      res.sendStatus(204);
+    } else {
+      res.status(404).send("La mise à jour de l'utilisateur est impossible");
+    }
+  } catch (err){
+    console.error(err)
+  }
+}
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
@@ -60,7 +78,7 @@ const add = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  // edit,
+  edit,
   add,
   // destroy,
 };
