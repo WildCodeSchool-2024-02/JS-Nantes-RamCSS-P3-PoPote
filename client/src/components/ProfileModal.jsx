@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function ProfileModal({ closeModal, id }) {
+  const { updateUser } = useContext(AuthContext);
+
   const [firstname, setFirstname] = useState(
     localStorage.getItem("firstname") || ""
   );
@@ -32,8 +35,9 @@ function ProfileModal({ closeModal, id }) {
       throw new Error("Erreur lors de la modification du profil");
     }
     // Save the new profile information
-    localStorage.setItem("firstname", firstname);
-    localStorage.setItem("lastname", lastname);
+    // localStorage.setItem("firstname", firstname);
+    // localStorage.setItem("lastname", lastname);
+    updateUser({firstname, lastname});
 
     // Close the modal after savings
     closeModal();

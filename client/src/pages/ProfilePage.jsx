@@ -1,13 +1,15 @@
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
 import ProfileModal from "../components/ProfileModal";
+import { AuthContext } from "../context/AuthContext";
 
 function ProfilePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const {user} = useContext(AuthContext);
 
-  const firstname = localStorage.getItem("firstname");
-  const lastname = localStorage.getItem("lastname");
+  // const firstname = localStorage.getItem("firstname");
+  // const lastname = localStorage.getItem("lastname");
   const id = localStorage.getItem("userId");
   const recipeData = useLoaderData();
 
@@ -29,7 +31,7 @@ function ProfilePage() {
           alt="user avatar"
         />
         <p>
-          {firstname} {lastname}
+          {user?.firstname} {user?.lastname}
         </p>
         <div className="profile-picto">
           <button type="button">
