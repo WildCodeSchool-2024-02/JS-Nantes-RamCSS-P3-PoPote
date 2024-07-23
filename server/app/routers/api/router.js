@@ -26,13 +26,27 @@ const categoryRouter = require("./category/router");
 
 router.use("/category", categoryRouter);
 
+const uploadRouter = require("./uploads/router");
+
+router.use("/upload", uploadRouter);
+
+const addIngRouter = require("./addIngredient/router");
+
+router.use("/addIngredient", addIngRouter);
+
+const addToolRouter = require("./addTool/router");
+
+router.use("/addTool", addToolRouter);
+
 const userRouter = require("./user/router");
 const { login, authorizeAdmin } = require("../../controllers/authActions");
-const { credentialsValidation } = require("../../services/credentialValidation");
+const {
+  credentialsValidation,
+} = require("../../services/credentialValidation");
 
 router.use("/user", userRouter);
-router.post("/login", credentialsValidation, login)
-router.use("/popote/admin", authorizeAdmin)
+router.post("/login", credentialsValidation, login);
+router.use("/popote/admin", authorizeAdmin);
 
 /* ************************************************************************* */
 

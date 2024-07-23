@@ -15,7 +15,6 @@ const browse = async (req, res, next) => {
   }
 };
 
-
 // The R of BREAD - Read operation
 const read = async (req, res, next) => {
   try {
@@ -40,15 +39,29 @@ const read = async (req, res, next) => {
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
-  // Extract the item data from the request body
   const recipe = req.body;
 
   try {
-    // Insert the item into the database
     const insertId = await tables.recipe.create(recipe);
-
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+// read recipes specific to user
+const readByUser = async (req, res, next) => {
+  try {
+    // Fetch specific recipes from the database based on the provided userID
+    const recipes = await tables.recipe.readByUser(req.params.userId);
+    
+    // If no recipes are found for the user, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the recipes in JSON format
+    if (recipes.length === 0) {
+      res.sendStatus(404);
+    } else {
+      res.json(recipes);
+    }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -56,7 +69,6 @@ const add = async (req, res, next) => {
 };
 
 // The D of BREAD - Destroy (Delete) operation
-// This operation is not yet implemented
 const destroy = async (req, res) => {
   try  {
     const {id} = req.body;
@@ -72,13 +84,12 @@ const deleteRecipe = await tables.recipe.delete(id);
     }
   };
 
-
-
 // Ready to export the controller functions
 module.exports = {
   browse,
   read,
+  readByUser,
   // edit,
   add,
- destroy,
+  destroy,
 };

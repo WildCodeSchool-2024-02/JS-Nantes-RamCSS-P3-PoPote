@@ -15,7 +15,7 @@ function NavBar() {
   return (
     <nav className="navbar">
       <img
-        src={`${import.meta.env.VITE_API_URL}/navbar_bg.svg`}
+        src={`${import.meta.env.VITE_API_URL}/logo_navigation/navbar_bg.svg`}
         className="mobile-link nav-bg"
         alt=""
       />
@@ -99,8 +99,8 @@ function NavBar() {
           className="mobile-link"
           src={
             location.pathname === "/popote/profile"
-              ? `${import.meta.env.VITE_API_URL}/profile_green_icone.svg`
-              : `${import.meta.env.VITE_API_URL}/profile_icone.svg`
+              ? `${import.meta.env.VITE_API_URL}/logo_navigation/profile_green_icone.svg`
+              : `${import.meta.env.VITE_API_URL}/logo_navigation/profile_icone.svg`
           }
           alt="icone de personnage pour la page profile"
         />

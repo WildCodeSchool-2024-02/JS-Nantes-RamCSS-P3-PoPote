@@ -2,20 +2,172 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2vh;
+  background-color: var(--beige-bg-color);
+  margin: 5%;
+  border-radius: 20px;
+  font-family: var(--poppins-font);
+  margin-bottom: 17vh;
 }
 
-.recipe-description {
+.form-creation-page {
+  text-align: center;
+}
+
+.input-title {
+  border-radius: 10px;
+  border: solid lightgray 1px;
+  width: 25vw;
+  height: 4vh;
+}
+
+.input-nb-people {
+  border-radius: 10px;
+  border: solid lightgray 1px;
+  height: 4vh;
+}
+
+.input-time {
+  border-radius: 10px;
+  border: solid lightgray 1px;
+}
+/* ----------------Ajout ingredients-------------- */
+.input-ingredients {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ingredient-quantity,
+.ingredient-unity,
+.ingredient-selection {
+  border-radius: 10px;
+  border: solid lightgray 1px;
+  height: 4vh;
+  width: 20vw;
+  text-align: center;
+  margin: 1%;
+  padding: 1%;
+}
+
+.ajouter-bouton {
+  margin-top: 1vh;
+  background-color: var(--orange-bg-color);
+  padding: 1%;
+  border-radius: 10px;
+  border: solid lightgray 1px;
+}
+
+/* ----------------Ajout ustensile-------------- */
+.input-tool-quantity,
+.input-tool-selection {
+  border-radius: 10px;
+  border: solid lightgray 1px;
+  height: 4vh;
+  width: 20vw;
+  text-align: center;
+  padding: 1%;
+}
+.input-tool-quantity {
+  margin-right: 5vw;
+}
+
+/* ----------------step description-------------- */
+#recipe-description {
+  height: 40vh;
+  width: 60vw;
   border-radius: 5px;
+  border: solid lightgray 1px;
+  padding: 3%;
+  font-family: var(--poppins-font);
+}
+
+/* ----------------Drag and drop area-------------- */
+.image-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.drop-zone-section {
+  display: flex;
+  justify-content: center;
+}
+.drop-zone {
+  background-color: var(--ligthgray-bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 4px dashed black;
+  padding: 1.5rem 2.8rem;
+  border-radius: 1rem;
+  transition: padding 0.2s;
+  height: 35vh;
+  width: 70vw;
+
+  &:hover {
+    padding: 1.7rem 2.5rem;
+    cursor: grab;
+  }
+
+  p:first-of-type {
+    font-size: 1.2rem;
+  }
+}
+
+.bouton-ajouter-fichier {
+  background-color: var(--green-bg-color);
+  border: none;
+  border-radius: 10px;
+  padding: 1%;
+  font-family: var(--poppins-font);
+  color: var(--light-font-color);
+}
+.uploads {
+  & ul {
+    list-style-type: none;
+    padding: 0;
+
+    & li {
+      padding: 12px 0;
+      border-radius: 0.5rem;
+      margin: 12px 0;
+    }
+  }
+
+  & .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+    & button:first-of-type {
+      color: rgb(255, 40, 40);
+    }
+  }
 }
 
 .submit-recipe-creation-button {
   background-color: var(--green-bg-color);
   border: none;
   border-radius: 16px;
-  width: 70vw;
+  width: 40vw;
   padding: 16px;
-  font-family: var(--poppins-font);
+
   color: var(--light-font-color);
   margin: 15px;
+}
+
+@media screen and (min-width: 480px) {
+  .drop-zone {
+    background-color: var(--ligthgray-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 4px dashed black;
+    padding: 1.5rem 2.8rem;
+    border-radius: 1rem;
+    transition: padding 0.2s;
+    height: 35vh;
+    width: 35vw;
+  }
 }
