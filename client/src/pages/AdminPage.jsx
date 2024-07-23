@@ -14,7 +14,6 @@ function AdminPage() {
 
     // vérifie
     if (selectedRecipeId === "null" || !selectedRecipeId) {
-      alert("Sélectionnez une recette à supprimer");
       return;
     }
 
@@ -24,14 +23,18 @@ function AdminPage() {
     })
       .then((response) => {
         if (response.ok) {
-          console.info("La recette a bien été supprimée de la base de données");
+          response.sendStatus(202);
+          response.send(
+            "La recette a bien été supprimée de la base de données"
+          );
         } else {
-          console.info("Erreur, la recette n'a pas été supprimée");
+          response.sendStatus(417);
+          response.send("Erreur, la recette n'a pas été supprimée");
         }
       })
 
       .catch((error) => {
-        console.error("Error deleting recipe:", error);
+        error.sendStatus(417).send("Error deleting recipe:", error);
         // Une erreur s'est produite lors de la suppression de la recette
       });
   }
