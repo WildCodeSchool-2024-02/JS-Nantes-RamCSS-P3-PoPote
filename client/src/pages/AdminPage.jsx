@@ -1,20 +1,24 @@
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminPage() {
   const BrowseRecipes = useLoaderData();
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
 
+  // Surveille quels recette est selectionnée dans le select
   const handleSelectChange = (event) => {
     setSelectedRecipeId(event.target.value);
   };
 
+  // function pour supprimer une recette
   async function deleteSubmit(event) {
     event.preventDefault();
 
-    // vérifie
+    // vérifie si une recette a bien était sélectionnée
     if (selectedRecipeId === "null" || !selectedRecipeId) {
-      return;
+      toast.warn("Vous devez sélectionner une recette");
     }
 
     // Effectue la requête fetch pour supprimer la recette
@@ -23,19 +27,19 @@ function AdminPage() {
     })
       .then((response) => {
         if (response.ok) {
-          response.sendStatus(202);
-          response.send(
+          toast.success(
             "La recette a bien été supprimée de la base de données"
           );
         } else {
-          response.sendStatus(417);
-          response.send("Erreur, la recette n'a pas été supprimée");
+          toast.error("Erreur, la recette n'a pas été supprimée");
         }
       })
 
       .catch((error) => {
+        toast.warn(
+          "Une erreur s'est produite lors de la suppression de la recette"
+        );
         error.sendStatus(417).send("Error deleting recipe:", error);
-        // Une erreur s'est produite lors de la suppression de la recette
       });
   }
 
@@ -53,6 +57,7 @@ function AdminPage() {
         </select>
         <input type="submit" value="Supprimer la recette" />
       </form>
+      <ToastContainer />
     </section>
   );
 }
