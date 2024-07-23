@@ -23,12 +23,13 @@ function ProfileModal({ closeModal }) {
 
   return (
     <section className="modal">
-      <div className="modal-content">
-        <button type="button" onClick={closeModal}>
+        <button type="button" onClick={closeModal} className="close-button">
           &times;
         </button>
+      <div className="modal-content">
         <h2>Modifier le profil</h2>
         <form>
+        <div className="edit-input">
           <img
             src={`${import.meta.env.VITE_API_URL}/logo_form/icon-person.svg`}
             alt="icon person"
@@ -43,6 +44,8 @@ function ProfileModal({ closeModal }) {
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
           />
+          </div>
+          <div className="edit-input">
           <img
             src={`${import.meta.env.VITE_API_URL}/logo_form/icon-person.svg`}
             alt="icon person"
@@ -57,6 +60,7 @@ function ProfileModal({ closeModal }) {
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
           />
+          </div>
           {/* <label>
             Photo URL:
             <input
@@ -65,8 +69,8 @@ function ProfileModal({ closeModal }) {
               onChange={(e) => setPhoto(e.target.value)}
             />
           </label> */}
-          <button type="button" onClick={handleSave}>
-            Sauvegarder
+          <button type="button" onClick={handleSave} className="submit-button">
+            Valider
           </button>
         </form>
       </div>
