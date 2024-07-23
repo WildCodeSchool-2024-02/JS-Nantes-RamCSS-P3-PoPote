@@ -8,7 +8,7 @@ function ProfilePage() {
 
   const firstname = localStorage.getItem("firstname");
   const lastname = localStorage.getItem("lastname");
-  const id = localStorage.getItem("userId")
+  const id = localStorage.getItem("userId");
   const recipeData = useLoaderData();
 
   function openModal() {
@@ -17,7 +17,7 @@ function ProfilePage() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  }
+  };
 
   return (
     <section className="my-profile">
@@ -49,7 +49,7 @@ function ProfilePage() {
         </div>
       </div>
       {isModalOpen ? (
-        <ProfileModal closeModal={closeModal} id={id}/>
+        <ProfileModal closeModal={closeModal} id={id} />
       ) : (
         <>
           <button type="submit" className="deconnexion-button">
