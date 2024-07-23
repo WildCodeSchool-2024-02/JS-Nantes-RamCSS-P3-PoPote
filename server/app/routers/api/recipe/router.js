@@ -7,7 +7,7 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import recipe-related actions
-const { browse, read, readByUser, add } = require("../../../controllers/recipeActions");
+const { browse, read, readByUser, add, destroy } = require("../../../controllers/recipeActions");
 
 // Route to get a list of recipes
 router.get("/", browse);
@@ -21,6 +21,8 @@ router.get("/user/:userId", readByUser);
 // Route to add a new recipe
 router.post("/", add);
 
+// Route to delete a specific recipe by ID
+router.delete("/:id", destroy)
 
 /* ************************************************************************* */
 
