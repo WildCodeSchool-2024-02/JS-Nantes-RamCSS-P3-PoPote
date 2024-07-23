@@ -6,12 +6,10 @@ function ProfileModal({ closeModal, id }) {
   const { updateUser } = useContext(AuthContext);
 
   const [firstname, setFirstname] = useState(
-    localStorage.getItem("firstname") || ""
-  );
+    localStorage.getItem("firstname"));
 
   const [lastname, setLastname] = useState(
-    localStorage.getItem("lastname") || ""
-  );
+    localStorage.getItem("lastname"));
 
   async function handleSave() {
     const data = {
@@ -35,8 +33,6 @@ function ProfileModal({ closeModal, id }) {
       throw new Error("Erreur lors de la modification du profil");
     }
     // Save the new profile information
-    // localStorage.setItem("firstname", firstname);
-    // localStorage.setItem("lastname", lastname);
     updateUser({firstname, lastname});
 
     // Close the modal after savings

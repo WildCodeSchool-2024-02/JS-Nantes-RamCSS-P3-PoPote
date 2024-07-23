@@ -8,8 +8,6 @@ function ProfilePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {user} = useContext(AuthContext);
 
-  // const firstname = localStorage.getItem("firstname");
-  // const lastname = localStorage.getItem("lastname");
   const id = localStorage.getItem("userId");
   const recipeData = useLoaderData();
 
