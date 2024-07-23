@@ -1,0 +1,29 @@
+.error-page-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/background/error_background.webp");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: bottom -20em right 0px;
+
+  & .error-page-description {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 40dvw;
+    height: 80dvh;
+    text-align: center;
+    justify-content: space-around;
+  }
+
+  & .error-page-description > h1 {
+    font-size: 6em;
+  }
+
+  & .error-page-description > h2 {
+    font-size: 2rem;
+  }
+}

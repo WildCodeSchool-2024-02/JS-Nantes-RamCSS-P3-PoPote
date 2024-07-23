@@ -9,7 +9,7 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
   const handleAddTools = () => {
     if (currentTools && !tools.some((tool) => tool.name === currentTools)) {
       const [idTool] = recipeToolLoad.filter((el) => el.name === currentTools);
-  
+
       const newTools = {
         id: idTool.id,
         name: currentTools,

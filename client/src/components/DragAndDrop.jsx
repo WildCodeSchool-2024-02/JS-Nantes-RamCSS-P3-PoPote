@@ -84,6 +84,4 @@ DragAndDrop.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-
-
 export default DragAndDrop;
