@@ -58,8 +58,7 @@ const profileLoader = async () => {
       // Si la réponse n'est pas ok, retournez un tableau vide
       return [];
     }
-    const data = await response.json();
-    return data;
+    return response.json();
   } catch (error) {
     // En cas d'erreur, retournez un tableau vide
     return [];

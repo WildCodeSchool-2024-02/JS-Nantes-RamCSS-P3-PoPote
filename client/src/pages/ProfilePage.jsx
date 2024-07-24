@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import { useLoaderData } from "react-router-dom";
 import { useContext, useState } from "react";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
@@ -9,6 +11,7 @@ function ProfilePage() {
   const {user} = useContext(AuthContext);
 
   const id = localStorage.getItem("userId");
+  const url_photo = localStorage.getItem("url_photo");
   const recipeData = useLoaderData();
 
   function openModal() {
@@ -23,11 +26,15 @@ function ProfilePage() {
     <section className="my-profile">
       <h1>Mon compte</h1>
       <div className="bloc-name">
-        <img
+        {url_photo ? (<img
           id="profile-picture-img"
           src={`${import.meta.env.VITE_API_URL}/profile/sophie-nancier.jpg`}
           alt="user avatar"
-        />
+        />) : (<img
+          id="profile-picture-img"
+          src={`${import.meta.env.VITE_API_URL}/profile/avatar.png`}
+          alt="user avatar"
+        />)}
         <p>
           {user?.firstname} {user?.lastname}
         </p>
