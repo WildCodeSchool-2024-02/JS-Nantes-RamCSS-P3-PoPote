@@ -1,1 +1,21 @@
-/* vide */
+.favorite-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+
+  & .favorite-page-description {
+    background-color: var(--beige-bg-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+
+    & .favorite-page-img {
+      width: 70%;
+    }
+  }
+}
