@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 import DragAndDrop from "../components/DragAndDrop";
 import CreationIngredients from "../components/CreationIngredients";
 import CreationTools from "../components/CreationTools";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function RecipeCreationPage() {
   const IngToolLoader = useLoaderData();
@@ -85,6 +87,7 @@ function RecipeCreationPage() {
       );
       // si erreur => message d'erreur
       if (!addFileFetch.ok) {
+        toast.error("Tous les champs obligatoires* ne sont pas remplis");
         const errorText = await addFileFetch.text();
         throw new Error(`Error ${addFileFetch.status}: ${errorText}`);
       }
@@ -206,7 +209,7 @@ function RecipeCreationPage() {
             ref={nbPeopleRef}
             min="0"
           />
-          <h3>Durée</h3>
+          <h3>Durée*</h3>
           <input className="input-time" type="time" ref={durationRef} />
         </div>
 
@@ -228,7 +231,7 @@ function RecipeCreationPage() {
         />
 
         <div className="recipe-description">
-          <h3>Décrire les étapes</h3>
+          <h3>Décrire les étapes*</h3>
           <textarea
             id="recipe-description"
             name="description"
@@ -254,6 +257,7 @@ function RecipeCreationPage() {
           Valider
         </button>
       </form>
+      <ToastContainer position="bottom-right" />
       <p>* Champs de saisie obligatoire</p>
     </section>
   );

@@ -48,7 +48,7 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
             list="tool-quantity-list"
             value={currentToolsQuantity}
             onChange={(e) => setCurrentToolsQuantity(e.target.value)}
-            placeholder="Quantité de l'ustensile"
+            placeholder="Quantité de l'ustensile *"
             min="0"
           />
 
@@ -58,7 +58,7 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
             value={currentTools}
             onChange={(e) => setCurrentTools(e.target.value)}
             list="tool-list"
-            placeholder="Sélectionnez un ustensile"
+            placeholder="Sélectionnez un ustensile *"
           />
 
           <datalist id="tool-list">
