@@ -7,7 +7,7 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import user-related actions
-const { browse, read, add } = require("../../../controllers/userActions");
+const { browse, read, edit, add } = require("../../../controllers/userActions");
 const { credentialsValidation } = require("../../../services/credentialValidation");
 const { hashPassword, authorize } = require("../../../controllers/authActions");
 
@@ -19,6 +19,9 @@ router.get("/:id", read);
 
 // Route to add a new user
 router.post("/", credentialsValidation, hashPassword, add);
+
+// Route to edit a user
+router.put("/:id", edit);
 
 /* ************************************************************************* */
 

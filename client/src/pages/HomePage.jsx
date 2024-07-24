@@ -6,7 +6,6 @@ import MaxiRecipeCard from "../components/MaxiRecipeCard";
 
 function HomePage() {
   const recipeData = useLoaderData();
-  // const { user } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
 
   // const user = JSON.parse(Cookies.get("user"));

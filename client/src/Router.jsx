@@ -48,6 +48,25 @@ const IngToolLoader = async () => {
   return [recipeIngCreate, recipeToolCreate];
 };
 
+const profileLoader = async () => {
+  const userId = localStorage.getItem("userId");
+  try {
+    const [recipes, user] = await Promise.all([
+      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`).then((res) => {
+        if (!res.ok) {
+          return [];
+        }
+        return res.json();
+      }),
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/${userId}`).then((res) => res.json()),
+    ]);
+
+    return {recipes, user};
+  } catch (error) {
+    return { recipes:[], user: null};
+  }
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -103,7 +122,7 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <ProfilePage />,
-        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
+        loader: profileLoader,
       },
       {
         path: "set-profile",
@@ -119,8 +138,9 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AdminPage />
-          </ProtectedRoute>
-        ),
+          </ProtectedRoute>),
+           loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
+        
       },
     ],
   },
