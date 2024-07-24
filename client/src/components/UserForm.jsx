@@ -1,7 +1,3 @@
-// sera utilisé dans :
-// - la page d'inscription
-// - la page de modification de profil
-
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 

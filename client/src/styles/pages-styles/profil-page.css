@@ -33,6 +33,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  & button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inheriFt;
+    cursor: pointer;
+    outline: inherit;
+  }
 }
 
 .deconnexion-button {
@@ -45,6 +55,19 @@
   color: var(--light-font-color);
   /* margin: 15px; */
   cursor: pointer;
+}
+
+.recipe-card-list {
+  display: flex;
+  justify-content: center;
+  max-width: 90vw;
+  width: 100%;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.recipe-card {
+  max-width: 90vw;
 }
 
 @media screen and (min-width: 992px) {
@@ -62,5 +85,16 @@
 
   .deconnexion-button {
     max-width: 15%;
+  }
+
+  .recipe-card-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .recipe-card {
+    max-width: calc(90vw / 3); /* 3 cartes par ligne */
+    margin: 1rem;
   }
 }
