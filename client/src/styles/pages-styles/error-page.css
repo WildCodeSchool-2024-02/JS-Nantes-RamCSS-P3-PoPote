@@ -6,7 +6,7 @@
   background-image: url("../../assets/background/error_background.webp");
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-position: bottom -20em right 0px;
+  background-position: bottom -20em right 0em;
 
   & .error-page-description {
     background-color: beige;
