@@ -17,6 +17,7 @@ function AuthProvider({ children }) {
       }
   }, []);
 
+
   const updateUser = (newUser) => {
     setUser(newUser);
     localStorage.setItem("firstname", newUser.firstname);
@@ -29,7 +30,6 @@ function AuthProvider({ children }) {
     updateUser
   }), [user])
  
-
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

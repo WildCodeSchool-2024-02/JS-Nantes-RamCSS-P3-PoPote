@@ -1,4 +1,6 @@
-import { useLoaderData } from "react-router-dom";
+/* eslint-disable camelcase */
+
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
 import ProfileModal from "../components/ProfileModal";
@@ -6,10 +8,12 @@ import { AuthContext } from "../context/AuthContext";
 
 function ProfilePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const id = localStorage.getItem("userId");
-  const recipeData = useLoaderData();
+  const url_photo = localStorage.getItem("url_photo");
+  const { recipes } = useLoaderData();
 
   function openModal() {
     setIsModalOpen(true);
@@ -19,15 +23,24 @@ function ProfilePage() {
     setIsModalOpen(false);
   };
 
+  function handleSave() {
+    localStorage.clear();
+    navigate("/connexion");
+  }
+
   return (
     <section className="my-profile">
       <h1>Mon compte</h1>
       <div className="bloc-name">
-        <img
+        {url_photo ? (<img
           id="profile-picture-img"
           src={`${import.meta.env.VITE_API_URL}/profile/sophie-nancier.jpg`}
           alt="user avatar"
-        />
+        />) : (<img
+          id="profile-picture-img"
+          src={`${import.meta.env.VITE_API_URL}/profile/avatar.png`}
+          alt="user avatar"
+        />)}
         <p>
           {user?.firstname} {user?.lastname}
         </p>
@@ -52,13 +65,17 @@ function ProfilePage() {
         <ProfileModal closeModal={closeModal} id={id} />
       ) : (
         <>
-          <button type="submit" className="deconnexion-button">
+          <button
+            type="submit"
+            onClick={handleSave}
+            className="deconnexion-button"
+          >
             DECONNEXION
           </button>
           <h2>Mes recettes créées</h2>
           <article className="recipe-card-list">
-            {recipeData.length > 0 ? (
-              recipeData.map((el) => (
+            {recipes.length > 0 ? (
+              recipes.map((el) => (
                 <MaxiRecipeCard
                   key={el.id}
                   id={el.id}

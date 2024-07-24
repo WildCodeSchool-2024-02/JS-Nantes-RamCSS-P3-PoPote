@@ -5,8 +5,17 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
   const [tools, setTools] = useState([]);
   const [currentTools, setCurrentTools] = useState("");
   const [currentToolsQuantity, setCurrentToolsQuantity] = useState("");
+  const [clicked, setClicked] = useState(false);
 
   const handleAddTools = () => {
+    // Active l'effet de clic
+    setClicked(true);
+
+    // Désactive l'effet de clic après l'animation
+    setTimeout(() => {
+      setClicked(false);
+    }, 300);
+
     if (currentTools && !tools.some((tool) => tool.name === currentTools)) {
       const [idTool] = recipeToolLoad.filter((el) => el.name === currentTools);
 
@@ -35,11 +44,12 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
         <div className="input-ustensile">
           <input
             className="input-tool-quantity"
-            type="text"
+            type="number"
             list="tool-quantity-list"
             value={currentToolsQuantity}
             onChange={(e) => setCurrentToolsQuantity(e.target.value)}
             placeholder="Quantité de l'ustensile"
+            min="0"
           />
 
           <input
@@ -60,7 +70,8 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
           </datalist>
         </div>
         <button
-          className="ajouter-bouton"
+          style={{ cursor: "pointer" }}
+          className={`add-button ${clicked ? "clicked" : ""}`}
           type="button"
           onClick={handleAddTools}
         >
