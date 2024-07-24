@@ -13,22 +13,21 @@ function AuthProvider({ children }) {
     }
   }, []);
 
-  const contextValue = useMemo(() => ({
-    user,
-    setUser
-  }), [user, setUser])
- 
-
+  const contextValue = useMemo(
+    () => ({
+      user,
+      setUser,
+    }),
+    [user, setUser]
+  );
 
   return (
-    <AuthContext.Provider value={contextValue}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 }
 
 AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};
 
 export default AuthProvider;

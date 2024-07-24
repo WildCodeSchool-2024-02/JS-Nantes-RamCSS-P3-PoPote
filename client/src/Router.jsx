@@ -21,14 +21,14 @@ import AboutPage from "./pages/AboutPage";
 
 const recipeLoader = async ({ params }) => {
   const [recipe, ingredientOfRecipe, toolOfRecipe] = await Promise.all([
-    fetch(`${import.meta.env.VITE_API_URL}/api/recipe/${params.id}`).then((res) =>
-        res.json()
-    ),
-    fetch(`${import.meta.env.VITE_API_URL}/api/ingredient/IofR/${params.id}`).then(
+    fetch(`${import.meta.env.VITE_API_URL}/api/recipe/${params.id}`).then(
       (res) => res.json()
     ),
-    fetch(`${import.meta.env.VITE_API_URL}/api/tool/TofR/${params.id}`).then((res) =>
-      res.json()
+    fetch(
+      `${import.meta.env.VITE_API_URL}/api/ingredient/IofR/${params.id}`
+    ).then((res) => res.json()),
+    fetch(`${import.meta.env.VITE_API_URL}/api/tool/TofR/${params.id}`).then(
+      (res) => res.json()
     ),
   ]);
 
@@ -37,8 +37,12 @@ const recipeLoader = async ({ params }) => {
 
 const IngToolLoader = async () => {
   const [recipeIngCreate, recipeToolCreate] = await Promise.all([
-    fetch(`${import.meta.env.VITE_API_URL}/api/ingredient/`).then((res) => res.json()),
-    fetch(`${import.meta.env.VITE_API_URL}/api/tool/`).then((res) => res.json()),
+    fetch(`${import.meta.env.VITE_API_URL}/api/ingredient/`).then((res) =>
+      res.json()
+    ),
+    fetch(`${import.meta.env.VITE_API_URL}/api/tool/`).then((res) =>
+      res.json()
+    ),
   ]);
 
   return [recipeIngCreate, recipeToolCreate];

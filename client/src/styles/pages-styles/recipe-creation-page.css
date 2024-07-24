@@ -18,19 +18,26 @@
   border: solid lightgray 1px;
   width: 25vw;
   height: 4vh;
+  text-align: center;
 }
 
 .input-nb-people {
   border-radius: 10px;
   border: solid lightgray 1px;
   height: 4vh;
+  text-align: center;
 }
 
 .input-time {
   border-radius: 10px;
   border: solid lightgray 1px;
 }
+
+.error {
+  border: solid 2px red !important;
+}
 /* ----------------Ajout ingredients-------------- */
+
 .input-ingredients {
   display: flex;
   justify-content: space-between;
@@ -46,9 +53,13 @@
   text-align: center;
   margin: 1%;
   padding: 1%;
+
+  /* & .error {
+    border: solid 2px red !important;
+  } */
 }
 
-.ajouter-bouton {
+.add-button {
   margin-top: 1vh;
   background-color: var(--orange-bg-color);
   padding: 1%;
@@ -114,7 +125,7 @@
   }
 }
 
-.bouton-ajouter-fichier {
+.add-files-button {
   background-color: var(--green-bg-color);
   border: none;
   border-radius: 10px;
@@ -167,7 +178,28 @@
     padding: 1.5rem 2.8rem;
     border-radius: 1rem;
     transition: padding 0.2s;
-    height: 35vh;
+    height: 45vh;
     width: 35vw;
   }
+}
+
+/* ----------------click effect-------------- */
+@keyframes clickEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.add-button.clicked {
+  animation: clickEffect 0.3s ease;
+}
+
+.submit-recipe-creation-button.clicked {
+  animation: clickEffect 0.3s ease;
 }
