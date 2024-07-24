@@ -12,6 +12,7 @@
 @import "./components-styles/tools-list.css";
 @import "./components-styles/user-form.css";
 @import "./components-styles//nb-people-element.css";
+@import "./components-styles/profile-modal.css";
 
 @import "./pages-styles/about.css";
 @import "./pages-styles/admin-page.css";
