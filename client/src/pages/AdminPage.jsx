@@ -45,6 +45,7 @@ function AdminPage() {
 
   return (
     <section className="admin-section">
+
       <form onSubmit={deleteSubmit}>
         <label htmlFor="recipe">Recettes : </label>
         <select name="Recette" id="deleteRecipe" onChange={handleSelectChange}>
