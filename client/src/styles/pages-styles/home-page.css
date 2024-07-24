@@ -13,6 +13,8 @@
   width: 100dvw;
   height: 100%;
   display: flex;
+  justify-content: center;
+  gap: 1.5em;
   flex-wrap: wrap;
 }
 

@@ -17,20 +17,20 @@ function AuthProvider({ children }) {
     }
   }, []);
 
+
   const updateUser = (newUser) => {
     setUser(newUser);
     localStorage.setItem("firstname", newUser.firstname);
     localStorage.setItem("lastname", newUser.lastname);
   };
 
-  const contextValue = useMemo(
-    () => ({
-      user,
-      setUser,
-      updateUser,
-    }),
-    [user]
-  );
+
+  const contextValue = useMemo(() => ({
+    user,
+    setUser,
+    updateUser
+  }), [user])
+ 
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
