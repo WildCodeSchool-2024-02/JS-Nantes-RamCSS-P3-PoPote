@@ -49,8 +49,6 @@ function RecipeCreationPage() {
       // si ok => passage du nom du fichier dans la réponse.
       const fileResponse = await addFileFetch.json();
 
-      
-
       //* ------------ fetch 2 : récupération des input titre, Nombre de personnes, durée ---------
 
       // objet contenant les ref des inputs à injecter dans le body
@@ -83,8 +81,6 @@ function RecipeCreationPage() {
       if (recipeIdResponse) {
         const recipeIdNumber = recipeIdResponse.insertId;
 
-       
-
         // * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
         const addIngredientBody = {
           recipeId: recipeIdNumber,
@@ -107,7 +103,6 @@ function RecipeCreationPage() {
           );
         }
 
-       
         // * -------------- Fetch 4 : récupération d'un tableau de donnée pour l'input tool -----------------
         const addToolBody = {
           recipeId: recipeIdNumber,

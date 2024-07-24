@@ -137,9 +137,9 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AdminPage />
-          </ProtectedRoute>),
-           loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
-        
+          </ProtectedRoute>
+        ),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
       },
     ],
   },

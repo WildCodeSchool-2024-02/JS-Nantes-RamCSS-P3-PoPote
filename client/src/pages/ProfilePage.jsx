@@ -6,7 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 
 function ProfilePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const id = localStorage.getItem("userId");
   const recipeData = useLoaderData();

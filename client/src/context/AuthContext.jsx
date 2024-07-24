@@ -9,12 +9,12 @@ function AuthProvider({ children }) {
   useEffect(() => {
     // const credentials = localStorage.getItem("firstname");
     // if (credentials) {
-      // setUser({ firstname: credentials });
-      const firstname = localStorage.getItem("firstname");
-      const lastname = localStorage.getItem("lastname");
-      if (firstname && lastname) {
-        setUser({ firstname, lastname });
-      }
+    // setUser({ firstname: credentials });
+    const firstname = localStorage.getItem("firstname");
+    const lastname = localStorage.getItem("lastname");
+    if (firstname && lastname) {
+      setUser({ firstname, lastname });
+    }
   }, []);
 
   const updateUser = (newUser) => {
@@ -23,23 +23,22 @@ function AuthProvider({ children }) {
     localStorage.setItem("lastname", newUser.lastname);
   };
 
-  const contextValue = useMemo(() => ({
-    user,
-    setUser,
-    updateUser
-  }), [user])
- 
-
+  const contextValue = useMemo(
+    () => ({
+      user,
+      setUser,
+      updateUser,
+    }),
+    [user]
+  );
 
   return (
-    <AuthContext.Provider value={contextValue}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 }
 
 AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};
 
 export default AuthProvider;
