@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
 import ProfileModal from "../components/ProfileModal";
@@ -6,7 +6,8 @@ import { AuthContext } from "../context/AuthContext";
 
 function ProfilePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   const id = localStorage.getItem("userId");
   const recipeData = useLoaderData();
@@ -18,6 +19,11 @@ function ProfilePage() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  function handleSave() {
+    localStorage.clear();
+    navigate("/connexion");
+  }
 
   return (
     <section className="my-profile">
@@ -52,7 +58,11 @@ function ProfilePage() {
         <ProfileModal closeModal={closeModal} id={id} />
       ) : (
         <>
-          <button type="submit" className="deconnexion-button">
+          <button
+            type="submit"
+            onClick={handleSave}
+            className="deconnexion-button"
+          >
             DECONNEXION
           </button>
           <h2>Mes recettes créées</h2>
