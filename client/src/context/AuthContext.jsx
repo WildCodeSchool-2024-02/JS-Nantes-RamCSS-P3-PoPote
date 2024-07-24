@@ -17,6 +17,7 @@ function AuthProvider({ children }) {
       }
   }, []);
 
+
   const updateUser = (newUser) => {
     setUser(newUser);
     localStorage.setItem("firstname", newUser.firstname);
@@ -30,16 +31,13 @@ function AuthProvider({ children }) {
   }), [user])
  
 
-
   return (
-    <AuthContext.Provider value={contextValue}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 }
 
 AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};
 
 export default AuthProvider;

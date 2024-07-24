@@ -8,18 +8,32 @@ import CreationTools from "../components/CreationTools";
 function RecipeCreationPage() {
   const IngToolLoader = useLoaderData();
 
-  const [title, setTitle] = useState("");
+  // const [title, setTitle] = useState("");
   const [files, setFiles] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
 
   const [ingredientArray, setIngredientArray] = useState([]);
   const [toolArray, setToolArray] = useState([]);
+  const [clicked, setClicked] = useState(false);
+
+  // const [errors, setErrors] = useState({
+  //   title: false,
+  //   duration: false,
+  //   nbPeople: false,
+  //   description: false,
+  //   ingChoice: false,
+  //   ingQuantity: false,
+  //   ingUnity: false,
+  // });
 
   // Refs of recipe
   const titleRef = useRef();
   const durationRef = useRef();
   const nbPeopleRef = useRef();
   const descriptionRef = useRef();
+  const ingredientQuantityRef = useRef();
+  const ingredientUnityRef = useRef();
+  const ingredientChoiceRef = useRef();
   const userIdRef = useRef(localStorage.getItem("userid"));
 
   // ******** Fonction de validation du formulaire ********
@@ -27,6 +41,34 @@ function RecipeCreationPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    // Active l'effet de clic
+    setClicked(true);
+
+    // Désactive l'effet de clic après l'animation
+    setTimeout(() => {
+      setClicked(false);
+    }, 300);
+
+    // Vérification des champs requis
+    // const newErrors = {
+    //   title: !titleRef.current.value ? true : false,
+    //   duration: !durationRef.current.value ? true : false,
+    //   nbPeople: !nbPeopleRef.current.value ? true : false,
+    //   description: !descriptionRef.current.value ? true : false,
+    //   ingChoice: !ingredientChoiceRef.current.value ? true : false,
+    //   ingQuantit: !ingredientQuantityRef.current.value ? true : false,
+    //   ingUnity: !ingredientUnityRef.current.value ? true : false,
+    // };
+
+    // setErrors(newErrors);
+
+    // console.log("C'est quoi newErrors ??", newErrors);
+
+    // Si des erreurs existent, arrêter la soumission
+    // if (Object.values(newErrors).some((error) => error)) {
+    //   console.log("Bah ça plante");
+    //   return;
+    // }
     //*  ------------ fetch 1 : Post du fichier image dans upload ------------
 
     // passage du fichier image du coté serveur dans le dossier upload
@@ -46,10 +88,9 @@ function RecipeCreationPage() {
         const errorText = await addFileFetch.text();
         throw new Error(`Error ${addFileFetch.status}: ${errorText}`);
       }
+
       // si ok => passage du nom du fichier dans la réponse.
       const fileResponse = await addFileFetch.json();
-
-      
 
       //* ------------ fetch 2 : récupération des input titre, Nombre de personnes, durée ---------
 
@@ -83,8 +124,6 @@ function RecipeCreationPage() {
       if (recipeIdResponse) {
         const recipeIdNumber = recipeIdResponse.insertId;
 
-       
-
         // * ------------- Fetch 3 : récupération d'un tableau de donnée pour l'input ingredient ----------------
         const addIngredientBody = {
           recipeId: recipeIdNumber,
@@ -107,7 +146,6 @@ function RecipeCreationPage() {
           );
         }
 
-       
         // * -------------- Fetch 4 : récupération d'un tableau de donnée pour l'input tool -----------------
         const addToolBody = {
           recipeId: recipeIdNumber,
@@ -148,20 +186,26 @@ function RecipeCreationPage() {
       <form className="form-creation-page" onSubmit={handleSubmit}>
         <div className="recipe-name">
           <h2>Titre</h2>
-          <p>Maximum 50 caractères</p>
+          <p>Maximum 55 caractères*</p>
           <input
             className="input-title"
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            // value={title}
+            // onChange={(e) => setTitle(e.target.value)}
             ref={titleRef}
+            maxLength={55}
           />
           <img src="" alt="" />
         </div>
 
         <div className="nb-people-duration">
-          <h3>Nombre de personnes</h3>
-          <input className="input-nb-people" type="number" ref={nbPeopleRef} />
+          <h3>Nombre de personnes*</h3>
+          <input
+            className="input-nb-people"
+            type="number"
+            ref={nbPeopleRef}
+            min="0"
+          />
           <h3>Durée</h3>
           <input className="input-time" type="time" ref={durationRef} />
         </div>
@@ -174,6 +218,9 @@ function RecipeCreationPage() {
         <CreationIngredients
           recipeIngLoad={IngToolLoader[0]}
           setIngredientArray={setIngredientArray}
+          ingredientQuantityRef={ingredientQuantityRef}
+          ingredientUnityRef={ingredientUnityRef}
+          ingredientChoiceRef={ingredientChoiceRef}
         />
         <CreationTools
           recipeToolLoad={IngToolLoader[1]}
@@ -199,15 +246,20 @@ function RecipeCreationPage() {
           setImagePreview={setImagePreview}
         />
         <button
+          style={{ cursor: "pointer" }}
           onClick={handleSubmit}
-          type="button"
-          className="submit-recipe-creation-button"
+          type="submit"
+          className={`submit-recipe-creation-button ${clicked ? "clicked" : ""}`}
         >
           Valider
         </button>
       </form>
+      <p>* Champs de saisie obligatoire</p>
     </section>
   );
 }
 
+// RecipeCreationPage.propTypes = {
+//   errors: PropTypes.objectOf(PropTypes.string).isRequired,
+// };
 export default RecipeCreationPage;
