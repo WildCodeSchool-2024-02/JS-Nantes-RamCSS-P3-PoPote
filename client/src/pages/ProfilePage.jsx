@@ -12,7 +12,6 @@ function ProfilePage() {
 
   const id = localStorage.getItem("userId");
   const url_photo = localStorage.getItem("url_photo");
-  // const recipeData = useLoaderData(); 
   const { recipes } = useLoaderData();
 
   function openModal() {

@@ -48,23 +48,6 @@ const IngToolLoader = async () => {
   return [recipeIngCreate, recipeToolCreate];
 };
 
-// const profileLoader = async () => {
-//   const userId = localStorage.getItem("userId");
-//   try {
-//     const response = await fetch(
-//       `${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`
-//     );
-//     if (!response.ok) {
-//       // Si la réponse n'est pas ok, retournez un tableau vide
-//       return [];
-//     }
-//     return response.json();
-//   } catch (error) {
-//     // En cas d'erreur, retournez un tableau vide
-//     return [];
-//   }
-// };
-
 const profileLoader = async () => {
   const userId = localStorage.getItem("userId");
   try {
