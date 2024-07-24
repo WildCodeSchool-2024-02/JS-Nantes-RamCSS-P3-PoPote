@@ -12,7 +12,8 @@ function ProfilePage() {
 
   const id = localStorage.getItem("userId");
   const url_photo = localStorage.getItem("url_photo");
-  const recipeData = useLoaderData();
+  // const recipeData = useLoaderData(); 
+  const { recipes } = useLoaderData();
 
   function openModal() {
     setIsModalOpen(true);
@@ -64,8 +65,8 @@ function ProfilePage() {
           </button>
           <h2>Mes recettes créées</h2>
           <article className="recipe-card-list">
-            {recipeData.length > 0 ? (
-              recipeData.map((el) => (
+            {recipes.length > 0 ? (
+              recipes.map((el) => (
                 <MaxiRecipeCard
                   key={el.id}
                   id={el.id}
