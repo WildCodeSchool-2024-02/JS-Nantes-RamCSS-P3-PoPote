@@ -50,9 +50,7 @@ function ConnexionPage() {
       toast.success(
         "Connexion réussie"
       );
-      setTimeout(() => {
         navigate("/popote");
-      }, 4000);
     }
   };
 
