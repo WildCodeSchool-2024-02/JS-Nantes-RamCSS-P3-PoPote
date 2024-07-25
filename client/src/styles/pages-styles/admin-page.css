@@ -22,5 +22,12 @@
       gap: 3vw;
       justify-content: center;
     }
+    & select option {
+      padding: 5px;
+    }
+    & input:last-child {
+      padding: 10px;
+      margin-left: 20px;
+    }
   }
 }

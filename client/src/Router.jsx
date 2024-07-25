@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
-import ProtectedRoute from "./services/ProtectedRoute";
 
 import App from "./App";
 import WelcomePage from "./pages/WelcomePage";
@@ -16,7 +15,6 @@ import RecipeCreationPage from "./pages/RecipeCreationPage";
 import ProfilePage from "./pages/ProfilePage";
 import SetProfilePage from "./pages/SetProfilePage";
 import RecipePage from "./pages/RecipePage";
-import AdminPage from "./pages/AdminPage";
 import AboutPage from "./pages/AboutPage";
 
 const recipeLoader = async ({ params }) => {
@@ -51,7 +49,7 @@ const IngToolLoader = async () => {
 const profileLoader = async () => {
   const userId = localStorage.getItem("userId");
   try {
-    const [recipes, user] = await Promise.all([
+    const [recipes, user, adminRecipe] = await Promise.all([
       fetch(`${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`).then((res) => {
         if (!res.ok) {
           return [];
@@ -59,11 +57,12 @@ const profileLoader = async () => {
         return res.json();
       }),
       fetch(`${import.meta.env.VITE_API_URL}/api/user/${userId}`).then((res) => res.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`).then((res) => res.json()),
     ]);
 
-    return {recipes, user};
+    return {recipes, user, adminRecipe};
   } catch (error) {
-    return { recipes:[], user: null};
+    return { recipes:[], user: null, adminRecipe:[]};
   }
 };
 
@@ -132,16 +131,7 @@ const router = createBrowserRouter([
         path: "recipe/:id",
         element: <RecipePage />,
         loader: recipeLoader,
-      },
-      {
-        path: "admin",
-        element: (
-          <ProtectedRoute>
-            <AdminPage />
-          </ProtectedRoute>),
-           loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
-        
-      },
+      }
     ],
   },
 ]);
