@@ -25,7 +25,7 @@ function RecipeCreationPage() {
   const ingredientQuantityRef = useRef();
   const ingredientUnityRef = useRef();
   const ingredientChoiceRef = useRef();
-  const userIdRef = useRef(localStorage.getItem("userid"));
+  const userIdRef = useRef(localStorage.getItem("userId"));
 
   // ******** Fonction de validation du formulaire ********
 
