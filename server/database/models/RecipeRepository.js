@@ -27,8 +27,6 @@ class RecipeRepository extends AbstractRepository {
     return result.insertId;
   }
 
-  
-
   // The Rs of CRUD - Read operations
 
   async read(id) {
@@ -95,7 +93,8 @@ GROUP BY
   async readByUser(userId) {
     // Execute the SQL SELECT query to retrieve specific Recipes by its userID
     const [rows] = await this.database.query(
-      `SELECT 
+      `SELECT
+    r.id, 
     r.title, 
     r.url_photo, 
     r.user_id, 
@@ -140,10 +139,12 @@ GROUP BY
 
   // The D of CRUD - Delete operation
   async delete(id) {
-    const [row] = await this.database.query(`DELETE FROM ${this.table} WHERE id=?`, [id]);
+    const [row] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id=?`,
+      [id]
+    );
     return row.affectedRows;
   }
 }
-
 
 module.exports = RecipeRepository;
