@@ -1,8 +1,10 @@
 import Cookies from "js-cookie";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { emailValidation, passwordValidation } from "../services/validation";
 import { AuthContext } from "../context/AuthContext";
+import "react-toastify/dist/ReactToastify.css";
 
 function ConnexionPage() {
   const { setUser } = useContext(AuthContext);
@@ -25,8 +27,6 @@ function ConnexionPage() {
       body: JSON.stringify(data),
     });
 
-    console.warn("C'est quoi ma réponse ? ", response);
-
     if (!response.ok) {
       setIsEmail(() => false);
       setIsPassword(() => false);
@@ -47,7 +47,9 @@ function ConnexionPage() {
         expires: 1,
         sameSite: "strict",
       });
-
+      toast.success(
+        "Connexion réussie"
+      );
       navigate("/popote");
     }
   };
@@ -145,6 +147,7 @@ function ConnexionPage() {
           </p>
         </section>
       </div>
+      <ToastContainer position="bottom-right" />
     </section>
   );
 }
