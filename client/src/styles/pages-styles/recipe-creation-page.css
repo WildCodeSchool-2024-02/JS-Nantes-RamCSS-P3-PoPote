@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--beige-bg-color);
   margin: 5%;
   border-radius: 20px;
   font-family: var(--poppins-font);
@@ -16,7 +15,7 @@
 .input-title {
   border-radius: 10px;
   border: solid lightgray 1px;
-  width: 25vw;
+  width: 80vw;
   height: 4vh;
   text-align: center;
 }
@@ -24,6 +23,7 @@
 .input-nb-people {
   border-radius: 10px;
   border: solid lightgray 1px;
+  width: 80vw;
   height: 4vh;
   text-align: center;
 }
@@ -41,6 +41,8 @@
 .input-ingredients {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ingredient-quantity,
@@ -49,42 +51,46 @@
   border-radius: 10px;
   border: solid lightgray 1px;
   height: 4vh;
-  width: 20vw;
+  width: 80vw;
   text-align: center;
   margin: 1%;
   padding: 1%;
+}
 
-  /* & .error {
-    border: solid 2px red !important;
-  } */
+.add-ingredients {
+  list-style-type: none;
 }
 
 .add-button {
   margin-top: 1vh;
   background-color: var(--orange-bg-color);
-  padding: 1%;
+  padding: 2% 7%;
   border-radius: 10px;
   border: solid lightgray 1px;
+  color: white;
+  font: var(--poppins-font);
 }
 
 /* ----------------Ajout ustensile-------------- */
+
 .input-tool-quantity,
 .input-tool-selection {
   border-radius: 10px;
   border: solid lightgray 1px;
   height: 4vh;
-  width: 20vw;
+  width: 80vw;
   text-align: center;
+  margin: 1%;
   padding: 1%;
 }
-.input-tool-quantity {
-  margin-right: 5vw;
-}
 
+.add-tools {
+  list-style-type: none;
+}
 /* ----------------step description-------------- */
 #recipe-description {
   height: 40vh;
-  width: 60vw;
+  width: 80vw;
   border-radius: 5px;
   border: solid lightgray 1px;
   padding: 3%;
@@ -112,7 +118,6 @@
   padding: 1.5rem 2.8rem;
   border-radius: 1rem;
   transition: padding 0.2s;
-  height: 35vh;
   width: 70vw;
 
   &:hover {
@@ -166,8 +171,56 @@
   color: var(--light-font-color);
   margin: 15px;
 }
-
+/* ----------------desktop mode-------------- */
 @media screen and (min-width: 480px) {
+  .recipe-creation-page {
+    background-color: var(--beige-bg-color);
+  }
+
+  .input-title {
+    width: 35vw;
+  }
+
+  .input-nb-people {
+    width: 35vw;
+  }
+
+  .input-ingredients {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .ingredient-quantity,
+  .ingredient-unity,
+  .ingredient-selection {
+    border-radius: 10px;
+    border: solid lightgray 1px;
+    height: 4vh;
+    width: 25vw;
+    text-align: center;
+    margin: 1%;
+    padding: 1%;
+  }
+
+  .input-ustensile {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    text-align: center;
+  }
+
+  .input-tool-quantity,
+  .input-tool-selection {
+    border-radius: 10px;
+    border: solid lightgray 1px;
+    height: 4vh;
+    width: 25vw;
+    text-align: center;
+    margin: 1%;
+    padding: 1%;
+  }
+
   .drop-zone {
     background-color: var(--ligthgray-bg-color);
     display: flex;

@@ -10,23 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 function RecipeCreationPage() {
   const IngToolLoader = useLoaderData();
 
-  // const [title, setTitle] = useState("");
   const [files, setFiles] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
 
   const [ingredientArray, setIngredientArray] = useState([]);
   const [toolArray, setToolArray] = useState([]);
   const [clicked, setClicked] = useState(false);
-
-  // const [errors, setErrors] = useState({
-  //   title: false,
-  //   duration: false,
-  //   nbPeople: false,
-  //   description: false,
-  //   ingChoice: false,
-  //   ingQuantity: false,
-  //   ingUnity: false,
-  // });
 
   // Refs of recipe
   const titleRef = useRef();
@@ -51,26 +40,6 @@ function RecipeCreationPage() {
       setClicked(false);
     }, 300);
 
-    // Vérification des champs requis
-    // const newErrors = {
-    //   title: !titleRef.current.value ? true : false,
-    //   duration: !durationRef.current.value ? true : false,
-    //   nbPeople: !nbPeopleRef.current.value ? true : false,
-    //   description: !descriptionRef.current.value ? true : false,
-    //   ingChoice: !ingredientChoiceRef.current.value ? true : false,
-    //   ingQuantit: !ingredientQuantityRef.current.value ? true : false,
-    //   ingUnity: !ingredientUnityRef.current.value ? true : false,
-    // };
-
-    // setErrors(newErrors);
-
-    // console.log("C'est quoi newErrors ??", newErrors);
-
-    // Si des erreurs existent, arrêter la soumission
-    // if (Object.values(newErrors).some((error) => error)) {
-    //   console.log("Bah ça plante");
-    //   return;
-    // }
     //*  ------------ fetch 1 : Post du fichier image dans upload ------------
 
     // passage du fichier image du coté serveur dans le dossier upload
@@ -188,13 +157,17 @@ function RecipeCreationPage() {
       <h1>Ajout recette</h1>
       <form className="form-creation-page" onSubmit={handleSubmit}>
         <div className="recipe-name">
+          <DragAndDrop
+            files={files}
+            setFiles={setFiles}
+            imagePreview={imagePreview}
+            setImagePreview={setImagePreview}
+          />
           <h2>Titre</h2>
           <p>Maximum 55 caractères*</p>
           <input
             className="input-title"
             type="text"
-            // value={title}
-            // onChange={(e) => setTitle(e.target.value)}
             ref={titleRef}
             maxLength={55}
           />
@@ -242,12 +215,7 @@ function RecipeCreationPage() {
             ref={descriptionRef}
           />
         </div>
-        <DragAndDrop
-          files={files}
-          setFiles={setFiles}
-          imagePreview={imagePreview}
-          setImagePreview={setImagePreview}
-        />
+
         <button
           style={{ cursor: "pointer" }}
           onClick={handleSubmit}
@@ -263,7 +231,4 @@ function RecipeCreationPage() {
   );
 }
 
-// RecipeCreationPage.propTypes = {
-//   errors: PropTypes.objectOf(PropTypes.string).isRequired,
-// };
 export default RecipeCreationPage;

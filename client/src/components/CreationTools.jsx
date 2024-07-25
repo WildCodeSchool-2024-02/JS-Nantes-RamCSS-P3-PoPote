@@ -60,15 +60,15 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
             list="tool-list"
             placeholder="Sélectionnez un ustensile *"
           />
-
-          <datalist id="tool-list">
-            {recipeToolLoad.map((el) => (
-              <option key={el.id} value={el.name}>
-                {el.name}
-              </option>
-            ))}
-          </datalist>
         </div>
+        <datalist id="tool-list">
+          {recipeToolLoad.map((el) => (
+            <option key={el.id} value={el.name}>
+              {el.name}
+            </option>
+          ))}
+        </datalist>
+
         <button
           style={{ cursor: "pointer" }}
           className={`add-button ${clicked ? "clicked" : ""}`}
@@ -78,7 +78,7 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
           Ajouter
         </button>
       </div>
-      <ul>
+      <ul className="add-tools">
         {tools.map((tool) => (
           <li key={tool.id}>
             {tool.quantity} {tool.name}

@@ -112,7 +112,7 @@ function CreationIngredients({
           Ajouter
         </button>
       </div>
-      <ul>
+      <ul className="add-ingredients">
         {ingredients.map((el) => (
           <li key={el.id}>
             {el.quantity} {el.unit} {el.name}
