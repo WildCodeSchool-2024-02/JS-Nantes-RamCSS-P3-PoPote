@@ -33,7 +33,10 @@ function UserForm() {
           toast.success(
             "Création de compte réussie"
           );
-          navigate("/popote");
+          setTimeout(() => {
+            navigate("/connexion");
+          }, 4000);
+          
         }
       });
     } else {
