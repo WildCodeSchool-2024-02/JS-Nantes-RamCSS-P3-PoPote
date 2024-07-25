@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UserForm() {
   const passwordRef = useRef();
@@ -28,8 +30,13 @@ function UserForm() {
         body: JSON.stringify(data),
       }).then((res) => {
         if (res.ok) {
-          console.warn("Victoire !");
-          navigate("/popote");
+          toast.success(
+            "Création de compte réussie"
+          );
+          setTimeout(() => {
+            navigate("/connexion");
+          }, 4000);
+          
         }
       });
     } else {
@@ -156,6 +163,7 @@ function UserForm() {
           A propos de nous
         </NavLink>
       </p>
+      <ToastContainer position="bottom-right" />
     </section>
   );
 }
