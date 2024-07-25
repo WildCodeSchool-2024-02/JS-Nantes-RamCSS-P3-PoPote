@@ -13,7 +13,7 @@ import SearchPage from "./pages/SearchPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import RecipeCreationPage from "./pages/RecipeCreationPage";
 import ProfilePage from "./pages/ProfilePage";
-import SetProfilePage from "./pages/SetProfilePage";
+
 import RecipePage from "./pages/RecipePage";
 import AboutPage from "./pages/AboutPage";
 
@@ -50,19 +50,25 @@ const profileLoader = async () => {
   const userId = localStorage.getItem("userId");
   try {
     const [recipes, user, adminRecipe] = await Promise.all([
-      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`).then((res) => {
-        if (!res.ok) {
-          return [];
+      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`).then(
+        (res) => {
+          if (!res.ok) {
+            return [];
+          }
+          return res.json();
         }
-        return res.json();
-      }),
-      fetch(`${import.meta.env.VITE_API_URL}/api/user/${userId}`).then((res) => res.json()),
-      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`).then((res) => res.json()),
+      ),
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/${userId}`).then((res) =>
+        res.json()
+      ),
+      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`).then((res) =>
+        res.json()
+      ),
     ]);
 
-    return {recipes, user, adminRecipe};
+    return { recipes, user, adminRecipe };
   } catch (error) {
-    return { recipes:[], user: null, adminRecipe:[]};
+    return { recipes: [], user: null, adminRecipe: [] };
   }
 };
 
@@ -123,15 +129,12 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
         loader: profileLoader,
       },
-      {
-        path: "set-profile",
-        element: <SetProfilePage />,
-      },
+
       {
         path: "recipe/:id",
         element: <RecipePage />,
         loader: recipeLoader,
-      }
+      },
     ],
   },
 ]);

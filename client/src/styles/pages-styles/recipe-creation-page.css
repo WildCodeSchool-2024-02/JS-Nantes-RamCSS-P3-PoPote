@@ -12,12 +12,17 @@
   text-align: center;
 }
 
+.title {
+  margin: 1%;
+}
+
 .input-title {
   border-radius: 10px;
   border: solid lightgray 1px;
   width: 80vw;
   height: 4vh;
   text-align: center;
+  margin: 1%;
 }
 
 .input-nb-people {
@@ -26,11 +31,17 @@
   width: 80vw;
   height: 4vh;
   text-align: center;
+  margin: 1%;
 }
 
 .input-time {
   border-radius: 10px;
   border: solid lightgray 1px;
+  margin: 1%;
+}
+.Mandatory-input-fields {
+  margin: 1%;
+  margin-bottom: 3%;
 }
 
 .error {
@@ -43,6 +54,7 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
+  margin: 1%;
 }
 
 .ingredient-quantity,
@@ -59,16 +71,18 @@
 
 .add-ingredients {
   list-style-type: none;
+  margin: 1%;
 }
 
 .add-button {
   margin-top: 1vh;
   background-color: var(--orange-bg-color);
-  padding: 2% 7%;
+  padding: 1% 5%;
   border-radius: 10px;
   border: solid lightgray 1px;
   color: white;
   font: var(--poppins-font);
+  margin: 1%;
 }
 
 /* ----------------Ajout ustensile-------------- */
@@ -86,6 +100,7 @@
 
 .add-tools {
   list-style-type: none;
+  margin: 1%;
 }
 /* ----------------step description-------------- */
 #recipe-description {
@@ -95,6 +110,11 @@
   border: solid lightgray 1px;
   padding: 3%;
   font-family: var(--poppins-font);
+  margin: 1%;
+}
+
+.step-description {
+  margin: 1%;
 }
 
 /* ----------------Drag and drop area-------------- */
@@ -173,6 +193,12 @@
 }
 /* ----------------desktop mode-------------- */
 @media screen and (min-width: 480px) {
+  .add-recipe-title {
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
   .recipe-creation-page {
     background-color: var(--beige-bg-color);
   }

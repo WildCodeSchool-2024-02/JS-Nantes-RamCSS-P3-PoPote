@@ -154,7 +154,7 @@ function RecipeCreationPage() {
 
   return (
     <section className="recipe-creation-page">
-      <h1>Ajout recette</h1>
+      <h2 className="add-recipe-title">Ajout recette</h2>
       <form className="form-creation-page" onSubmit={handleSubmit}>
         <div className="recipe-name">
           <DragAndDrop
@@ -163,7 +163,7 @@ function RecipeCreationPage() {
             imagePreview={imagePreview}
             setImagePreview={setImagePreview}
           />
-          <h2>Titre</h2>
+          <h3 className="title">Titre</h3>
           <p>Maximum 55 caractères*</p>
           <input
             className="input-title"
@@ -175,7 +175,7 @@ function RecipeCreationPage() {
         </div>
 
         <div className="nb-people-duration">
-          <h3>Nombre de personnes*</h3>
+          <p>Nombre de personnes*</p>
           <input
             className="input-nb-people"
             type="number"
@@ -204,7 +204,7 @@ function RecipeCreationPage() {
         />
 
         <div className="recipe-description">
-          <h3>Décrire les étapes*</h3>
+          <h3 className="step-description">Décrire les étapes*</h3>
           <textarea
             id="recipe-description"
             name="description"
@@ -226,7 +226,7 @@ function RecipeCreationPage() {
         </button>
       </form>
       <ToastContainer position="bottom-right" />
-      <p>* Champs de saisie obligatoire</p>
+      <p className="Mandatory-input-fields">* Champs de saisie obligatoire</p>
     </section>
   );
 }
