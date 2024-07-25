@@ -13,6 +13,7 @@ import SearchPage from "./pages/SearchPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import RecipeCreationPage from "./pages/RecipeCreationPage";
 import ProfilePage from "./pages/ProfilePage";
+
 import RecipePage from "./pages/RecipePage";
 import AboutPage from "./pages/AboutPage";
 
@@ -128,6 +129,7 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
         loader: profileLoader,
       },
+
       {
         path: "recipe/:id",
         element: <RecipePage />,

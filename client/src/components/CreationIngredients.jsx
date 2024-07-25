@@ -63,7 +63,7 @@ function CreationIngredients({
   return (
     <>
       <div>
-        <h2>Ingredients :</h2>
+        <h3>Ingredients :</h3>
         <div className="input-ingredients">
           <input
             className="ingredient-quantity"

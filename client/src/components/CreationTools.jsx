@@ -40,7 +40,7 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
   return (
     <>
       <div>
-        <h2>Ustensile :</h2>
+        <h3>Ustensile :</h3>
         <div className="input-ustensile">
           <input
             className="input-tool-quantity"
