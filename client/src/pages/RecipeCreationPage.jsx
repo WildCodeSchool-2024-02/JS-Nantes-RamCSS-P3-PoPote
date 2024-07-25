@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import DragAndDrop from "../components/DragAndDrop";
 import CreationIngredients from "../components/CreationIngredients";
 import CreationTools from "../components/CreationTools";
-
 import "react-toastify/dist/ReactToastify.css";
 
 function RecipeCreationPage() {
@@ -16,6 +15,8 @@ function RecipeCreationPage() {
   const [ingredientArray, setIngredientArray] = useState([]);
   const [toolArray, setToolArray] = useState([]);
   const [clicked, setClicked] = useState(false);
+
+  const navigate = useNavigate();
 
   // Refs of recipe
   const titleRef = useRef();
@@ -142,9 +143,18 @@ function RecipeCreationPage() {
         }
 
         // * -----------Echec des fetchs : si les fetchs ont échoué catch err -----------
+
+        toast.success(
+          "La recette a bien été créé, vous allez maintenant être redirigé vers votre page profil pour la consulter"
+        );
+        setTimeout(() => navigate("/popote/profile"), 5000);
+
         return null;
       }
     } catch (err) {
+      toast.error(
+        "Erreur, la création de votre recette n'a pas pu aboutir, merci de réessayer"
+      );
       return console.error("Error during fetching", err);
     }
     return null;
