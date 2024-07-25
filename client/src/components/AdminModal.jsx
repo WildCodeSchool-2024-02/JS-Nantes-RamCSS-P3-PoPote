@@ -6,8 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 
  function AdminModal({ closeAdminModal }) {
-    // Close the modal after savings
-    // closeModal();
 
   const BrowseRecipes = useLoaderData();
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);

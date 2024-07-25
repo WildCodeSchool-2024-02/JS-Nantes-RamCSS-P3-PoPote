@@ -1,4 +1,6 @@
-import { useLoaderData } from "react-router-dom";
+/* eslint-disable camelcase */
+
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import MaxiRecipeCard from "../components/MaxiRecipeCard";
@@ -9,11 +11,20 @@ import ProfileModalAdmin from "../components/AdminModal";
 function ProfilePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalAdminOpen, setIsModalAdminOpen] = useState(false);
+  const navigate = useNavigate();
   const {user} = useContext(AuthContext);
 
   const id = localStorage.getItem("userId");
   const Admin = localStorage.getItem("isAdmin");
-  const recipeData = useLoaderData();
+  const url_photo = localStorage.getItem("url_photo");
+
+  function handleSave() {
+    localStorage.clear();
+    navigate("/");
+  }
+
+  const { recipes } = useLoaderData();
+
   function openModal() {
     setIsModalOpen(true);
   }
@@ -29,7 +40,9 @@ function ProfilePage() {
   const closeAdminModal = () => {
     setIsModalAdminOpen(false);
   };
+
   let modalContent;
+
   if (isModalOpen) {
     modalContent = <ProfileModal closeModal={closeModal} id={id} />;
   } else if (isModalAdminOpen) {
@@ -37,13 +50,13 @@ function ProfilePage() {
   } else {
     modalContent = (
       <>
-        <button type="submit" className="deconnexion-button">
+        <button type="submit" onClick={handleSave} className="deconnexion-button">
           DECONNEXION
         </button>
         <h2>Mes recettes créées</h2>
         <article className="recipe-card-list">
-          {recipeData.length > 0 ? (
-            recipeData.map((el) => (
+          {recipes.length > 0 ? (
+            recipes.map((el) => (
               <MaxiRecipeCard
                 key={el.id}
                 id={el.id}
@@ -62,15 +75,20 @@ function ProfilePage() {
     );
   }
 
+
   return (
     <section className="my-profile">
       <h1>Mon compte</h1>
       <div className="bloc-name">
-        <img
+        {url_photo ? (<img
           id="profile-picture-img"
           src={`${import.meta.env.VITE_API_URL}/profile/sophie-nancier.jpg`}
           alt="user avatar"
-        />
+        />) : (<img
+          id="profile-picture-img"
+          src={`${import.meta.env.VITE_API_URL}/profile/avatar.png`}
+          alt="user avatar"
+        />)}
         <p>
           {user?.firstname} {user?.lastname}
         </p>

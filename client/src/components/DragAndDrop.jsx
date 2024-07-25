@@ -32,7 +32,8 @@ function DragAndDrop({ files, setFiles, imagePreview, setImagePreview }) {
         />
         {!imagePreview && (
           <button
-            className="bouton-ajouter-fichier"
+            style={{ cursor: "pointer" }}
+            className="add-files-button"
             type="button"
             onClick={() => inputRef.current.click()}
           >
@@ -83,7 +84,5 @@ DragAndDrop.propTypes = {
   length: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
-
-
 
 export default DragAndDrop;

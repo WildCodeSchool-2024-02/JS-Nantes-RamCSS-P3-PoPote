@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./pages/ErrorPage";
-import ProtectedRoute from "./services/ProtectedRoute";
 
 import App from "./App";
 import WelcomePage from "./pages/WelcomePage";
@@ -16,7 +15,6 @@ import RecipeCreationPage from "./pages/RecipeCreationPage";
 import ProfilePage from "./pages/ProfilePage";
 import SetProfilePage from "./pages/SetProfilePage";
 import RecipePage from "./pages/RecipePage";
-import AdminPage from "./pages/AdminPage";
 import AboutPage from "./pages/AboutPage";
 
 const recipeLoader = async ({ params }) => {
@@ -51,18 +49,20 @@ const IngToolLoader = async () => {
 const profileLoader = async () => {
   const userId = localStorage.getItem("userId");
   try {
-    const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`
-    );
-    if (!response.ok) {
-      // Si la réponse n'est pas ok, retournez un tableau vide
-      return [];
-    }
-    const data = await response.json();
-    return data;
+    const [recipes, user] = await Promise.all([
+      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`).then((res) => {
+        if (!res.ok) {
+          return [];
+        }
+        return res.json();
+      }),
+      fetch(`${import.meta.env.VITE_API_URL}/api/user/${userId}`).then((res) => res.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
+    ]);
+
+    return {recipes, user};
   } catch (error) {
-    // En cas d'erreur, retournez un tableau vide
-    return [];
+    return { recipes:[], user: null};
   }
 };
 
@@ -131,16 +131,7 @@ const router = createBrowserRouter([
         path: "recipe/:id",
         element: <RecipePage />,
         loader: recipeLoader,
-      },
-      {
-        path: "admin",
-        element: (
-          <ProtectedRoute>
-            <AdminPage />
-          </ProtectedRoute>),
-           loader: () => fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
-        
-      },
+      }
     ],
   },
 ]);
