@@ -23,7 +23,7 @@ function ProfilePage() {
     navigate("/");
   }
 
-  const { recipes } = useLoaderData();
+  const { recipes, adminRecipe} = useLoaderData();
 
   function openModal() {
     setIsModalOpen(true);
@@ -46,7 +46,7 @@ function ProfilePage() {
   if (isModalOpen) {
     modalContent = <ProfileModal closeModal={closeModal} id={id} />;
   } else if (isModalAdminOpen) {
-    modalContent = <ProfileModalAdmin closeAdminModal={closeAdminModal} />;
+    modalContent = <ProfileModalAdmin closeAdminModal={closeAdminModal} adminRecipe={adminRecipe}/>;
   } else {
     modalContent = (
       <>

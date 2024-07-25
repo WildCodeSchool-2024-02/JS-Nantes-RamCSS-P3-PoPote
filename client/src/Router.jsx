@@ -49,7 +49,7 @@ const IngToolLoader = async () => {
 const profileLoader = async () => {
   const userId = localStorage.getItem("userId");
   try {
-    const [recipes, user] = await Promise.all([
+    const [recipes, user, adminRecipe] = await Promise.all([
       fetch(`${import.meta.env.VITE_API_URL}/api/recipe/user/${userId}`).then((res) => {
         if (!res.ok) {
           return [];
@@ -57,12 +57,12 @@ const profileLoader = async () => {
         return res.json();
       }),
       fetch(`${import.meta.env.VITE_API_URL}/api/user/${userId}`).then((res) => res.json()),
-      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`),
+      fetch(`${import.meta.env.VITE_API_URL}/api/recipe/`).then((res) => res.json()),
     ]);
 
-    return {recipes, user};
+    return {recipes, user, adminRecipe};
   } catch (error) {
-    return { recipes:[], user: null};
+    return { recipes:[], user: null, adminRecipe:[]};
   }
 };
 

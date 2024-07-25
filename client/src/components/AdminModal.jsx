@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
- function AdminModal({ closeAdminModal }) {
-
-  const BrowseRecipes = useLoaderData();
+ function AdminModal({ closeAdminModal, adminRecipe }) {
+  const BrowseRecipes = adminRecipe;
   const [selectedRecipeId, setSelectedRecipeId] = useState(null);
 
   // Surveille quels recette est selectionnée dans le select
@@ -45,9 +44,7 @@ import "react-toastify/dist/ReactToastify.css";
         error.sendStatus(417).send("Error deleting recipe:", error);
       }
     );
-    return  toast.warn(
-      "Une erreur s'est produite lors de la suppression de la recette"
-    );
+    return null;
   }
 
   return (
@@ -76,7 +73,8 @@ import "react-toastify/dist/ReactToastify.css";
 }
 
 AdminModal.propTypes = {
-  closeAdminModal: PropTypes.func.isRequired
+  closeAdminModal: PropTypes.func.isRequired,
+  adminRecipe: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default AdminModal;
