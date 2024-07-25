@@ -72,10 +72,10 @@ function CreationIngredients({
             value={currentIngredientQuantity}
             ref={ingredientQuantityRef}
             onChange={(e) => setCurrentIngredientQuantity(e.target.value)}
-            placeholder="Quantité de l'ingrédient"
+            placeholder="Quantité de l'ingrédient *"
             min="0"
           />
-          <p>*</p>
+
           <input
             className="ingredient-unity"
             type="text"
@@ -83,9 +83,9 @@ function CreationIngredients({
             value={currentIngredientUnit}
             ref={ingredientUnityRef}
             onChange={(e) => setCurrentIngredientUnit(e.target.value)}
-            placeholder="g, unité, kg"
+            placeholder="g, unité, kg *"
           />
-          <p>*</p>
+
           <input
             className="ingredient-selection"
             type="text"
@@ -93,9 +93,8 @@ function CreationIngredients({
             ref={ingredientChoiceRef}
             onChange={(e) => setCurrentIngredient(e.target.value)}
             list="ingredient-list"
-            placeholder="Sélectionnez un ingrédient"
+            placeholder="Sélectionnez un ingrédient *"
           />
-          <p>*</p>
         </div>
         <datalist id="ingredient-list">
           {recipeIngLoad.map((el) => (
@@ -113,7 +112,7 @@ function CreationIngredients({
           Ajouter
         </button>
       </div>
-      <ul>
+      <ul className="add-ingredients">
         {ingredients.map((el) => (
           <li key={el.id}>
             {el.quantity} {el.unit} {el.name}

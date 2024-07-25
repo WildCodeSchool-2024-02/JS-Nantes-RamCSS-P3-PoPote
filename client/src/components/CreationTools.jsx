@@ -48,7 +48,7 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
             list="tool-quantity-list"
             value={currentToolsQuantity}
             onChange={(e) => setCurrentToolsQuantity(e.target.value)}
-            placeholder="Quantité de l'ustensile"
+            placeholder="Quantité de l'ustensile *"
             min="0"
           />
 
@@ -58,17 +58,17 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
             value={currentTools}
             onChange={(e) => setCurrentTools(e.target.value)}
             list="tool-list"
-            placeholder="Sélectionnez un ustensile"
+            placeholder="Sélectionnez un ustensile *"
           />
-
-          <datalist id="tool-list">
-            {recipeToolLoad.map((el) => (
-              <option key={el.id} value={el.name}>
-                {el.name}
-              </option>
-            ))}
-          </datalist>
         </div>
+        <datalist id="tool-list">
+          {recipeToolLoad.map((el) => (
+            <option key={el.id} value={el.name}>
+              {el.name}
+            </option>
+          ))}
+        </datalist>
+
         <button
           style={{ cursor: "pointer" }}
           className={`add-button ${clicked ? "clicked" : ""}`}
@@ -78,7 +78,7 @@ function CreationTools({ recipeToolLoad, setToolArray }) {
           Ajouter
         </button>
       </div>
-      <ul>
+      <ul className="add-tools">
         {tools.map((tool) => (
           <li key={tool.id}>
             {tool.quantity} {tool.name}
