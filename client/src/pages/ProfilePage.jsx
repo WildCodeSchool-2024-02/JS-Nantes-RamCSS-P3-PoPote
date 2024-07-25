@@ -42,7 +42,6 @@ function ProfilePage() {
   };
 
   let modalContent;
-
   if (isModalOpen) {
     modalContent = <ProfileModal closeModal={closeModal} id={id} />;
   } else if (isModalAdminOpen) {
